@@ -1,10 +1,10 @@
 "---------------------------------------------------------------------------
 " deoplete.nvim
 "
-let g:deoplete#_context = {}
+"let g:deoplete#_context = {}
 
 " <TAB>: completion.
-imap <silent><expr> <TAB>
+inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ deoplete#mappings#manual_complete()
@@ -63,7 +63,7 @@ let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
 
 " inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
 
-" let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_refresh_always = 1
 let g:deoplete#enable_camel_case = 1
 " let g:deoplete#auto_complete_start_length = 3
 
