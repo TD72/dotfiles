@@ -10,6 +10,7 @@ hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
 hook_add = '''
     nnoremap [unite] <Nop>
     nmap <Leader> [unite]
+    nnoremap <silent> [unite]i :<C-u>Unite<Space>file_rec/async:!<CR>
     nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
     nnoremap <silent> [unite]f :<C-u>Unite<Space>file_mru<CR>
     nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
