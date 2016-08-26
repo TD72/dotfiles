@@ -148,3 +148,6 @@ hook_add =  '''
 
 #[[plugins]]
 #repo = 'rhysd/nyaovim-markdown-preview'
+
+#[[plugins]]
+#repo = 'mattn/emoji-vim'
