@@ -34,10 +34,6 @@ fi
 # Setup zplug && Modules
 #======================================
 
-if [[ ! -e ~/.local/bin/powerline ]]; then
-    pip install --user git+git://github.com/powerline/powerline
-fi
-
 if [[ ! -e ~/.zplug ]] then
     printf "Install zplug? [y/N]"
     if read -q; then
