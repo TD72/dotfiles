@@ -1,0 +1,15 @@
+bin/git-harmo
+bin/ghq
+bin/peco
+
+.vim/.*
+.vim/rc/.*
+
+.tmux/*
+!.tmux/.gitkeep
+
+.xmonad/*
+!.xmonad/xmonad.hs
+
+.etc/git-cfg/*
+!.tmux/.gitkeep

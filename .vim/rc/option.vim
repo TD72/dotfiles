@@ -1,0 +1,127 @@
+" Enable mouse controll.
+set mouse=a
+"" encofing
+set encoding=utf-8
+set fileformat=unix
+set fileformats=unix,dos,mac
+set fileencodings=utf-8,iso-2022-jp,cp932,sjis,euc-jp
+
+set autoindent
+set smartindent
+set expandtab
+set shiftwidth=4
+set tabstop<
+set softtabstop=4
+set smarttab
+
+" modeline ex) vim: fenc=utf-8
+set modeline
+
+set autoread
+set autowrite
+
+" use opened buffer, instead of  open new file
+set switchbuf=useopen
+
+" fast escape
+set timeout timeoutlen=1000 ttimeoutlen=75
+
+" w!! save file as SuperUser.
+cnoreabbrev  w!! w !sudo tee > /dev/null %
+
+
+if (!has('nvim') || $DISPLAY != '') && has('clipboard')
+  if has('unnamedplus')
+    set clipboard& clipboard+=unnamedplus
+  else
+    set clipboard& clipboard+=unnamed
+  endif
+endif
+
+" Search:
+" Doesn't tell uppercase apart lowercase.
+set ignorecase
+" If use a uppercase, tell uppercase apart lowercase.
+set smartcase
+" Highlight texts, matching search pattern.
+set hlsearch
+" incremental search
+set incsearch
+
+
+
+set viminfo+=n~/.cache/vim/viminfo
+
+" Folding
+set foldenable
+set foldmethod=marker
+set foldlevel=0
+set foldcolumn=2
+setglobal commentstring=#%s
+autocmd MyAutoCmd FileType c setlocal commentstring=//%s
+autocmd MyAutoCmd FileType cpp setlocal commentstring=//%s
+autocmd MyAutoCmd FileType python setlocal commentstring=#%s
+autocmd MyAutoCmd FileType vim setlocal commentstring=\"%s
+autocmd MyAutoCmd FileType bash setlocal commentstring=#%s
+autocmd MyAutoCmd FileType zsh setlocal commentstring=#%s
+autocmd MyAutoCmd FileType sh setlocal commentstring=#%s
+autocmd MyAutoCmd FileType tex setlocal commentstring=\%%s
+autocmd MyAutoCmd FileType haskell setlocal commentstring=--%s
+
+
+
+" Octal notation -> Demical Number
+set nrformats=alpha,hex
+
+set wildmenu wildmode=list:longest,full
+
+set iminsert=0 imsearch=0
+set noimcmdline
+
+autocmd MyAutoCmd BufNewFile,BufRead .tmux.conf setf tmux
+autocmd MyAutoCmd BufNewFile,BufRead .envrc setf sh
+
+
+" Templete: {{{
+" autocmd MyAutoCmd BufNewFile *.py 0r ~/.vim/template/template.py
+" autocmd MyAutoCmd BufNewFile *.cpp 0r ~/.vim/template/template.cpp
+" autocmd MyAutoCmd BufNewFile *.c 0r ~/.vim/template/template.c
+" autocmd MyAutoCmd BufNewFile *.sh 0r ~/.vim/template/template.sh
+" autocmd MyAutoCmd BufNewFile *.bash 0r ~/.vim/template/template.bash
+" autocmd MyAutoCmd BufNewFile *.zsh 0r ~/.vim/template/template.zsh
+" autocmd MyAutoCmd BufNewFile *.tex 0r ~/.vim/template/template.tex
+" autocmd MyAutoCmd BufNewFile .envrc 0r ~/.vim/template/template.envrc
+"}}}
+" Restore Position {{{
+" When open a file, move the cursor to last position.
+autocmd MyAutoCmd BufReadPost *
+            \ if line("'\'") > 0 && line("'\'") <= line("$") | 
+            \   exe "normal g`\"" | 
+            \ endif
+"}}}
+" Auto-mkdir {{{
+" When open a file, auto make a directory if doesn't exist a directory.
+function! s:mkdir(dir, force)
+    if !isdirectory(a:dir) && (a:force ||
+                \ input(printf('"%s" does not exist. Create? [y/N]',
+                \ a:dir)) =~? '^y\%[es]$')
+        call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
+    endif
+endfunction
+autocmd MyAutoCmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
+"}}}
+" BackUp: {{{1
+set swapfile
+let $SWAP = expand('~/.cache/vim/.swap')
+set directory=$SWAP
+if !isdirectory(expand($SWAP))
+    call mkdir(expand($SWAP), 'p')
+endif
+" open as readonly when open swapfile.
+autocmd MyAutoCmd SwapExists * let v:swapchoice = 'o'
+
+" Persistent Undo
+if has('persistent_undo')
+    set undodir=~/.cache/vim/undo
+    set undofile
+endif

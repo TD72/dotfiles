@@ -1,0 +1,149 @@
+# Position & Size
+alignment bottom_right
+border_width 1
+gap_x 10
+gap_y 150
+minimum_size 200 5
+maximum_width 400
+
+# Window config
+background yes
+double_buffer yes
+no_buffers yes
+own_window yes
+own_window_type normal
+own_window_transparent no
+own_window_colour 002b36
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+# own_window_argb_visual yes
+# own_window_argb_value 0
+
+# Fonts config
+override_utf8_locale yes
+use_xft yes
+xftfont Migu 1C:style=Bold:size=10
+
+cpu_avg_samples 4
+draw_borders no
+draw_graph_borders yes
+draw_outline no
+draw_shades no
+net_avg_samples 2
+out_to_console no
+out_to_stderr no
+extra_newline no
+stippled_borders 0
+update_interval 1.0
+uppercase no
+use_spacer none
+show_graph_scale no
+show_graph_range no
+text_buffer_size 5000
+
+# Color scheme
+default_color white
+default_outline_color white
+default_shade_color white
+# yellow
+color1 ffff00
+# orange
+color2 ff4500
+
+TEXT
+#-----------------------
+# Distribution Logo
+#-----------------------
+# ${image ~/.conky/icons/fedora_tux_trans.png -p 50,5 -s 60x60}\
+# ${image ~/.conky/icons/Logo_fedoralogo.png -p 150,0 -s 200x60}
+
+
+#-----------------------
+# Time
+#-----------------------
+${voffset 10}$color2${font Migu 1C:size=12:style=Bold}Time$hr
+     $color${font Migu 1C:size=14:style=Bold}${time %Y / %m / %d}        \
+$color${font Migu 1C:size=24:style=Bold}${time %H:%M:%S}$font
+#
+#-----------------------
+# Calender
+#-----------------------
+$color2${font Migu 1C:size=12:style=Bold}Calender$hr
+$color${font Ricty:size=10:style=Bold}\
+${execi 600 gcal --type=standard . | sed -e "1,5d" | cut -c 22-}
+
+#-----------------------
+# CPU
+#-----------------------
+$color2${font Migu 1C:size=12:style=Bold}CPU $hr
+$color$font       \
+all:$color1$font $cpu% $color
+# ${goto 70}Core1: $color1${execi 1 sensors | grep 'Core 0' | cut -c18-21}$color  \
+# Core2: $color1${execi 1 sensors | grep 'Core 1' | cut -c18-21}$color  \
+# Core3: $color1${execi 1 sensors | grep 'Core 2' | cut -c18-21}$color  \
+# Core4: $color1${execi 1 sensors | grep 'Core 3' | cut -c18-21}$color
+   ${cpugraph}
+#-----------------------
+# RAM
+#-----------------------
+$color2${font Migu 1C:size=12:style=Bold}RAM$hr
+$font$color     \
+usage: $color1 $mem$color/$memmax - $color1$memperc%    \
+
+   $color${memgraph}\
+
+#-----------------------
+# Swap
+#-----------------------
+${color2}${font Migu 1C:size=12:style=Bold}Swap $hr
+$color$font\
+  $swap/$swapmax - $swapperc% ${swapbar 4}
+
+#-----------------------
+# File System
+#-----------------------
+$color2${font Migu 1C:size=12:style=Bold}File Systems $hr
+$font$color \
+  /         $color1${fs_used /}$color/${fs_size /} ${fs_bar 6 /}
+  /home $color1${fs_used /home}$color/${fs_size /home}  ${fs_bar 6 /home}
+
+#-----------------------
+# Network
+#-----------------------
+$color2${font Migu 1C:size=12:style=Bold}Network $hr\
+$color$font
+  Down:$color1 ${downspeedf enp6s0}$color ${goto 100}k/s \
+${goto 240}Up:$color1 ${upspeedf enp6s0}$color k/s
+  ${downspeedgraph enp6s0 32,150} \
+$alignr${upspeedgraph enp6s0 32,150}\
+
+#-----------------------
+# Processes
+#-----------------------
+$color2${font Migu 1C:size=12:style=Bold}Processes $hr 
+$color$font Name ${goto 140}PID   ${goto 220}CPU ${goto 295}MEM
+$color ${top name 1} ${goto 130}${top pid 1} ${goto 210}${top cpu 1} ${goto 290}${top mem 1}
+$color ${top name 2} ${goto 130}${top pid 2} ${goto 210}${top cpu 2} ${goto 290}${top mem 2}
+$color ${top name 3} ${goto 130}${top pid 3} ${goto 210}${top cpu 3} ${goto 290}${top mem 3}
+$color ${top name 4} ${goto 130}${top pid 4} ${goto 210}${top cpu 4} ${goto 290}${top mem 4}
+
+#-----------------------
+# Now Playing
+#-----------------------
+$color2${font Migu 1C:size=12:style=Bold}Now Playing $hr 
+# Clementine
+#${goto 180}$font${color1}Artist	: ${color}${execi 5 python ~/.conky/now_playing_clementene.py -a}
+#${goto 180}${color1}Album	: ${color}${execi 5 python ~/.conky/now_playing_clementene.py -l}
+#${goto 180}${color1}Title	: ${color}${execi 5 python ~/.conky/now_playing_clementene.py -t}
+#${goto 180}${color1}Year	: ${color}${execi 5 python ~/.conky/now_playing_clementene.py -y}
+# ${execi 5 python ~/.conky/now_playing_clementene.py -c /tmp/cover.jpg}${image /tmp/cover.jpg -p 5,820 -s 150x150 -n}
+${if_running mpd}
+$font$color MPD: ${mpd_status}${if_mpd_playing}
+${goto 180}${color1}Artist:  ${color}${mpd_artist 25}
+${goto 180}${color1}Album: ${color}${mpd_album 25}
+${goto 180}${color1}Title: ${color}${mpd_title 25}
+${goto 180}${color2} ${mpd_bar 3,130}
+${exec ~/.conky/now_playing_mpd.sh}${image /tmp/conky_cover.png -p 3,772 -s 130x130 -n}
+${endif}
+${endif}
+
+$nodename - $kernel $alignr$color conky ver: $color$conky_version

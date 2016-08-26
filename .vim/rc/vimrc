@@ -1,0 +1,71 @@
+if has ('vim_starting')
+    scriptencoding utf-8
+    set runtimepath&
+
+    if has('reltime')
+        let g:startuptime = reltime()
+        augroup vimrc-startuptime
+            autocmd! VimEnter * let g:startuptime = reltime(g:startuptime) | redraw
+                        \ | echomsg 'startuptime: ' . reltimestr(g:startuptime)
+        augroup END
+    endif
+endif
+
+
+if &compatible
+    set nocompatible
+endif
+
+
+
+function! s:source_rc(path, ...) abort
+    let user_global = get(a:000, 0, !has('vim_starting'))
+    let abspath = resolve(expand('~/.vim/rc/' . a:path))
+    if !user_global
+        execute 'source' fnameescape(abspath)
+        return
+    endif
+
+    let content = map(readfile(abspath),
+          \ 'substitute(v:val, "^\\w*\\zsset\\ze\\w", "setglobal", "")')
+    let tempfile = tempname()
+    try
+        call writefile(content, tempfile)
+        execute printf('source %s', fnameescape(tempfile))
+    finally
+        if filereadable(tempfile)
+            call delete(tempfile)
+        endif
+    endtry
+endfunction
+
+
+" Vim Package Manager
+if has('vim_starting')
+  call s:source_rc('init.rc.vim')
+endif
+
+call s:source_rc('dein.rc.vim')
+
+
+
+if dein#tap('deoplete.nvim') && has('nvim')
+  let g:loaded_neocomplete = 1
+endif
+
+if dein#tap('neocomplete.vim') && has('lua')
+  let g:loaded_deoplete = 1
+endif
+let g:loaded_neobundle = 1
+
+if !has('vim_starting')
+  call dein#call_hook('source')
+  call dein#call_hook('post_source')
+
+  syntax enable
+  filetype plugin indent on
+endif 
+
+call s:source_rc('option.vim')
+call s:source_rc('mapping.vim')
+call s:source_rc('appearance.vim')

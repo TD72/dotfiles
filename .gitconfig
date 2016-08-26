@@ -1,0 +1,23 @@
+[core]
+  editor = vim
+  excludesfile = ~/.gitignore
+  precomposeunicode = true
+  quotepath = true
+
+[color]
+  ui = auto
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+
+[user]
+	name = td72
+	email = teledx72@gmail.com
+
+[ghq]
+    root = ~/src
+
+[alias]
+    exec = !sh -c 'exec "$@"' $(which sh)

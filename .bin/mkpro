@@ -1,0 +1,9 @@
+#!/bin/sh
+
+SRC=$HOME/src/local
+
+mkdir -p $SRC/$1
+
+cd $SRC/$1
+
+git init

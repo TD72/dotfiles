@@ -1,0 +1,11 @@
+#! /bin/zsh
+
+filename=${1%.*}
+
+pandoc $PWD/$1 -o $PWD/$filename.pdf \
+  --latex-engine=lualatex \
+  -t beamer \
+  -V theme:Darmstadt \
+  -V colortheme:whale \
+  -V fontsize:18pt \
+  -H ~/.bin/h-luatexja.tex

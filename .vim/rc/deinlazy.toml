@@ -1,0 +1,386 @@
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_path = '.*'
+
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
+depends = 'neomru.vim'
+hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
+hook_add = '''
+    nnoremap [unite] <Nop>
+    nmap <Leader> [unite]
+    nnoremap <silent> [unite]a :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+    nnoremap <silent> [unite]f :<C-u>Unite<Space>file_mru<CR>
+    nnoremap <silent> [unite]b :<C-u>Unite<Space>buffer<CR>
+    nnoremap <silent> [unite]o :<C-u>Unite -vertical -winwidth=30
+                \ -no-quit outline<CR>
+'''
+
+
+
+[[plugins]]
+repo = 'Shougo/vimfiler'
+depends = 'unite.vim'
+on_map = [['n', '<Plug>']]
+on_if = "isdirectory(bufname('%'))"
+hook_add = 'nnoremap <silent> <Leader>e :VimFiler -simple -split -winwidth=30 -no-quit<CR>'
+hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+on_map = '<Plug>'
+hook_add = 'nmap <Leader>r <Plug>(quickrun)'
+hook_source = 'source ~/.vim/rc/plugins/vim-quickrun.rc.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-watchdogs'
+on_source = 'vim-quickrun'
+hook_post_source = '''
+    call watchdogs#setup(g:quickrun_config)
+    let g:watchdogs_check_BufWritePost_enable = 1
+    let g:watchdogs_check_CursorHold_enable = 1
+'''
+
+[[plugins]]
+repo = 'jceb/vim-hier'
+on_source = 'osyo-manga/vim-wathchdogs'
+
+
+[[plugins]]
+repo = 'majutsushi/tagbar'
+on_cmd = 'TagbarToggle'
+hook_add = '''
+    nnoremap <silent> <Leader>t :TagbarToggle<CR>
+    let g:tagbar_width=40
+'''
+
+[[plugins]]
+repo = 'wesleyche/SrcExpl'
+on_cmd = 'SrcExplToggle'
+hook_add = '''
+    nnoremap [srce] <Nop>
+    nmap <Leader>, [srce]
+    nnoremap [srce] :SrcExplToggle<CR>
+'''
+hook_source = 'source ~/.vim/rc/plugins/SrcExpl.rc.vim'
+
+[[plugins]]
+repo = 'tyru/caw.vim'
+on_map = [['nx', '<Plug>']]
+hook_add = '''
+  function! InitCaw() abort
+    if !&l:modifiable
+      silent! nunmap <buffer> <Leader>c
+      silent! xunmap <buffer> <Leader>c
+      " silent! nunmap <buffer> gcc
+      " silent! xunmap <buffer> gcc
+    else
+      " nmap <buffer> gc <Plug>(caw:prefix)
+      " xmap <buffer> gc <Plug>(caw:prefix)
+      nmap <buffer> <Leader>c <Plug>(caw:hatpos:toggle)
+      xmap <buffer> <Leader>c <Plug>(caw:hatpos:toggle)
+    endif
+  endfunction
+  autocmd MyAutoCmd FileType * call InitCaw()
+'''
+
+[[plugins]]
+repo = 'Shougo/neocomplete.vim'
+depends = 'context_filetype.vim'
+if = 'has("lua")'
+on_i = 1
+hook_add = 'let g:neocomplete#enable_at_startup = 1'
+hook_source = 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/neosnippet'
+depends = ['neosnippet-snippets', 'context_filetype.vim']
+on_i = 1
+on_ft = 'snippet'
+hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
+
+
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+
+
+[[plugins]]
+repo = 'ujihisa/neco-look'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neco-vim'
+on_ft = 'vim'
+on_i = 1
+
+[[plugins]]
+repo = 'Shougo/neoinclude.vim'
+on_path = '.*'
+
+[[plugins]]
+repo = 'Shougo/echodoc'
+on_event = 'CompleteDone'
+hook_source = 'call echodoc#enable()'
+
+[[plugins]]
+repo = 'kana/vim-niceblock'
+on_map = [['x', '<Plug>']]
+hook_add = '''
+    xmap I <Plug>(niceblock-I)
+    xmap A <Plug>(niceblock-A)
+'''
+
+[[plugins]]
+repo = 'kana/vim-tabpagecd'
+on_source = 'unite.vim'
+
+##[[plugins]]
+##repo = 'tyru/eskk.vim'
+##on_i = 1
+##hook_add = 'imap <C-j> <Plug>(eskk:toggle)'
+##hook_source = 'source ~/.vim/rc/plugins/eskk.rc.vim'
+
+[[plugins]]
+repo = 'thinca/vim-ref'
+on_map = '<Plug>'
+hook_add = '''
+    nnoremap ,j :<C-u>Ref webdict je<Space>
+    nnoremap ,e :<C-u>Ref webdict ej<Space>
+'''
+hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
+
+
+
+[[plugins]]
+repo = 'Leafcage/yankround.vim'
+on_map = '<Plug>'
+hook_add = '''
+    nmap p <Plug>(yankround-p)
+    nmap P <Plug>(yankround-P)
+    nmap gp <Plug>(yankround-gp)
+    nmap gP <Plug>(yankround-gP)
+    nmap <C-p> <Plug>(yankround-prev)
+    nmap <C-P> <Plug>(yankround-next)
+'''
+
+[[plugins]]
+repo = 'saihoooooooo/glowshi-ft.vim'
+on_map = [['nx', '<Plug>']]
+hook_add = '''
+    let g:glowshi_ft_no_default_keymappings = 1
+    nmap f <Plug>(glowshi-ft-f)
+    xmap f <Plug>(glowshi-ft-f)
+    nmap F <Plug>(glowshi-ft-F)
+    xmap F <Plug>(glowshi-ft-F)
+
+    let g:glowshi_ft_timeoutlen = 1000
+'''
+
+[[plugins]]
+repo = 'yuratomo/w3m.vim'
+hook_add = '''
+    nnoremap <Leader>w :W3m<Space>
+    nnoremap <Leader>W :<C-u>W3m<Space><C-r>+
+'''
+
+#[[plugins]]
+#repo = 'kannokanno/previm'
+#on_cmd = 'PrevimOpen'
+#depends = 'open-browser.vim'
+
+
+
+
+[[plugins]]
+repo = 'rhysd/accelerated-jk'
+on_map = [['n', '<Plug>']]
+hook_add = '''
+    nmap <silent>j <Plug>(accelerated_jk_gj)
+    nmap <silent>k <Plug>(accelerated_jk_gk)
+'''
+
+
+[[plugins]]
+repo = 'lambdalisue/vim-gita'
+hook_add = '''
+    nnoremap <silent> <Leader>gs :<C-u>Gita status<CR>
+    nnoremap <silent> <Leader>gc :<C-u>Gita commit<CR>
+    nnoremap <silent> <Leader>ga :<C-u>Gita commit --amend<CR>
+    nnoremap <silent> <Leader>gd :<C-u>Gita diff<CR>
+    nnoremap <silent> <Leader>gb :<C-u>Gita browse<CR>
+    nnoremap <silent> <Leader>gl :<C-u>Gita blame<CR>
+
+    autocmd FileType gita-status
+    \ nmap <buffer> cc <Plug>(gita-commit-open) |
+    \ nmap <buffer> cA <Plug>(gita-commit-open-amend)
+
+    let git#features#commit#enable_default_mappings = 0
+'''
+
+[[plugins]]
+repo = 'davidhalter/jedi-vim'
+if = "!has('nvim')"
+on_ft = 'python'
+hook_source = 'source ~/.vim/rc/plugins/jedi.rc.vim'
+
+[[plugins]]
+repo = 'osyo-manga/vim-over'
+hook_add = '''
+    nnoremap <silent> <Leader>m :OverCommandLine<CR>
+    nnoremap <silent> <Leader>M :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
+'''
+
+
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_map = [['n', '<Plug>']]
+on_ft = ['html', 'html5', 'php', 'xml', 'css']
+hook_add = '''
+    let g:user_emmet_leader_key = '<C-y>'
+    let g:user_emmet_setting = {
+                \	'variable': {
+                \	'lang': "ja"
+                \	},
+                \	'indentation': '    '
+                \}
+'''
+
+
+[[plugins]]
+repo = 'koron/codic-vim'
+on_cmd = 'Codic'
+on_source = 'unite-codic.vim'
+
+[[plugins]]
+repo = 'rhysd/unite-codic.vim'
+depends = ['unite.vim', 'codic-vim']
+
+
+
+[[plugins]]
+repo = 'kana/vim-operator-replace'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = 'xmap p <Plug>(operator-replace)'
+
+
+[[plugins]]
+repo = 'rhysd/vim-operator-surround'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    nmap <silent>ys <Plug>(operator-surround-append)a
+    nmap <silent>ds <Plug>(operator-surround-delete)a
+    nmap <silent>cs <Plug>(operator-surround-replace)a
+'''
+
+[[plugins]] # e
+repo = 'kana/vim-textobj-entire'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>ae <Plug>(textobj-entire-a)
+    omap <silent>ie <Plug>(textobj-entire-i)
+    vmap <silent>ae <Plug>(textobj-entire-a)
+    vmap <silent>ie <Plug>(textobj-entire-i)
+'''
+
+[[plugins]] # /
+repo = 'kana/vim-textobj-lastpat'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>a/ <Plug>(textobj-lastpat-n)
+    omap <silent>i/ <Plug>(textobj-lastpat-n)
+    omap <silent>a? <Plug>(textobj-lastpat-N)
+    omap <silent>i? <Plug>(textobj-lastpat-N)
+    vmap <silent>a/ <Plug>(textobj-lastpat-n)
+    vmap <silent>i/ <Plug>(textobj-lastpat-n)
+    vmap <silent>a? <Plug>(textobj-lastpat-N)
+    vmap <silent>i? <Plug>(textobj-lastpat-N)
+'''
+
+[[plugins]] # l
+repo = 'kana/vim-textobj-indent'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>al <Plug>(textobj-indent-a)
+    omap <silent>il <Plug>(textobj-indent-i)
+    vmap <silent>al <Plug>(textobj-indent-a)
+    vmap <silent>il <Plug>(textobj-indent-i)
+'''
+
+[[plugins]] # z
+repo = 'kana/vim-textobj-fold'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>az <Plug>(textobj-fold-a)
+    omap <silent>iz <Plug>(textobj-fold-i)
+    vmap <silent>az <Plug>(textobj-fold-a)
+    vmap <silent>iz <Plug>(textobj-fold-i)
+'''
+
+[[plugins]] # p
+repo = 'gilligan/textobj-lastpaste'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>ap <Plug>(textobj-lastpaste-a)
+    omap <silent>ip <Plug>(textobj-lastpaste-i)
+    vmap <silent>ap <Plug>(textobj-lastpaste-a)
+    vmap <silent>ip <Plug>(textobj-lastpaste-i)
+'''
+
+[[plugins]] # u
+repo = 'mattn/vim-textobj-url'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>au <Plug>(textobj-url-a)
+    omap <silent>iu <Plug>(textobj-url-i)
+    vmap <silent>au <Plug>(textobj-url-a)
+    vmap <silent>iu <Plug>(textobj-url-i)
+'''
+
+[[plugins]] # db
+repo = 'kana/vim-textobj-django-template'
+depends = 'vim-operator-user'
+on_ft = 'python'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>adb <Plug>(textobj-django-template-a)
+    omap <silent>idb <Plug>(textobj-django-template-i)
+    vmap <silent>adb <Plug>(textobj-django-template-a)
+    vmap <silent>idb <Plug>(textobj-django-template-i)
+'''
+
+[[plugins]] # e
+repo = 'rbonvall/vim-textobj-latex'
+depends = 'vim-operator-user'
+on_ft = 'latex'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>ala <Plug>(textobj-latex-a)
+    omap <silent>ila <Plug>(textobj-latex-i)
+    vmap <silent>ala <Plug>(textobj-latex-a)
+    vmap <silent>ila <Plug>(textobj-latex-i)
+'''
+
+[[plugins]] # _
+repo = 'kana/vim-textobj-syntax'
+depends = 'vim-operator-user'
+on_map = '<Plug>'
+hook_add = '''
+    omap <silent>ay <Plug>(textobj-syntax-a)
+    omap <silent>iy <Plug>(textobj-syntax-i)
+    vmap <silent>ay <Plug>(textobj-syntax-a)
+    vmap <silent>iy <Plug>(textobj-syntax-i)
+'''
+
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_source = 'source ~/.vim/rc/plugins/submode.rc.vim'

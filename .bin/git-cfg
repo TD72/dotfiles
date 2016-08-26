@@ -1,0 +1,119 @@
+#!/bin/bash
+
+git_cfg_help() {
+    echo -e "'git cfg' is interactive git config command\n"
+    echo "Usage:"
+    echo "      git cfg: initialization & set a profile"
+    echo
+    echo "      git cfg add: add a new profile"
+    exit 1
+}
+
+
+# initialization
+git_cfg_init() {
+    echo -e "Not set git-cfg profiles-dir path.\n"
+    local choice
+    echo -n "Set now? [Y/n]:"
+    read -n 1 choice
+    if [ -z "${choice}" -o "${choice}" = "Y" -o "${choice}" = "y" ]; then
+        echo "Please set profiles-dir path \$GITCFG"
+        echo -n "default(~/.Gcfg): "
+        local gcfg
+        read gcfg
+        if [ -z "$gcfg" ]; then
+            gcfg=~/.Gcfg
+            mkdir -p ~/.Gcfg
+        else
+            mkdir -p $gcfg
+        fi
+
+        echo -n "\$GITCFG add your '~/.bashrc' ? [Y/n]"
+        local ANS
+        read -n 1 ANS
+        if [ -z "${ANS}" -o "${ANS}" = "Y" -o "${ANS}" = "y" ]; then
+            echo "export GITCFG=${gcfg}" >> ~/.bashrc
+            echo -e "\n written!\n"
+        else
+            echo
+        fi
+
+        echo "Please execute 'source ~/.bashrc' command!!"
+        echo "and"
+        echo "Set your profiles, 'git cfg add' command"
+        exit 1
+
+    else
+        echo -e "\nPlease export \$GITCFG yourself"
+        exit 1
+    fi
+}
+
+
+# add profile 
+git_cfg_add() {
+    while :
+        do
+            local name
+            echo -n "username?: "
+            read  name
+
+            local mail
+            echo -n "e-mail?: "
+            read mail
+
+            echo $mail > $GITCFG/$name
+
+            echo -e "\nCreated a new profile!"
+
+            echo -n "\$Add more profile? [y/N]"
+            local ANS
+            read -n 1 ANS
+            if [ "${ANS}" = "Y" -o "${ANS}" = "y" ]; then
+                echo
+            else
+                exit 1;
+            fi
+        done
+}
+
+
+
+if [ $# -gt 1 ]; then
+    echo "too arguments"
+    git_cfg_help
+
+elif [ $# -eq 1 ]; then
+    if [ $1 == "add" ]; then
+        git_cfg_add
+    else
+        git_cfg_help
+    fi
+
+else
+    # set $GITCFG ?
+    if [ -z "${GITCFG+x}" ]; then
+        git_cfg_init
+    fi
+
+    # Check .git dir exists current dir 
+    if [ ! -d ./.git ]; then
+        echo 'Current directory is not git repository!!'
+        exit 1
+    fi
+
+    echo -e "Select your profile\n  "
+
+    select USER in `ls ${GITCFG}`; do
+        CHOICE=$USER
+        break
+    done
+
+    # set new config
+    git config user.name $CHOICE
+    git config user.email `cat $GITCFG/$CHOICE`
+
+    # print updated config
+    git config user.name
+    git config user.email
+fi
