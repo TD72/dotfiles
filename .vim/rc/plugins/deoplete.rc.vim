@@ -83,4 +83,17 @@ let g:deoplete#sources#clang#flags = ['-x', 'c++', '-std=c++11']
 "       \ expand('~/src/neovim/build')
 "}}}
 
+
+" deoplete-go "{{{
+" Path to python interpreter for neovim
+let g:python3_host_prog  = '/usr/bin/python3'
+" Skip the check of neovim module
+let g:python3_host_skip_check = 1
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
+"}}}
+
+
 " call deoplete#enable_logging('DEBUG', 'deoplete.log')
