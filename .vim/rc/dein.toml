@@ -104,10 +104,6 @@ on_ft = 'toml'
 [[plugins]]
 repo = 'jelera/vim-javascript-syntax'
 
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-
 
 [[plugins]]
 repo = 'elzr/vim-json'
@@ -151,3 +147,4 @@ hook_add =  '''
 
 #[[plugins]]
 #repo = 'mattn/emoji-vim'
+

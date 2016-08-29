@@ -29,6 +29,7 @@ export PATH=~/.local/bin:$PATH
 # GO path
 export GOPATH="$HOME"
 export GOBIN="$GOPATH/bin"
+export PATH=/usr/local/go/bin:$PATH
 
 export XDG_CONFIG_HOME=~/.config
 [[ ! -d ~/.config ]] && mkdir ~/.config

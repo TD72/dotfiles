@@ -42,6 +42,10 @@ zplug "b4b4r07/dotfiles", \
     as:command, \
     use:bin/richpager
 
+zplug "b4b4r07/emoji-cli"
+zplug "mrowa44/emojify", \
+    as:command
+
 zplug "simonwhitaker/gibo", \
     as:command, \
     use:gibo, \
