@@ -147,4 +147,3 @@ hook_add =  '''
 
 #[[plugins]]
 #repo = 'mattn/emoji-vim'
-
