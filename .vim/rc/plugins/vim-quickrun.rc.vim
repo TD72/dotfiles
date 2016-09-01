@@ -2,10 +2,11 @@ set splitright
 set splitbelow
 let g:quickrun_config = {
             \   '_' : {
-            \       'split' : '',
-            \       'hook/close_quickfix/enable_success' : 1,
-            \       'hook/close_buffer/enable_failure' : 1,
-            \       'outputter' : 'multi:buffer:quickfix',
+            \       'outputter' : 'error',
+            \       'outputter/error/success' : 'buffer',
+            \       'outputter/error/error' : 'quickfix',
+            \       'outputter/buffer/split' : 'rightbelow 8sp',
+            \       'outputter/buffer/close_on_empty' : 1,
             \       'hook/neco/enable' : 1,
             \       'hook/neco/wait' : 20,
             \       'hook/time/enable': 1,
