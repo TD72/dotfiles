@@ -63,9 +63,9 @@ if !has('vim_starting')
   call dein#call_hook('post_source')
 
   syntax enable
-  filetype plugin indent on
 endif 
 
 call s:source_rc('option.vim')
 call s:source_rc('mapping.vim')
 call s:source_rc('appearance.vim')
+filetype plugin indent on
