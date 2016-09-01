@@ -62,7 +62,7 @@ export INTERACTIVE_FILTER="peco-tmux:fzf-tmux:peco"
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
 # Git config profiles path
-export GITCFG=~/.etc/git-cfg
+export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
 [[ -f ~/.secrets/secret.zsh ]] && source ~/.secrets/secret.zsh
 
