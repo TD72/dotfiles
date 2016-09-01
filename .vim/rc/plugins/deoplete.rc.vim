@@ -3,6 +3,8 @@
 "
 "let g:deoplete#_context = {}
 
+set completeopt+=noselect
+
 " <TAB>: completion.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
@@ -92,7 +94,9 @@ let g:python3_host_skip_check = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#use_cache = 1
-let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/$GOOS_$GOARCH'
+let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/linux_amd64')
+let g:deoplete#sources#go#cgo = 1
+let g:deoplete#sources#go#cgo#libclang_path = '/usr/lib/libclang.so'
 "}}}
 
 
