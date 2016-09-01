@@ -20,12 +20,12 @@ git_cfg_init() {
     read -n 1 choice
     if [ -z "${choice}" -o "${choice}" = "Y" -o "${choice}" = "y" ]; then
         echo "Please set profiles-dir path \$GITCFG"
-        echo -n "default(~/.Gcfg): "
+        echo -n "default('\$XDG_CONFIG_HOME'): "
         local gcfg
         read gcfg
         if [ -z "$gcfg" ]; then
-            gcfg=~/.Gcfg
-            mkdir -p ~/.Gcfg
+            gcfg=$XDG_CONFIG_HOME/git-cfg
+            mkdir -p $gcfg
         else
             mkdir -p $gcfg
         fi
