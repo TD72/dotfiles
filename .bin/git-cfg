@@ -5,6 +5,8 @@ git_cfg_help() {
     echo "Usage:"
     echo "      git cfg: initialization & set a profile"
     echo
+    echo "      git cfg init: initialization & set a profile"
+    echo
     echo "      git cfg add: add a new profile"
     exit 1
 }
@@ -86,6 +88,8 @@ if [ $# -gt 1 ]; then
 elif [ $# -eq 1 ]; then
     if [ $1 == "add" ]; then
         git_cfg_add
+    elif [ $1 == "init" ]; then
+        git_cfg_init
     else
         git_cfg_help
     fi
