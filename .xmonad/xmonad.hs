@@ -171,7 +171,8 @@ myStartupHook = do
     -- startup application
     spawn "terminator"
     spawn "cantata"
-    spawn "google-chrome-stable"
+    -- spawn "google-chrome-stable"
+    spawn "vivaldi-snapshot"
     spawn "conky"
     -- spawn "mendeleydesktop"
 
@@ -186,6 +187,7 @@ myStartupHook = do
 myManageHookShift = composeAll
     [ className =? "conky"          --> viewShift "6"
     , className =? "google-chrome"  --> viewShift "6"
+    , className =? "vivaldi-snapshot"  --> viewShift "6"
     , className =? "Terminator"     --> viewShift "1"
     , className =? "cantata"           --> viewShift "5"
     , title =? "Mendeley Desktop"   --> viewShift "8"
