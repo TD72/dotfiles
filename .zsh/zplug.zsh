@@ -30,9 +30,10 @@ zplug "peco/peco", \
    from:gh-r, \
    frozen:1
 
-zplug "b4b4r07/dotfiles", \
+zplug "b4b4r07/peco-tmux.sh", \
     as:command, \
-    use:bin/peco-tmux
+    use:'peco-tmux.sh', \
+    rename-to:'peco-tmux'
 
 zplug "b4b4r07/dotfiles", \
     as:command, \
