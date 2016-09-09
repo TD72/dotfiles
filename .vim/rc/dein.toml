@@ -150,33 +150,6 @@ hook_add =  '''
 
 
 
-[[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_source = '''
-    let g:go#use_vimproc = 1
-    let g:go_autodetect_gopath = 1
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_fields = 1
-    let g:go_highlight_types = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_build_constraints = 1
-
-    let g:go_fmt_command = "goimports"
-
-    let g:go_def_mapping_enabled = 1
-
-    " let g:go_bin_path = $GOPATH."/bin"
-
-    
-    nnoremap [go] <Nop>
-    nmap <Leader>o [go]
-    nnoremap [go]d <Plug>(go-doc)
-    nnoremap [go]db <Plug>(go-doc-browser)
-    
-'''
-
 
 [[plugins]]
 repo = 'zplug/vim-zplug'
