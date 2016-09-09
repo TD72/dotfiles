@@ -44,7 +44,7 @@ fi
 
 unset ZPLUG_SHALLOW
 source ~/.zplug/init.zsh
-export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zsh"
+export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "

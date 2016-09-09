@@ -178,3 +178,5 @@ hook_source = '''
 '''
 
 
+[[plugins]]
+repo = 'zplug/vim-zplug'
