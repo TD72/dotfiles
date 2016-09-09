@@ -46,12 +46,6 @@ bindkey -M vicmd 'gg' beginning-of-line
 bindkey -M vicmd 'G'  end-of-line
 
 
-# bind P and N for EMACS mode
-has 'history-substring-search-up' &&
-    bindkey -M emacs '^P' history-substring-search-up
-has 'history-substring-search-down' &&
-    bindkey -M emacs '^N' history-substring-search-down
-
 # bind P and N keys
 bindkey '^P' history-substring-search-up
 bindkey '^N' history-substring-search-down
