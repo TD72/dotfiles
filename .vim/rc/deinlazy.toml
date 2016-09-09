@@ -6,6 +6,7 @@ on_path = '.*'
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
+if = "!has('nvim')"
 hook_source = 'source ~/.vim/rc/plugins/unite.rc.vim'
 hook_add = '''
     nnoremap [unite] <Nop>
