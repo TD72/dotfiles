@@ -24,6 +24,7 @@ alias -g P='| peco'
 
 alias peco='peco-tmux'
 
+alias c='cd ~/'
 # fzf
 # alias -g from='$(mru)'
 # alias -g to='$(destination_directories)'
@@ -31,6 +32,7 @@ alias peco='peco-tmux'
 
 # git
 alias gt='cd `git exec pwd`'
+alias t='cd `git exec pwd`'
 
 
 # ls_after cd: {{{1
