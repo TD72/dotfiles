@@ -66,6 +66,13 @@ fi
 
 export INTERACTIVE_FILTER="peco-tmux:fzf-tmux:peco"
 
+# enhancd
+export ENHANCD_FILTER="peco-tmux:fzf-tmux:peco"
+export ENHANCD_COMMAND=cd
+export ENHANCD_DOT_SHOW_FULLPATH=1
+export ENHANCD_DISABLE_DOT=0
+export ENHANCD_DISABLE_HYPHEN=0
+
 
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
