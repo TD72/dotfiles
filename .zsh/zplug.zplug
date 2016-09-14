@@ -80,12 +80,5 @@ zplug "plugins/git", \
 zplug "mollifier/anyframe"
 
 
-# zplug "junegunn/fzf-bin", \
-#     as:command, \
-#     from:gh-r, \
-#     file:"fzf", \
-#     frozen:1
-#
-
 # zplug "b4b4r07/enhancd", \
 #     use:enhancd.sh
