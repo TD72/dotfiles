@@ -1,5 +1,13 @@
 #!/bin/zsh
 
+
+typeset -gx -U fpath
+fpath=( \
+    ~/.zsh/Completion(N-/) \
+    ~/.zsh/functions(N-/) \
+    $fpath \
+    )
+
 # autoload
 autoload -Uz edit-command-line
 autoload -Uz colors && colors
@@ -13,7 +21,7 @@ add-zsh-hook chpwd chpwd_recent_dirs
 
 
 # LANGUAGE
-export LANGUAGE="ja_JP.UTF-8"
+export LANGUAGE="en_US.UTF-8"
 export LANG="${LANGUAGE}"
 export LC_ALL="${LANGUAGE}"
 export LC_CTYPE="${LANGUAGE}"
