@@ -4,7 +4,12 @@
 zstyle ":anyframe:selector:peco:" command "peco-tmux"
 
 bindkey '^xj' anyframe-widget-cdr
-bindkey '^]' anyframe-widget-cd-ghq-repository
+# bindkey '^]' anyframe-widget-cd-ghq-repository
+function cd-ghq {
+  cd -g
+}
+zle -N cd-ghq
+bindkey '^]' cd-ghq
 
 # bindkey '^R' anyframe-widget-execute-history
 bindkey '^r' anyframe-widget-put-history
