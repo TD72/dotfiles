@@ -414,4 +414,6 @@ hook_source = '''
     
 '''
 
-
+[[plugins]]
+repo = 'suan/vim-instant-markdown'
+on_ft = 'markdown'
