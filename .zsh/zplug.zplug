@@ -19,6 +19,10 @@ zplug "~/.zsh", \
 # Original Prompt
 zplug "TD72/powerline-shell"
 
+zplug "motemen/ghq", \
+  as:command, \
+  from:gh-r, \
+  rename-to:ghq
 
 # commands
 zplug "so-fancy/diff-so-fancy", \
