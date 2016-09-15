@@ -69,7 +69,7 @@ $color${font Migu 1C:size=24:style=Bold}${time %H:%M:%S}$font
 #-----------------------
 $color2${font Migu 1C:size=12:style=Bold}Calender$hr
 $color${font Ricty:size=10:style=Bold}\
-${execi 600 gcal --type=standard . | sed -e "1,5d" | cut -c 22-}
+${execi 600 gcal . | sed -e "1,5d" | cut -c 22-}
 
 #-----------------------
 # CPU
