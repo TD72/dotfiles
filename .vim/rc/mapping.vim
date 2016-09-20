@@ -72,13 +72,6 @@ vnoremap <Leader>P "+P
 nnoremap <silent> ,p :<C-u>set paste!<CR>
             \:<C-u>echo("Toggle PasteMode => " . (&paste == 0 ? "off" : "On"))<CR>
 
-" Terminal mode key bindings
-if has('nvim')
-    nnoremap <silent> <Leader>s :e term://zsh<CR> i
-    tnoremap <Esc><Esc> <C-\><C-n>
-    tnoremap <C-t> <C-\><C-n>:tabnew<CR>
-    tnoremap <C-w> <C-\><C-n>:tabclose<CR>
-endif
 
 " Commandline:
 "{{{
