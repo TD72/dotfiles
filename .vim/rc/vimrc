@@ -51,17 +51,6 @@ endif
 
 call s:source_rc('dein.rc.vim')
 
-
-
-if dein#tap('deoplete.nvim') && has('nvim')
-  let g:loaded_neocomplete = 1
-endif
-
-if dein#tap('neocomplete.vim') && has('lua')
-  let g:loaded_deoplete = 1
-endif
-let g:loaded_neobundle = 1
-
 if !has('vim_starting')
   call dein#call_hook('source')
   call dein#call_hook('post_source')
@@ -72,4 +61,11 @@ endif
 call s:source_rc('option.vim')
 call s:source_rc('mapping.vim')
 call s:source_rc('appearance.vim')
+
+if has('nvim')
+  call s:source_rc('neovim.rc.vim')
+endif
+
+set secure
+
 filetype plugin indent on
