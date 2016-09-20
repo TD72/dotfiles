@@ -1,6 +1,13 @@
 [[plugins]]
 repo = 'Shougo/neomru.vim'
-on_path = '.*'
+on_if = 1
+on_source = ['unite.vim', 'denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/neoyank.vim'
+on_if = 1
+on_event = 'TextYankPost'
+on_source = ['unite.vim', 'denite.nvim']
 
 
 [[plugins]]
