@@ -4,6 +4,7 @@ nnoremap : ;
 
 " jk key is mapped <Esc> on insert mode.
 inoremap jj <Esc>
+inoremap j<Space> j
 
 " operator 
 noremap <S-h> ^
