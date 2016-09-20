@@ -39,6 +39,10 @@ function! s:source_rc(path, ...) abort
     endtry
 endfunction
 
+" release autogroup in Myautocmd
+augroup MyAutoCmd
+    autocmd!
+augroup END
 
 " Vim Package Manager
 if has('vim_starting')

@@ -33,10 +33,6 @@ if !isdirectory(expand($CACHE))
     call mkdir(expand($CACHE), 'p')
 endif
 
-" release autogroup in Myautocmd
-augroup MyAutoCmd
-    autocmd!
-augroup END
 
 
 " Load dein.
