@@ -43,15 +43,18 @@ if [[ ! -e ~/.zplug ]] then
 fi
 
 unset ZPLUG_SHALLOW
-source ~/.zplug/init.zsh
-export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
 
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    else
-        echo
-    fi
+if [[ -f ~/.zplug/init.zsh ]]; then
+  export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
+  source ~/.zplug/init.zsh
+
+  if ! zplug check --verbose; then
+      printf "Install? [y/N]: "
+      if read -q; then
+          echo; zplug install
+      else
+          echo
+      fi
+  fi
+  zplug load --verbose
 fi
-zplug load --verbose
