@@ -33,6 +33,14 @@ export GIT_EDITOR=nvim
 export PATH=~/bin:$PATH
 export PATH=~/.bin:$PATH
 export PATH=~/.local/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+
+if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
+  export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+  export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+  alias ls='ls --color=auto'
+  export PATH=~/Library/python/3.5/bin:$PATH
+fi
 
 # GO path
 export GOPATH="$HOME"
@@ -72,6 +80,7 @@ export ENHANCD_COMMAND=cd
 export ENHANCD_DOT_SHOW_FULLPATH=1
 export ENHANCD_DISABLE_DOT=0
 export ENHANCD_DISABLE_HYPHEN=0
+export ENHANCD_DISABLE_HOME=1
 
 
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc

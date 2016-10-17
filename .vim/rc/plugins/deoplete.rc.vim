@@ -71,7 +71,7 @@ let g:deoplete#enable_camel_case = 1
 
 " deoplete-clang "{{{
 " libclang shared library path
-" let g:deoplete#sources#clang#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
 
 " clang builtin header path
 " let g:deoplete#sources#clang#clang_header = '/usr/include/clang'

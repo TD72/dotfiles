@@ -4,7 +4,7 @@ alias vim='nvim'
 alias dot='cd $DOTPATH'
 
 
-alias ls='ls --color'
+#alias ls='ls --color'
 alias a='ls -a'
 alias l='ls -l'
 alias la='ls -la'
@@ -28,6 +28,18 @@ alias c='cd ~/'
 # fzf
 # alias -g from='$(mru)'
 # alias -g to='$(destination_directories)'
+
+# clipboard
+# Mac
+if which pbcopy >/dev/null 2>&1 ; then
+    alias -g C='| pbcopy'
+# Linux
+elif which xsel >/dev/null 2>&1 ; then
+    alias -g C='| xsel --input --clipboard'
+# Cygwin
+elif which putclip >/dev/null 2>&1 ; then
+    alias -g C='| putclip'
+fi
 
 
 # git

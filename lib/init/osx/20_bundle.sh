@@ -16,22 +16,20 @@ if ! is_osx; then
 fi
 
 if has "brew"; then
-    log_pass "brew: already installed"
-    exit
-fi
+    if ! brew tap Homebrew/bundle; then
+        log_fail "error: failed to tap Homebrew/bundle"
+        exit 1
+    fi
 
-# The script is dependent on ruby
-if ! has "ruby"; then
-    log_fail "error: require: ruby"
-    exit 1
-fi
+    builtin cd "$DOTPATH"/lib/init/assets/brew
+    if [ ! -f Brewfile ]; then
+        brew bundle dump
+    fi
 
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-if has "brew"; then
-    brew doctor
+    brew bundle
 else
-    log_fail "error: brew: failed to install"
+    log_fail "error: require: brew"
     exit 1
 fi
 
-log_pass "brew: installed successfully"
+log_pass "brew: tapped successfully"
