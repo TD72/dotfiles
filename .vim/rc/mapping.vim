@@ -6,6 +6,9 @@ nnoremap : ;
 inoremap jj <Esc>
 inoremap j<Space> j
 
+" nnoremap j gj
+" nnoremap k gk
+
 " operator 
 noremap <S-h> ^
 noremap <S-j> }
@@ -33,6 +36,7 @@ vnoremap <Tab> %
 
 " Window:
 nnoremap s <Nop>
+" split
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
 nnoremap tt :tabnew<CR>
@@ -42,12 +46,20 @@ nnoremap th :tabprevious<CR>
 nnoremap <C-h> :tabprevious<CR>
 nnoremap tw :tabclose<CR>
 
+nmap sj <SID>(split-to-j)
+nmap sk <SID>(split-to-k)
+nmap sh <SID>(split-to-h)
+nmap sl <SID>(split-to-l)
+nnoremap <SID>(split-to-j) :<C-u>execute 'belowright' (v:count == 0 ? '' : v:count) 'split'<CR>
+nnoremap <SID>(split-to-k) :<C-u>execute 'aboveleft'  (v:count == 0 ? '' : v:count) 'split'<CR>
+nnoremap <SID>(split-to-h) :<C-u>execute 'topleft'    (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+nnoremap <SID>(split-to-l) :<C-u>execute 'botright'   (v:count == 0 ? '' : v:count) 'vsplit'<CR>
+"}}}
 " Move to other buffer. <C> + hjkl
 " nnoremap <C-j> <C-w>j
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-h> <C-w>h
 " nnoremap <C-l> <C-w>l
-
 
 inoremap {{ {}<LEFT>
 inoremap [[ []<LEFT>
@@ -55,6 +67,7 @@ inoremap (( ()<LEFT>
 inoremap "" ""<LEFT>
 inoremap '' ''<LEFT>
 inoremap %% %%<LEFT>
+
 
 " Clipboad:
 "{{{
@@ -67,6 +80,9 @@ nnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
+
+nmap gp <SID>(revisual-pasted)
+nnoremap <expr> <SID>(revisual-pasted) '`[' . strpart(getregtype(), 0, 1) . '`]'
 "}}}
 
 " Toggle Paste Mode
