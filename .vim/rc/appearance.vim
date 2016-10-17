@@ -22,7 +22,7 @@ set guifont=Ricty\ for\ Powerline\ Regular\ 12
 set guifontwide=Ricty\ for\ Powerline\ Regular\ 12
 
 " Row Number display & highlight
-set number
+" set number
 set cursorline
 
 " Matchpairs highlight and flashing per a second.
