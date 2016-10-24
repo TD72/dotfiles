@@ -102,13 +102,21 @@ on_i = 1
 hook_add = 'let g:neocomplete#enable_at_startup = 1'
 hook_source = 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
 
-
 [[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
-on_i = 1
+on_event = 'InsertCharPre'
 on_ft = 'snippet'
-hook_source = 'source ~/.vim/rc/plugins/neosnippet.rc.vim'
+hook_source = '''
+  imap <silent>L <Plug>(neosnippet_jump_or_expand)
+  smap <silent>L <Plug>(neosnippet_jump_or_expand)
+  xmap <silent>L <Plug>(neosnippet_expand_target)
+
+  let g:neosnippet#enable_snipmate_compatibility = 1
+  let g:neosnippet#enable_complete_done = 1
+  let g:neosnippet#expand_word_boundary = 1
+  " let g:neosnippet#snippets_directory = '~/.vim/snippets'
+'''
 
 
 [[plugins]]
