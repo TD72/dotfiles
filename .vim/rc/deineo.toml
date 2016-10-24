@@ -35,13 +35,14 @@ hook_add = '''
   nnoremap [denite]l :Denite line<CR>
   nnoremap [denite]g :Denite grep<CR>
 '''
-hook_source = '''
+hook_source= '''
      call denite#custom#var('file_rec', 'command',
           \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
     call denite#custom#source(
           \ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
-    call denite#custom#map('_', "\<C-j>", 'move_to_next_line')
-    call denite#custom#map('_', "\<C-k>", 'move_to_prev_line')
+    call denite#custom#map('_', "\<C-n>", 'move_to_next_line')
+    call denite#custom#map('_', "\<C-p>", 'move_to_prev_line')
+    call denite#custom#map('_', "\<C-f>", 'enter_mode:normal')
 '''
