@@ -82,5 +82,8 @@ zplug "mollifier/anyframe"
 zplug "b4b4r07/enhancd", \
     use:init.sh
 
+zplug "jhawthorn/fzy", \
+  hook-build:"make && sudo make install"
+
 # zplug "zsh-users/zsh-autosuggestions", \
 #   use:zsh-autosuggestions.zsh

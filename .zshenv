@@ -72,10 +72,10 @@ if [ -f ~/.dircolors ]; then
     fi
 fi
 
-export INTERACTIVE_FILTER="peco-tmux:fzf-tmux:peco"
+export INTERACTIVE_FILTER="fzy:peco-tmux:fzf-tmux:peco"
 
 # enhancd
-export ENHANCD_FILTER="peco-tmux:fzf-tmux:peco"
+export ENHANCD_FILTER="fzy:peco-tmux:fzf-tmux:peco"
 export ENHANCD_COMMAND=cd
 export ENHANCD_DOT_SHOW_FULLPATH=1
 export ENHANCD_DISABLE_DOT=0
