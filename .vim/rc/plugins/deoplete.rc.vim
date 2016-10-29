@@ -61,7 +61,7 @@ let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.python = ''
 let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
+" let g:deoplete#omni#functions.lua = 'xolox#lua#omnifunc'
 
 " inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
 
@@ -74,7 +74,7 @@ let g:deoplete#enable_camel_case = 1
 let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
 
 " clang builtin header path
-" let g:deoplete#sources#clang#clang_header = '/usr/include/clang'
+let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/3.8.1/include/clang'
 
 " libclang default compile flags
 let g:deoplete#sources#clang#flags = ['-x', 'c++', '-std=c++11']
@@ -88,15 +88,19 @@ let g:deoplete#sources#clang#flags = ['-x', 'c++', '-std=c++11']
 
 " deoplete-go "{{{
 " Path to python interpreter for neovim
-let g:python3_host_prog  = '/usr/bin/python3'
+" let g:python3_host_prog  = '/usr/bin/python3'
+let g:python3_host_prog  = '/usr/local/bin/python3'
 " Skip the check of neovim module
 let g:python3_host_skip_check = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
 let g:deoplete#sources#go#use_cache = 1
-let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/linux_amd64')
+" let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/linux_amd64')
+let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/darwin_amd64')
 let g:deoplete#sources#go#cgo = 1
-let g:deoplete#sources#go#cgo#libclang_path = '/usr/lib/libclang.so'
+" let g:deoplete#sources#go#cgo#libclang_path = '/usr/lib/libclang.so'
+let g:deoplete#sources#go#cgo#libclang_path = '/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
+
 "}}}
 
 
