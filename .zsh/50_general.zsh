@@ -29,7 +29,8 @@ setopt extended_glob
 setopt globdots
 
 zstyle ':completion:*default' menu select=2
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 zstyle ':completion:*' verbose yes
 # zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
