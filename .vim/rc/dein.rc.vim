@@ -2,7 +2,8 @@
 
 let g:dein#install_progress_type = 'title'
 let g:dein#install_message_type = 'none'
-let g:dein#enable_notification = 0
+let g:dein#enable_notification = 1
+let g:dein#notification_icon = '~/.config/nvim/rc/signs/warn.png'
 
 
 let s:path = expand('$CACHE/dein')
