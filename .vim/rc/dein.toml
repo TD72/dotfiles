@@ -24,8 +24,6 @@ repo = 'Shougo/neosnippet-snippets'
 #[[plugins]]
 #repo = 'christoomey/vim-tmux-navigator'
 
-[[plugins]]
-repo = 'Shougo/unite-build'
 
 [[plugins]]
 repo = 'tyru/open-browser.vim'
