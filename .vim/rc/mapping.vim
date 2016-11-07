@@ -105,12 +105,12 @@ cnoremap <C-e> <END>
 " Search:
 "{{{
 " When jump to searching term, the term set center of display.
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap * *zz
-nnoremap # #zz
-nnoremap g* g*zz
-nnoremap g# g#zz
+" nnoremap n nzz
+" nnoremap N Nzz
+" nnoremap * *zz
+" nnoremap # #zz
+" nnoremap g* g*zz
+" nnoremap g# g#zz
 
 " Stop highlight.
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>

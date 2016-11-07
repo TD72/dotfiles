@@ -9,6 +9,23 @@ on_if = 1
 on_event = 'TextYankPost'
 on_source = ['unite.vim', 'denite.nvim']
 
+[[plugins]]
+repo = 'Shougo/Denite.nvim'
+on_cmd = 'Denite'
+hook_add = '''
+  nnoremap [denite] <Nop>
+  nmap <Leader> [denite]
+  nnoremap [denite]a :Denite file_rec<CR>
+  nnoremap [denite]f :Denite file_mru<CR>
+  nnoremap [denite]g :Denite grep<CR>
+  nnoremap <silent> * :<C-u>DeniteCursorWord line<CR>
+  nnoremap <silent> / :<C-u>Denite line<CR>
+  " nnoremap <silent> ;g :<C-u>Denite -buffer-name=grep -no-empty grep<CR>
+  " nnoremap <silent> n :<C-u>Denite -buffer-name=grep -resume -mode=normal<CR>
+'''
+hook_source = '''
+  source ~/.vim/rc/plugins/denite.rc.vim
+'''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
