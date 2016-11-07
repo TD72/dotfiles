@@ -88,5 +88,7 @@ export ENHANCD_DISABLE_HOME=1
 # Git config profiles path
 export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
+
 [[ -f ~/.secrets/secret.zsh ]] && source ~/.secrets/secret.zsh
 
