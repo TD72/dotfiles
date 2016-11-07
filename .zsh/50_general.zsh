@@ -59,15 +59,9 @@ zstyle ':completion:*' use-cache true
 zstyle ':completion:*' list-separator '-->'
 
 
-
-# anyframe's filter
-zstyle ":anyframe:selector:peco:" command "peco-tmux"
-
-
-
 if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
 
 
-# export ENHANCD_FILTER=peco-tmux:fzf-tmux:peco:fzf
+export ENHANCD_FILTER=fzy:peco-tmux:fzf-tmux:peco:fzf

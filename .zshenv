@@ -90,3 +90,4 @@ export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
 [[ -f ~/.secrets/secret.zsh ]] && source ~/.secrets/secret.zsh
 
+[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
