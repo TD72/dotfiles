@@ -48,19 +48,19 @@ function vi_prompt() {
 vi_prompt
 install_powerline_precmd
 
-
-function notify_precmd {
-    prev_command_status=$?
-
-    if [[ "$TTYIDLE" -gt 10 ]]; then
-        notify_title=$([ "$prev_command_status" -eq 0 ] && echo "Command succeeded!" || echo "Command failed")
-        notify-send "$notify_title\n$prev_command " --icon=dialog-information
-    fi
-}
-
-function store_command {
-  prev_command=$2
-}
-
-add-zsh-hook preexec store_command
-add-zsh-hook precmd notify_precmd
+#
+# function notify_precmd {
+#     prev_command_status=$?
+#
+#     if [[ "$TTYIDLE" -gt 10 ]]; then
+#         notify_title=$([ "$prev_command_status" -eq 0 ] && echo "Command succeeded!" || echo "Command failed")
+#         notify-send "$notify_title\n$prev_command " --icon=dialog-information
+#     fi
+# }
+#
+# function store_command {
+#   prev_command=$2
+# }
+#
+# add-zsh-hook preexec store_command
+# add-zsh-hook precmd notify_precmd
