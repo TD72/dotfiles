@@ -83,6 +83,11 @@ export ENHANCD_DISABLE_HYPHEN=0
 export ENHANCD_DISABLE_HOME=1
 
 
+export CUDA_HOME=/usr/local/cuda
+export PATH=$CUDA_HOME/bin:$PATH
+export DYLD_LIBRARY_PATH=$CUDA_HOME/bin:$DYLD_LIBRARY_PATH
+
+
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
 # Git config profiles path
