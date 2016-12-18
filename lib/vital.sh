@@ -307,7 +307,7 @@ is_tmux_running() {
 
 # is_screen_or_tmux_running returns true if GNU screen or tmux is running
 is_screen_or_tmux_running() {
-    is_screen_running || is_tmux_runnning
+    is_screen_running || is_tmux_running
 }
 
 # shell_has_started_interactively returns true if the current shell is

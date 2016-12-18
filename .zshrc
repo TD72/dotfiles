@@ -28,7 +28,7 @@ if ! vitalize 2>/dev/null; then
     return 1
 fi
 
-
+$DOTPATH/.bin/tmuxx
 
 #======================================
 # Setup zplug && Modules
