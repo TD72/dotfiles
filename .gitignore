@@ -6,7 +6,7 @@ bin/peco
 .vim/rc/.*
 
 .tmux/*
-!.tmux/.gitkeep
+!.tmux/*.conf
 
 .xmonad/*
 !.xmonad/xmonad.hs
