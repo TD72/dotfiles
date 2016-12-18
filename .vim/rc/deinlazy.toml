@@ -17,11 +17,12 @@ hook_add = '''
   nmap <Leader> [denite]
   nnoremap [denite]a :Denite file_rec<CR>
   nnoremap [denite]f :Denite file_mru<CR>
-  nnoremap [denite]g :Denite grep<CR>
+  nnoremap [denite]g :<C-u>Denite grep -buffer-name=denite-grep<CR>
   nnoremap <silent> * :<C-u>DeniteCursorWord line<CR>
   nnoremap <silent> / :<C-u>Denite line<CR>
-  " nnoremap <silent> ;g :<C-u>Denite -buffer-name=grep -no-empty grep<CR>
-  " nnoremap <silent> n :<C-u>Denite -buffer-name=grep -resume -mode=normal<CR>
+  nnoremap [denite]r :<C-u>Denite -buffer-name=denite-grep -resume<CR>
+  nnoremap [denite]n :<C-u>Denite -buffer-name=denite-grep -resume -select=+1 -immediately<CR>
+  nnoremap [denite]N :<C-u>Denite -buffer-name=denite-grep -resume -select=-1 -immediately<CR>
 '''
 hook_source = '''
   source ~/.vim/rc/plugins/denite.rc.vim
@@ -56,7 +57,7 @@ hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
 [[plugins]]
 repo = 'thinca/vim-quickrun'
 on_map = '<Plug>'
-hook_add = 'nmap <Leader>r <Plug>(quickrun)'
+hook_add = 'nmap <Leader>q <Plug>(quickrun)'
 hook_source = 'source ~/.vim/rc/plugins/vim-quickrun.rc.vim'
 
 [[plugins]]
