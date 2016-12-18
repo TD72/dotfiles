@@ -74,6 +74,9 @@ fi
 
 export INTERACTIVE_FILTER="fzy:peco-tmux:fzf-tmux:peco"
 
+export EMOJI_CLI_FILTER="fzy:peco:fzf"
+export EMOJI_CLI_KEYBIND="^_"
+
 # enhancd
 export ENHANCD_FILTER="fzy:peco-tmux:fzf-tmux:peco"
 export ENHANCD_COMMAND=cd
@@ -81,6 +84,8 @@ export ENHANCD_DOT_SHOW_FULLPATH=1
 export ENHANCD_DISABLE_DOT=0
 export ENHANCD_DISABLE_HYPHEN=0
 export ENHANCD_DISABLE_HOME=1
+
+export ZPLUG_CACHE_DIR="~/.zplug/"
 
 
 export CUDA_HOME=/usr/local/cuda
