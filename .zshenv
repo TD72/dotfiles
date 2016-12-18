@@ -95,6 +95,11 @@ export DYLD_LIBRARY_PATH=$CUDA_HOME/bin:$DYLD_LIBRARY_PATH
 
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"
+
+[[ -s /Users/hosokawa/.tmuxinator/scripts/tmuxinator ]] && source /Users/hosokawa/.tmuxinator/scripts/tmuxinator
+
 # Git config profiles path
 export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
