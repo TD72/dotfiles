@@ -45,6 +45,7 @@ fi
 unset ZPLUG_SHALLOW
 
 if [[ -f ~/.zplug/init.zsh ]]; then
+  export ZPLUG_CACHE_DIR="~/.zplug/"
   export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
   source ~/.zplug/init.zsh
 

@@ -9,7 +9,7 @@
 is_ssh_running && exit
 
 if is_screen_or_tmux_running; then
-    if is_tmux_runnning; then
+    if is_tmux_running; then
         if has "cowsay"; then
             if [[ $(( RANDOM % 5 )) == 1 ]]; then
                 cowsay -f ghostbusters "G,g,g,ghostbusters!!!"
