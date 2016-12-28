@@ -63,5 +63,3 @@ if (( $+commands[direnv] )); then
     eval "$(direnv hook zsh)"
 fi
 
-
-export ENHANCD_FILTER=fzy:peco-tmux:fzf-tmux:peco:fzf
