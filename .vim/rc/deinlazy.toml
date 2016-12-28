@@ -15,7 +15,9 @@ on_cmd = 'Denite'
 hook_add = '''
   nnoremap [denite] <Nop>
   nmap <Leader> [denite]
-  nnoremap [denite]a :Denite file_rec<CR>
+  " nnoremap [denite]a :Denite file_rec<CR>
+  nnoremap [denite]a :<C-u>Denite
+  \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
   nnoremap [denite]f :Denite file_mru<CR>
   nnoremap [denite]g :<C-u>Denite grep -buffer-name=denite-grep<CR>
   nnoremap <silent> * :<C-u>DeniteCursorWord line<CR>
