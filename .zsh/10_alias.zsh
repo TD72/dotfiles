@@ -25,6 +25,7 @@ alias -g P='| peco'
 alias peco='peco-tmux'
 
 alias c='cd ~/'
+alias b='cd $OLDPWD'
 # fzf
 # alias -g from='$(mru)'
 # alias -g to='$(destination_directories)'
@@ -46,6 +47,9 @@ fi
 alias gt='cd `git exec pwd`'
 alias t='cd `git exec pwd`'
 
+# latexmk
+alias lmk='latexmk -pvc'
+alias lmkc='latexmk -c'
 
 # ls_after cd: {{{1
 chpwd() {
