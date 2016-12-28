@@ -34,15 +34,10 @@ $DOTPATH/.bin/tmuxx
 # Setup zplug && Modules
 #======================================
 
-if [[ ! -e ~/.zplug ]] then
-    printf "Install zplug? [y/N]"
-    if read -q; then
-        echo
-        curl -sL zplug.sh/installer | zsh
-    fi
+if [[ ! -d ~/.zplug ]] then
+  git clone https://github.com/zplug/zplug ~/.zplug
+  source ~/.zplug/init.zsh && zplug update --self
 fi
-
-unset ZPLUG_SHALLOW
 
 if [[ -f ~/.zplug/init.zsh ]]; then
   export ZPLUG_CACHE_DIR="~/.zplug/"
@@ -57,5 +52,9 @@ if [[ -f ~/.zplug/init.zsh ]]; then
           echo
       fi
   fi
-  zplug load --verbose
+  zplug load
+fi
+
+if (which zprof > /dev/null 2>&1); then
+  zprof
 fi
