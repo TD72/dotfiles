@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+# zmodload zsh/zprof && zprof
 typeset -gx -U fpath
 fpath=( \
     ~/.zsh/Completion(N-/) \
@@ -38,6 +39,9 @@ if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
   alias ls='ls --color=auto'
   export PATH=~/Library/python/3.5/bin:$PATH
+fi
+if [ -d /Library/Tex/texbin ]; then
+  export PATH=/Library/Tex/texbin:$PATH
 fi
 
 # GO path
