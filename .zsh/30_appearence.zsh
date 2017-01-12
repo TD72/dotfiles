@@ -3,18 +3,18 @@
 # Powerline
 #---------------------------------------------
 function powerline_precmd() {
-export PROMPT="
-$(python ~/.zplug/repos/TD72/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)
-                $ "
+  export PROMPT="
+  $(python ~/.zplug/repos/TD72/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)
+                  $ "
 }
 
 function install_powerline_precmd() {
-for s in "${precmd_functions[@]}" ; do
-  if [ "$s" = "powerline_precmd" ] ; then
-    return
-  fi
-done
-precmd_functions+=(powerline_precmd)
+  for s in "${precmd_functions[@]}" ; do
+    if [ "$s" = "powerline_precmd" ] ; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
 }
 
 
@@ -44,23 +44,6 @@ function vi_prompt() {
     zle -N edit-command-line
 }
 
-
 vi_prompt
 install_powerline_precmd
 
-#
-# function notify_precmd {
-#     prev_command_status=$?
-#
-#     if [[ "$TTYIDLE" -gt 10 ]]; then
-#         notify_title=$([ "$prev_command_status" -eq 0 ] && echo "Command succeeded!" || echo "Command failed")
-#         notify-send "$notify_title\n$prev_command " --icon=dialog-information
-#     fi
-# }
-#
-# function store_command {
-#   prev_command=$2
-# }
-#
-# add-zsh-hook preexec store_command
-# add-zsh-hook precmd notify_precmd

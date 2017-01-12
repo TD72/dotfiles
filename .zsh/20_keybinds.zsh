@@ -77,11 +77,9 @@ bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 #bindkey -s ':q' "^A^Kexit\n"
 
 
-
 #=================================
 # functions
 #=================================
-
 do-enter() {
     if [ -n "$BUFFER" ]; then
         zle accept-line

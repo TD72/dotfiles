@@ -1,10 +1,9 @@
-alias vi='nvim'
-alias vim='nvim'
-
+# cd
 alias dot='cd $DOTPATH'
+alias c='cd ~/'
+alias b='cd $OLDPWD'
 
-
-#alias ls='ls --color'
+# ls
 alias a='ls -a'
 alias l='ls -l'
 alias la='ls -la'
@@ -13,22 +12,30 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -r'
 
-alias tmux='tmux -2'
-alias -s {png,jpg,bmp,PNG,JPG,BMP}=llpp
-
 alias grep='grep --color'
+
+alias tmux='tmux -2'
+
+# neovim
+alias vi='nvim'
+alias vim='nvim'
+
+# peco
+alias -g P='| peco'
+alias peco='peco-tmux'
+
+# git
+alias gt='cd `git exec pwd`'
+alias t='cd `git exec pwd`'
+
+# latexmk
+alias lmk='latexmk -pvc'
+alias lmkc='latexmk -c'
 
 alias rp='richpager -s solarizeddark'
 
-alias -g P='| peco'
-
-alias peco='peco-tmux'
-
-alias c='cd ~/'
-alias b='cd $OLDPWD'
-# fzf
-# alias -g from='$(mru)'
-# alias -g to='$(destination_directories)'
+# for linux
+alias -s {png,jpg,bmp,PNG,JPG,BMP}=llpp
 
 # clipboard
 # Mac
@@ -41,15 +48,6 @@ elif which xsel >/dev/null 2>&1 ; then
 elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
-
-
-# git
-alias gt='cd `git exec pwd`'
-alias t='cd `git exec pwd`'
-
-# latexmk
-alias lmk='latexmk -pvc'
-alias lmkc='latexmk -c'
 
 # ls_after cd: {{{1
 chpwd() {
@@ -92,5 +90,4 @@ google() {
     fi
     w3m http://www.google.co.jp/$opt
 }#}}}
-
 
