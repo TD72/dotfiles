@@ -15,6 +15,7 @@ brew 'fzf'
 brew 'gawk'
 brew 'git'
 brew 'go', args: ['cross-compile-common']
+brew 'glide'
 brew 'htop', args: ['with-ncurses']
 brew 'hub'
 brew 'jq'

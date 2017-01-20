@@ -47,6 +47,7 @@ fi
 # GO path
 export GOPATH="$HOME"
 export GOBIN="$GOPATH/bin"
+export GO15VENDOREXPERIMENT=1
 export PATH=/usr/local/go/bin:$PATH
 
 # XDG config home
