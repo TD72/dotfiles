@@ -21,7 +21,7 @@ alias vi='nvim'
 alias vim='nvim'
 
 # peco
-alias -g P='| peco'
+# alias -g P='| peco'
 alias peco='peco-tmux'
 
 # git
