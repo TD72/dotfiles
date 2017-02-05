@@ -43,6 +43,9 @@ fi
 if [ -d /Library/Tex/texbin ]; then
   export PATH=/Library/Tex/texbin:$PATH
 fi
+if uname | grep -q Linux; then
+  alias ls='ls --color=auto'
+fi
 
 # GO path
 export GOPATH="$HOME"
