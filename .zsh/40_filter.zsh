@@ -33,6 +33,8 @@ alias ga='anyframe-widget-git-add'
 
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | xargs gibo'
 
+alias -g P='`docker ps | tail -n +2 | peco | cut -d" " -f1`'
+
 # function agvim() {#{{{
 #     local path=$(ag $* | peco | awk -F: '{printf  $1 " +" $2}'| sed -e 's/\+$//')
 #     if [ -n "$path" ]; then

@@ -18,6 +18,9 @@ autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 add-zsh-hook chpwd chpwd_recent_dirs
 
+zmodload zsh/zpty
+
+
 # LANGUAGE
 export LANGUAGE="en_US.UTF-8"
 export LANG="${LANGUAGE}"
@@ -88,7 +91,7 @@ export ENHANCD_DISABLE_HOME=1
 export CUDA_HOME=/usr/local/cuda
 export PATH=$CUDA_HOME/bin:$PATH
 # for osx
-export DYLD_LIBRARY_PATH=$CUDA_HOME/bin:$DYLD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=$CUDA_HOME/lib:$DYLD_LIBRARY_PATH
 
 # pythonz
 [[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc

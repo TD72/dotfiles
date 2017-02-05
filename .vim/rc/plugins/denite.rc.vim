@@ -26,6 +26,8 @@ call denite#custom#map('insert', '<C-e>', '<End>')
 call denite#custom#map('insert', '<C-f>', '<Right>')
 call denite#custom#map('insert', '<C-b>', '<Left>')
 call denite#custom#map('insert', "'", '<denite:enter_mode:normal>')
+call denite#custom#map('noremal', 'n', '<denite:move_to_next_line')
+call denite#custom#map('noremal', 'p', '<denite:move_to_previous_line')
 " call denite#custom#map('_', "\<C-f>", 'enter_mode:normal')
 
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
