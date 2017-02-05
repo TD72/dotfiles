@@ -12,6 +12,9 @@ build = 'make'
 on_i = 1
 on_ft = 'go'
 
+[[plugins]]
+repo = 'zchee/deoplete-zsh'
+on_ft = 'zsh'
 
 [[plugins]]
 repo = 'Shougo/deoplete.nvim'
