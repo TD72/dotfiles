@@ -245,23 +245,23 @@ hook_add = '''
 '''
 
 
-[[plugins]]
-repo = 'lambdalisue/vim-gita'
-hook_add = '''
-    nnoremap <silent> <Leader>gs :<C-u>Gita status<CR>
-    nnoremap <silent> <Leader>gc :<C-u>Gita commit<CR>
-    nnoremap <silent> <Leader>ga :<C-u>Gita commit --amend<CR>
-    nnoremap <silent> <Leader>gd :<C-u>Gita diff<CR>
-    nnoremap <silent> <Leader>gb :<C-u>Gita browse<CR>
-    nnoremap <silent> <Leader>gl :<C-u>Gita blame<CR>
-
-    autocmd FileType gita-status
-    \ nmap <buffer> cc <Plug>(gita-commit-open) |
-    \ nmap <buffer> cA <Plug>(gita-commit-open-amend)
-
-    let git#features#commit#enable_default_mappings = 0
-'''
-
+# [[plugins]]
+# repo = 'lambdalisue/vim-gita'
+# hook_add = '''
+#     nnoremap <silent> <Leader>gs :<C-u>Gita status<CR>
+#     nnoremap <silent> <Leader>gc :<C-u>Gita commit<CR>
+#     nnoremap <silent> <Leader>ga :<C-u>Gita commit --amend<CR>
+#     nnoremap <silent> <Leader>gd :<C-u>Gita diff<CR>
+#     nnoremap <silent> <Leader>gb :<C-u>Gita browse<CR>
+#     nnoremap <silent> <Leader>gl :<C-u>Gita blame<CR>
+#
+#     autocmd FileType gita-status
+#     \ nmap <buffer> cc <Plug>(gita-commit-open) |
+#     \ nmap <buffer> cA <Plug>(gita-commit-open-amend)
+#
+#     let git#features#commit#enable_default_mappings = 0
+# '''
+#
 [[plugins]]
 repo = 'davidhalter/jedi-vim'
 if = "!has('nvim')"
@@ -458,3 +458,32 @@ hook_source = '''
 [[plugins]]
 repo = 'suan/vim-instant-markdown'
 on_ft = 'markdown'
+
+[[plugins]]
+repo = 'lervag/vimtex'
+on_ft = 'tex'
+hook_source = '''
+    let g:vimtex_view_general_viewer
+          \ = '/Applications/Skim.app/Contents/SharedSupport/displayline'
+    let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
+    " This adds a callback hook that updates Skim after compilation
+    let g:vimtex_latexmk_callback_hooks = ['UpdateSkim']
+    function! UpdateSkim(status)
+      if !a:status | return | endif
+
+      let l:out = b:vimtex.out()
+      let l:tex = expand('%:p')
+      let l:cmd = [g:vimtex_view_general_viewer, '-r']
+      if !empty(system('pgrep Skim'))
+        call extend(l:cmd, ['-g'])
+      endif
+      if has('nvim')
+        call jobstart(l:cmd + [line('.'), l:out, l:tex])
+      elseif has('job')
+        call job_start(l:cmd + [line('.'), l:out, l:tex])
+      else
+        call system(join(l:cmd + [line('.'), shellescape(l:out), shellescape(l:tex)], ' '))
+      endif
+endfunction
+'''
