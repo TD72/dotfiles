@@ -35,12 +35,11 @@ $DOTPATH/.bin/tmuxx
 #======================================
 
 if [[ ! -d ~/.zplug ]] then
-  git clone https://github.com/zplug/zplug ~/.zplug
-  source ~/.zplug/init.zsh && zplug update --self
+  git clone https://github.com/zplug/zplug $HOME/.zplug
+  source $HOME/.zplug/init.zsh && zplug update --self
 fi
 
-if [[ -f ~/.zplug/init.zsh ]]; then
-  export ZPLUG_CACHE_DIR="$HOME/.zplug/"
+if [[ -f $HOME/.zplug/init.zsh ]]; then
   export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
   source ~/.zplug/init.zsh
 

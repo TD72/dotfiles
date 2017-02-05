@@ -35,9 +35,9 @@ zplug "b4b4r07/peco-tmux.sh", \
     use:'peco-tmux.sh', \
     rename-to:'peco-tmux'
 
-zplug "b4b4r07/dotfiles", \
-    as:command, \
-    use:bin/richpager
+#zplug "b4b4r07/dotfiles", \
+#    as:command, \
+#    use:bin/richpager
 
 zplug "b4b4r07/emoji-cli"
 
@@ -75,6 +75,6 @@ zplug "mollifier/anyframe"
 zplug "b4b4r07/enhancd", \
     use:init.sh
 
-zplug "jhawthorn/fzy", \
-  hook-build:"make && sudo make install"
+#zplug "jhawthorn/fzy", \
+#  hook-build:"make && sudo make install"
 
