@@ -40,7 +40,7 @@ if [[ ! -d ~/.zplug ]] then
 fi
 
 if [[ -f ~/.zplug/init.zsh ]]; then
-  export ZPLUG_CACHE_DIR="~/.zplug/"
+  export ZPLUG_CACHE_DIR="$HOME/.zplug/"
   export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
   source ~/.zplug/init.zsh
 
