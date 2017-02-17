@@ -8,8 +8,8 @@ bindkey '^xj' anyframe-widget-cdr
 function cd-ghq {
   cd -g
 }
-zle -N cd-ghq
-bindkey '^]' cd-ghq
+zle -N cd-g
+bindkey '^]' cd-g
 
 # bindkey '^R' anyframe-widget-execute-history
 bindkey '^r' anyframe-widget-put-history
@@ -34,6 +34,9 @@ alias ga='anyframe-widget-git-add'
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | peco | xargs gibo'
 
 alias -g P='`docker ps | tail -n +2 | peco | cut -d" " -f1`'
+alias -g I='`docker images --format "table {{.ID}}\t{{.Repository}}\t{{.CreatedSince}}\t{{.Size}}" | peco | cut -d" " -f1`'
+
+
 
 # function agvim() {#{{{
 #     local path=$(ag $* | peco | awk -F: '{printf  $1 " +" $2}'| sed -e 's/\+$//')

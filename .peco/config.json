@@ -19,6 +19,7 @@
         "C-d": "peco.ScrollPageDown",
         "C-r": "peco.RotateMatcher",
         "C-t": "peco.ToggleSelection",
+        "C-j": "peco.ToggleSelectionAndSelectNext",
         "ArrowUp": "peco.SelectUp",
         "ArrowDown": "peco.SelectDown",
         "ArrowLeft": "peco.ScrollPageUp",
