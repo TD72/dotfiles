@@ -32,6 +32,8 @@ alias t='cd `git exec pwd`'
 alias lmk='latexmk -pvc'
 alias lmkc='latexmk -c'
 
+alias docker='sudo docker'
+
 alias rp='richpager -s solarizeddark'
 
 # for linux
