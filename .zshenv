@@ -28,8 +28,8 @@ export LC_ALL="${LANGUAGE}"
 export LC_CTYPE="${LANGUAGE}"
 
 # EDITOR
-export EDITOR=nvim
-export GIT_EDITOR=nvim
+export EDITOR=`which nvim`
+export GIT_EDITOR=$EDITOR
 
 export PATH=~/bin:$PATH
 export PATH=~/.bin:$PATH
