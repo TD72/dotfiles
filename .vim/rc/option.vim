@@ -82,24 +82,14 @@ autocmd MyAutoCmd BufNewFile,BufRead .tmux.conf setf tmux
 autocmd MyAutoCmd BufNewFile,BufRead .envrc setf sh
 
 
-" Templete: {{{
-" autocmd MyAutoCmd BufNewFile *.py 0r ~/.vim/template/template.py
-" autocmd MyAutoCmd BufNewFile *.cpp 0r ~/.vim/template/template.cpp
-" autocmd MyAutoCmd BufNewFile *.c 0r ~/.vim/template/template.c
-" autocmd MyAutoCmd BufNewFile *.sh 0r ~/.vim/template/template.sh
-" autocmd MyAutoCmd BufNewFile *.bash 0r ~/.vim/template/template.bash
-" autocmd MyAutoCmd BufNewFile *.zsh 0r ~/.vim/template/template.zsh
-" autocmd MyAutoCmd BufNewFile *.tex 0r ~/.vim/template/template.tex
-" autocmd MyAutoCmd BufNewFile .envrc 0r ~/.vim/template/template.envrc
-"}}}
-" Restore Position {{{
+" Restore Position:
 " When open a file, move the cursor to last position.
 autocmd MyAutoCmd BufReadPost *
             \ if line("'\'") > 0 && line("'\'") <= line("$") | 
             \   exe "normal g`\"" | 
             \ endif
-"}}}
-" Auto-mkdir {{{
+
+" Auto mkdir:
 " When open a file, auto make a directory if doesn't exist a directory.
 function! s:mkdir(dir, force)
     if !isdirectory(a:dir) && (a:force ||
@@ -109,8 +99,8 @@ function! s:mkdir(dir, force)
     endif
 endfunction
 autocmd MyAutoCmd BufWritePre * call s:mkdir(expand('<afile>:p:h'), v:cmdbang)
-"}}}
-" BackUp: {{{1
+
+" BackUp:
 set swapfile
 let $SWAP = expand('~/.cache/vim/.swap')
 set directory=$SWAP
@@ -120,7 +110,7 @@ endif
 " open as readonly when open swapfile.
 autocmd MyAutoCmd SwapExists * let v:swapchoice = 'o'
 
-" Persistent Undo
+" Persistent Undo:
 if has('persistent_undo')
     set undodir=~/.cache/vim/undo
     set undofile

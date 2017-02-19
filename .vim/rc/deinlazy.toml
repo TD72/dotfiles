@@ -31,16 +31,19 @@ hook_add = '''
   " search
   nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search line -mode=normal<CR>
   nnoremap <silent> / :<C-u>Denite -buffer-name=search line<CR>
-  nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal<CR>
+  nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<CR>
 
   " grep
-  nnoremap [denite]r :<C-u>Denite -buffer-name=denite-grep -resume<CR>
-  nnoremap [denite]n :<C-u>Denite -buffer-name=denite-grep -resume -select=+1 -immediately<CR>
-  nnoremap [denite]N :<C-u>Denite -buffer-name=denite-grep -resume -select=-1 -immediately<CR>
+  nnoremap [denite]r :<C-u>Denite -buffer-name=search -resume grep<CR>
+  nnoremap [denite]n :<C-u>Denite -buffer-name=search -resume -select=+1 -immediately<CR>
+  nnoremap [denite]N :<C-u>Denite -buffer-name=search -resume -select=-1 -immediately<CR>
 
-   " paste
-   nnoremap <silent> [denite][ :<C-u>Denite -buffer-name=register register neoyank<CR>
-   xnoremap <silent> [denite][ :<C-u>Denite -default-action=replace -buffer-name=register register neoyank<CR>
+  " paste
+  nnoremap <silent> [denite][ :<C-u>Denite -buffer-name=register register neoyank<CR>
+  xnoremap <silent> [denite][ :<C-u>Denite -default-action=replace -buffer-name=register register neoyank<CR>
+
+  " nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol<CR>
+  nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
 
   " nnoremap [denite]m :<C-u>Denite unite:output<CR>
 '''
