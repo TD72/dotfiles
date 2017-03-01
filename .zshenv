@@ -104,6 +104,9 @@ eval "$(rbenv init -)"
 # tmuxinator
 [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
 
+# for Rust
+export PATH=$HOME/.cargo/bin:$PATH
+
 # Git config profiles path
 export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
