@@ -27,6 +27,15 @@ bindkey '^r' history-peco-execute
 
 bindkey '^xk' anyframe-widget-kill
 
+function under-cd-dir {
+  find . -type d -not -iwholename "*/.git/*" \
+    | peco \
+    | cd
+}
+zle -N under-cd-dir
+alias cdd=under-cd-dir
+# bindkey '^\.' under-cd-dir
+
 function anyframe-widget-git-add {
     git status --porcelain \
         | anyframe-selector-auto \
