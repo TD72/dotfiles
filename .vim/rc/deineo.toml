@@ -21,6 +21,16 @@ repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
 [[plugins]]
+repo = 'sebastianmarkow/deoplete-rust'
+on_ft = 'rust'
+on_i = 1
+hook_source = '''
+  let g:deoplete#sources#rust#racer_binary='$HOME/.cargo/bin/racer'
+  let g:deoplete#sources#rust#rust_source_path='/usr/local/src/rust/src'
+  let g:deoplete#sources#rust#disable_keymap=1
+'''
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 if = "has('nvim')"

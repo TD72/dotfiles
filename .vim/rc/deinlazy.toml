@@ -490,3 +490,33 @@ hook_source = '''
       endif
 endfunction
 '''
+
+[[plugins]]
+repo = 'haya14busa/vim-gtrans'
+on_map = '<Plug>'
+hook_add = '''
+  " imap <Plug>(operator-gtrans-buffer)
+  " omap sg <Plug>(operator-gtrans-echom)
+  " vmap sg <Plug>(operator-gtrans-echom)
+'''
+
+[[plugins]]
+repo = 'rust-lang/rust.vim'
+on_ft = 'rust'
+hook_source = '''
+  let g:rustfmt_autosave = 1
+  let g:rustfmt_command = '$HOME/.cargo/bin/rustfmt'
+'''
+
+[[plugins]]
+repo = 'rhysd/rust-doc.vim'
+on_ft = 'rust'
+
+[[plugins]]
+repo = 'racer-rust/vim-racer'
+on_ft = 'rust'
+hook_source = '''
+let g:racer_cmd = '$HOME/.cargo/bin/racer'
+let $RUST_SRC_PATH = expand('~/.rustup/toolschains/'
+      \ .'/usr/local/src/rust/src/')
+'''
