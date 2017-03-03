@@ -190,7 +190,7 @@ hook_add = '''
   imap <C-j> <Plug>(eskk:toggle)
   cmap <C-j> <Plug>(eskk:toggle)
 '''
-hook_source = 'source ~/.vim/rc/plugins/eskk.rc.vim'
+hook_source = 'source ~/.config/nvim/rc/plugins/eskk.rc.vim'
 
 [[plugins]]
 repo = 'thinca/vim-ref'
