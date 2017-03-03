@@ -40,14 +40,14 @@ export PATH=/usr/local/bin:$PATH
 if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
   export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-  alias ls='ls --color=auto'
+  alias ls='ls --color=auto -F'
   export PATH=~/Library/python/3.5/bin:$PATH
 fi
 if [ -d /Library/Tex/texbin ]; then
   export PATH=/Library/Tex/texbin:$PATH
 fi
 if uname | grep -q Linux; then
-  alias ls='ls --color=auto'
+  alias ls='ls --color=auto -F'
 fi
 
 # GO path
