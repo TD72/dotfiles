@@ -3,6 +3,8 @@ alias dot='cd $DOTPATH'
 alias c='cd ~/'
 alias b='cd $OLDPWD'
 
+alias python='`pythonz locate $(cat $HOME/.python_version)`'
+
 # ls
 alias a='ls -a'
 alias l='ls -l'

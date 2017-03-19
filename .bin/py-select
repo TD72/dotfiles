@@ -1,0 +1,2 @@
+pythonz list -a | peco > ~/.python_version
+pythonz install `cat ~/.python_version`
