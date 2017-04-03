@@ -10,10 +10,8 @@ tnoremap j<Space> j
 
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 
-if has('mac')
-  let g:python_host_prog = '/usr/local/bin/python2'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-else
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
-endif
+let g:python_host_prog = expand('$HOME') . '/.virtualenvs/default/bin/python'
+let g:python3_host_prog = expand('$HOME') . '/.virtualenvs/default/bin/python'
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
