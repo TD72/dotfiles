@@ -50,10 +50,6 @@ on_ft = 'markdown'
 
 # Python
 [[plugins]]
-repo = 'flake8-vim'
-on_ft = 'python'
-
-[[plugins]]
 repo = 'hynek/vim-python-pep8-indent'
 on_ft = 'python'
 

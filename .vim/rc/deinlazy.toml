@@ -276,6 +276,15 @@ on_ft = 'python'
 hook_source = 'source ~/.vim/rc/plugins/jedi.rc.vim'
 
 [[plugins]]
+repo = 'neomake/neomake'
+if = "has('nvim')"
+hook_add = '''
+autocmd! BufEnter,BufWritePost * Neomake
+let g:neomake_python_enabled_makers = ['python', 'flake8', 'mypy']
+'''
+
+
+[[plugins]]
 repo = 'osyo-manga/vim-over'
 hook_add = '''
     nnoremap <silent> <Leader>/ :OverCommandLine<CR>
