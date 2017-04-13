@@ -47,8 +47,10 @@ bindkey -M vicmd 'G'  end-of-line
 
 
 # bind P and N keys
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
+bindkey -M viins '^P' history-substring-search-up
+# bindkey '^P' history-substring-search-up
+bindkey -M viins '^N' history-substring-search-down
+# bindkey '^N' history-substring-search-down
 
 # Insert a last word
 zle -N insert-last-word smart-insert-last-word
