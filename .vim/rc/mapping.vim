@@ -70,6 +70,8 @@ nnoremap <Leader>P "+P
 vnoremap <Leader>p "+p
 vnoremap <Leader>P "+P
 
+xnoremap p "0p
+
 nmap gp <SID>(revisual-pasted)
 nnoremap <expr> <SID>(revisual-pasted) '`[' . strpart(getregtype(), 0, 1) . '`]'
 
