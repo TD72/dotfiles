@@ -22,9 +22,8 @@ hook_add = '''
   nmap <Leader> [denite]
 
   " open file
-  nnoremap [denite]a :<C-u>Denite
+  nnoremap [denite]a :<C-u>Denite file_point file_old
   \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
-  " nnoremap [denite]a :Denite file_rec<CR>
   nnoremap [denite]f :<C-u>Denite file_mru<CR>
   nnoremap <silent> [denite]] :<C-u>Denite ghq<CR>
 
@@ -42,7 +41,7 @@ hook_add = '''
   nnoremap <silent> [denite][ :<C-u>Denite -buffer-name=register register neoyank<CR>
   xnoremap <silent> [denite][ :<C-u>Denite -default-action=replace -buffer-name=register register neoyank<CR>
 
-  " nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol<CR>
+  nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol<CR>
   nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
 
   " nnoremap [denite]m :<C-u>Denite unite:output<CR>

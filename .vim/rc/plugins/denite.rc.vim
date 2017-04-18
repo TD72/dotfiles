@@ -1,13 +1,26 @@
-call denite#custom#var('file_rec', 'command',
-    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+if executable('rg')
+  call denite#custom#var('file_rec', 'command',
+        \ ['rg', '--files', '--glob', '!.git'])
+  call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
+  call denite#custom#var('grep', 'recursive_opts', [])
+  call denite#custom#var('grep', 'final_opts', [])
+  call denite#custom#var('grep', 'separator', ['--'])
+  call denite#custom#var('grep', 'default_opts',
+        \ ['--vimgrep', '--no-heading'])
+else
+  call denite#custom#var('file_rec', 'command',
+        \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+endif
 
-call denite#custom#source(
-    \ 'file_mru', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+call denite#custom#source('file_old', 'matchers',
+      \ ['matcher_fuzzy', 'matcher_project_files'])
+if has('nvim')
+  call denite#custom#source('file_rec,grep', 'matchers',
+        \ ['matcher_cpsm'])
+endif
+call denite#custom#source('file_old', 'converters',
+      \ ['converter_relative_word'])
 
-call denite#custom#source('grep', 'matchers',
-      \ ['matcher_ignore_globs', 'matcher_cpsm'])
-" call denite#custom#source('file_mru', 'converters',
-      " \ ['converter_relative_word'])
 
 call denite#custom#map(
       \ 'insert',
@@ -26,15 +39,17 @@ call denite#custom#map('insert', '<C-e>', '<End>')
 call denite#custom#map('insert', '<C-f>', '<Right>')
 call denite#custom#map('insert', '<C-b>', '<Left>')
 call denite#custom#map('insert', "'", '<denite:enter_mode:normal>')
-call denite#custom#map('noremal', 'n', '<denite:move_to_next_line')
-call denite#custom#map('noremal', 'p', '<denite:move_to_previous_line')
-" call denite#custom#map('_', "\<C-f>", 'enter_mode:normal')
+call denite#custom#map('normal', 'n', '<denite:move_to_next_line')
+call denite#custom#map('normal', 'p', '<denite:move_to_previous_line')
+call denite#custom#map('normal', 'r', '<denite:do_action:quickfix', 'noremap')
 
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
-call denite#custom#option('default', 'prompt', '>')
+call denite#custom#option('default', {
+      \ 'prompt: '>', 'short_source_names': v:true
+      \ })
 
 let s:menus = {}
 let s:menus.vim = {
