@@ -56,7 +56,6 @@ repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
 on_source = 'denite.nvim'
 
-
 [[plugins]]
 repo = 'Shougo/vimfiler'
 depends = 'unite.vim'
@@ -280,6 +279,23 @@ repo = 'neomake/neomake'
 if = "has('nvim')"
 hook_add = '''
 autocmd! BufEnter,BufWritePost * Neomake
+au MyAutoCmd ColorScheme * hi NeomakeErrorSign cterm=bold ctermfg=7 ctermbg=9
+au MyAutoCmd ColorScheme * hi NeomakeWarningSign cterm=bold ctermfg=8 ctermbg=216
+au MyAutoCmd ColorScheme * hi NeomakeMessageSign cterm=bold ctermfg=8 ctermbg=150
+au MyAutoCmd ColorScheme * hi NeomakeInfoSign cterm=bold ctermfg=8 ctermbg=110
+" text
+let g:neomake_error_sign = {'text': 'E✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {
+    \   'text': 'W➤',
+    \   'texthl': 'NeomakeWarningSign',
+    \ }
+let g:neomake_message_sign = {
+     \   'text': 'M➤',
+     \   'texthl': 'NeomakeMessageSign',
+     \ }
+let g:neomake_info_sign = {'text': 'ℹ➤', 'texthl': 'NeomakeInfoSign'}
+
+" python
 let g:neomake_python_enabled_makers = ['python', 'flake8', 'mypy']
 '''
 
