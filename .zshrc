@@ -19,7 +19,7 @@ if [[ -f $VITAL_PATH ]]; then
 fi
 
 # Exit if called from vim
-[[ -n $VIMRUNTIME ]] && return
+# [[ -n $VIMRUNTIME ]] && return
 
 
 # Check wether the vital file is loaded
