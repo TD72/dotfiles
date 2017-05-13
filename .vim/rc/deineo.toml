@@ -80,6 +80,8 @@ hook_source = '''
   endfunction"}}}
   autocmd FileType deol call s:on_deol()
   function! s:on_deol() abort
+    tnoremap <buffer><silent> <C-p> <Plug>(deol_previous_prompt)
+    tnoremap <buffer><silent> <C-n> <Plug>(deol_next_prompt)
     nnoremap <buffer><silent> [Space]gc :<C-u>call deol#send('git commit')<CR>
     nnoremap <buffer><silent> [Space]gs :<C-u>call deol#send('git status')<CR>
     nnoremap <buffer><silent> [Space]gA :<C-u>call deol#send('git commit --amend')<CR>
