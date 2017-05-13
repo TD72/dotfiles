@@ -52,10 +52,11 @@ call deoplete#custom#set('_', 'converters', [
       \ ])
 
 " call deoplete#custom#set('buffer', 'min_pattern_length', 9999)
+call deoplete#custom#set('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
+call deoplete#custom#set('clang', 'max_pattern_length', -1)
 
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
-" let g:deoplete#keyword_patterns.tex = '\\?[a-zA-Z_]\w*'
 let g:deoplete#keyword_patterns.tex = '[^\w|\s][a-zA-Z_]\w*'
 
 let g:deoplete#omni#input_patterns = {}
@@ -65,25 +66,11 @@ let g:deoplete#omni#functions = {}
 
 " inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
 
-let g:deoplete#enable_refresh_always = 1
+" let g:deoplete#enable_refresh_always = 1
 let g:deoplete#enable_camel_case = 1
 " let g:deoplete#auto_complete_start_length = 3
-
-" deoplete-clang "{{{
-" libclang shared library path
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/3.8.1/lib/libclang.dylib'
-
-" clang builtin header path
-let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/3.8.1/include/clang'
-
-" libclang default compile flags
-let g:deoplete#sources#clang#flags = ['-x', 'c++', '-std=c++11']
-
-" compile_commands.json directory path
-" Not file path. Need build directory path
-" let g:deoplete#sources#clang#clang_complete_database =
-"       \ expand('~/src/neovim/build')
-"}}}
+"
+let g:deoplete#skip_chars = ['(', ')']
 
 
 " deoplete-go "{{{
