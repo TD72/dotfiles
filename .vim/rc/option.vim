@@ -60,14 +60,38 @@ set foldcolumn=1
 set fillchars=vert:\|
 set commentstring=%s
 
+" wrap
+set linebreak
+set showbreak=\
+set breakat=\ \ ;:,!?
+if exists('breakindent')
+  set breakindent
+  set wrap
+else
+  set nowrap
+endif
 
 " Octal notation -> Demical Number
 set nrformats=alpha,hex
 
-set wildmenu wildmode=list:longest,full
+set wildmenu
+set wildmode=list:longest,full
+
+" Completion setting.
+set completeopt=menuone
+" Don't complete from other buffer.
+set complete=.
 
 set iminsert=0 imsearch=0
 set noimcmdline
+
+set ttyfast
+
+set display=lastline
+set previewheight=8
+set helpheight=12
+set conceallevel=2 concealcursor=niv
+set colorcolumn=79
 
 autocmd MyAutoCmd BufNewFile,BufRead .tmux.conf setf tmux
 autocmd MyAutoCmd BufNewFile,BufRead .envrc setf sh
