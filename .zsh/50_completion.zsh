@@ -27,16 +27,22 @@ setopt inc_append_history
 setopt magic_equal_subst
 setopt extended_glob
 setopt globdots
+setopt extended_glob
 
 zstyle ':completion:*default' menu select=2
 # zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
+zstyle ':completion:*' matcher-list \
+  'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 zstyle ':completion:*' verbose yes
-# zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+# zstyle ':completion:*' \
+  # completer _expand _complete _match _prefix _approximate _list _history
 zstyle ':completion:*:messages' format $YELLOW'%d'$DEFAULT
-zstyle ':completion:*:warnings' format $RED'No matches for:'$YELLOW' %d'$DEFAULT
-zstyle ':completion:*:descriptions' format $YELLOW'completing %B%d%b'$DEFAULT
-zstyle ':completion:*:corrections' format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
+zstyle ':completion:*:warnings' \
+  format $RED'No matches for:'$YELLOW' %d'$DEFAULT
+zstyle ':completion:*:descriptions' \
+  format $YELLOW'completing %B%d%b'$DEFAULT
+zstyle ':completion:*:corrections' \
+  format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
 # グループ名に空文字を指定すると，マッチ対象のタグ名がグループ名に使われる。
 # したがって，すべての マッチ種別を別々に表示させたいなら以下のようにする
@@ -44,10 +50,6 @@ zstyle ':completion:*:options' description 'yes'
 
 # カレントディレクトリに候補がない場合のみ cdpath 上のディレクトリを候補に出す
 # zstyle ':completion:*:cd:*' tag-order local-directories path-directories
-#cd は親ディレクトリからカレントディレクトリを選択しないので表示させないようにする (例: cd ../<TAB>):
-# zstyle ':completion:*:cd:*' ignore-parents parent pwd
-#LS_COLORSを設定しておく
-# export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 
 #ファイル補完候補に色を付ける
 if [ -n "%LS_COLORS" ]; then
@@ -57,11 +59,6 @@ fi
 zstyle ':completion:*' use-cache true
 
 zstyle ':completion:*' list-separator '-->'
-
-
-if (( $+commands[direnv] )); then
-    eval "$(direnv hook zsh)"
-fi
 
 # pip zsh completion start
 function _pip_completion {

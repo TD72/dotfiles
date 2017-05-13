@@ -1,6 +1,16 @@
 #!/bin/zsh
 
 # zmodload zsh/zprof && zprof
+
+typeset -gx -U path
+path=( \
+  $HOME/.bin \
+  $HOME/bin \
+  $HOME/.virtualenvs/default/bin \
+  /usr/local/bin \
+  "$path[@]" \
+  )
+
 typeset -gx -U fpath
 fpath=( \
     ~/.zsh/Completion(N-/) \
@@ -31,17 +41,11 @@ export LC_CTYPE="${LANGUAGE}"
 export EDITOR=`which nvim`
 export GIT_EDITOR=$EDITOR
 
-export PATH=~/bin:$PATH
-export PATH=~/.bin:$PATH
-export PATH=~/.local/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-
 # for osx
 if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
   export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
   alias ls='ls --color=auto -F'
-  export PATH=~/Library/python/3.5/bin:$PATH
 fi
 if [ -d /Library/Tex/texbin ]; then
   export PATH=/Library/Tex/texbin:$PATH
@@ -53,8 +57,8 @@ fi
 # GO path
 export GOPATH="$HOME"
 export GOBIN="$GOPATH/bin"
-export GO15VENDOREXPERIMENT=1
 export PATH=/usr/local/go/bin:$GOBIN:$PATH
+export GO15VENDOREXPERIMENT=1
 
 # XDG config home
 [[ ! -d ~/.config ]] && mkdir ~/.config
@@ -102,13 +106,16 @@ export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
 
 # tmuxinator
-[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && source $HOME/.tmuxinator/scripts/tmuxinator
+[[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && \
+  source $HOME/.tmuxinator/scripts/tmuxinator
+
+
+# Git config profiles path
+export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
 # for Rust
 export PATH=$HOME/.cargo/bin:$PATH
 
-# Git config profiles path
-export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
 # secrets
 [[ -f ~/.secrets/secret.zsh ]] && source ~/.secrets/secret.zsh

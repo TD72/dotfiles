@@ -1,14 +1,8 @@
 #! /bin/zsh
-#
-# Check whether the vital file is loaded
-if ! vitalize 2>/dev/null; then
-    echo "cannot run as shell script" 1>&2
-    return 1
-fi
 
 # Vim-like keybind as default
 bindkey -v
-# Vim-like escaping jj keybind
+# Vim-like escaping jj keybind{{{
 bindkey -M viins 'jj' vi-cmd-mode
 
 # Add emacs-like keybind to viins mode
@@ -47,15 +41,10 @@ bindkey -M vicmd 'G'  end-of-line
 
 
 # bind P and N keys
-bindkey -M viins '^P' history-substring-search-up
-# bindkey '^P' history-substring-search-up
-bindkey -M viins '^N' history-substring-search-down
-# bindkey '^N' history-substring-search-down
-
-# Insert a last word
-zle -N insert-last-word smart-insert-last-word
-zstyle :insert-last-word match '*([^[:space:]][[:alpha:]/\\]|[[:alpha:]/\\][^[:space:]])*'
-bindkey -M viins '^]' insert-last-word
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^P' history-substring-search-up
+bindkey '^N' history-substring-search-down
 
 # Surround a forward word by single quote
 quote-previous-word-in-single() {
@@ -74,10 +63,7 @@ zle -N quote-previous-word-in-double
 bindkey -M viins '^Xq' quote-previous-word-in-double
 
 bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
-
-#bindkey -s 'vv' "!vi\n"
-#bindkey -s ':q' "^A^Kexit\n"
-
+# }}}
 
 #=================================
 # functions
@@ -102,3 +88,14 @@ bindkey '^m' do-enter
 # commandline edit using vim
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
+
+function replace_multiple_dots() {
+  local dots=$LBUFFER[-2,-1]
+  if [[ $dots == ".." ]]; then
+    LBUFFER=$LBUFFER[1,-3]'../.'
+  fi
+  zle self-insert
+}
+
+zle -N replace_multiple_dots
+bindkey "." replace_multiple_dots

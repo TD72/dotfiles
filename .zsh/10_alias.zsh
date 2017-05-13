@@ -32,12 +32,15 @@ alias t='cd `git exec pwd`'
 alias lmk='latexmk -pvc'
 alias lmkc='latexmk -c'
 
-alias docker='sudo docker'
+if ! is_osx ; then
+  alias docker='sudo docker'
+fi
 
 alias rp='richpager -s solarizeddark'
 
-# for linux
-alias -s {png,jpg,bmp,PNG,JPG,BMP}=llpp
+if ! is_linux ; then
+  alias -s {png,jpg,bmp,PNG,JPG,BMP}=llpp
+fi
 
 # clipboard
 # Mac
