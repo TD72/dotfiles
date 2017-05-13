@@ -56,18 +56,9 @@ set viminfo+=n~/.cache/vim/viminfo
 set foldenable
 set foldmethod=marker
 set foldlevel=0
-set foldcolumn=2
-setglobal commentstring=#%s
-autocmd MyAutoCmd FileType c setlocal commentstring=//%s
-autocmd MyAutoCmd FileType cpp setlocal commentstring=//%s
-autocmd MyAutoCmd FileType python setlocal commentstring=#%s
-autocmd MyAutoCmd FileType vim setlocal commentstring=\"%s
-autocmd MyAutoCmd FileType bash setlocal commentstring=#%s
-autocmd MyAutoCmd FileType zsh setlocal commentstring=#%s
-autocmd MyAutoCmd FileType sh setlocal commentstring=#%s
-autocmd MyAutoCmd FileType tex setlocal commentstring=\%%s
-autocmd MyAutoCmd FileType haskell setlocal commentstring=--%s
-
+set foldcolumn=1
+set fillchars=vert:\|
+set commentstring=%s
 
 
 " Octal notation -> Demical Number
