@@ -138,4 +138,7 @@ hook_add =  '''
 [[plugins]]
 repo = 'zplug/vim-zplug'
 
+[[plugins]]
+repo = 'kana/vim-submode'
+hook_add = 'source ~/.vim/rc/plugins/submode.rc.vim'
 

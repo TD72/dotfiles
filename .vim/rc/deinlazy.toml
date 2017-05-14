@@ -27,6 +27,8 @@ hook_add = '''
   nnoremap [denite]f :<C-u>Denite file_mru<CR>
   nnoremap <silent> [denite]] :<C-u>Denite ghq<CR>
 
+  nnoremap [denite]b :<C-u>Denite buffer<CR>
+
   " search
   nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search line -mode=normal<CR>
   nnoremap <silent> / :<C-u>Denite -buffer-name=search line<CR>
@@ -446,10 +448,6 @@ hook_add = '''
     vmap <silent>ay <Plug>(textobj-syntax-a)
     vmap <silent>iy <Plug>(textobj-syntax-i)
 '''
-
-[[plugins]]
-repo = 'kana/vim-submode'
-hook_source = 'source ~/.vim/rc/plugins/submode.rc.vim'
 
 [[plugins]]
 repo = 'fatih/vim-go'

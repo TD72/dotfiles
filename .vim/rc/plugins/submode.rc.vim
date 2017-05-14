@@ -1,17 +1,17 @@
 
 " Window size
-call submode#enter_with('bufmove', 'n', '', 'sl', '<C-w>>')
-call submode#enter_with('bufmove', 'n', '', 'sh', '<C-w><')
-call submode#enter_with('bufmove', 'n', '', 'sj', '<C-w>+')
-call submode#enter_with('bufmove', 'n', '', 'sk', '<C-w>-')
-call submode#map('bufmove', 'n', '', 'l', '<C-w>>')
-call submode#map('bufmove', 'n', '', 'h', '<C-w><')
-call submode#map('bufmove', 'n', '', 'j', '<C-w>+')
-call submode#map('bufmove', 'n', '', 'k', '<C-w>-')
+call submode#enter_with('bufmove', 'n', '', 'sL', '<C-w>>')
+call submode#enter_with('bufmove', 'n', '', 'sH', '<C-w><')
+call submode#enter_with('bufmove', 'n', '', 'sJ', '<C-w>+')
+call submode#enter_with('bufmove', 'n', '', 'sK', '<C-w>-')
+call submode#map('bufmove', 'n', '', 'L', '<C-w>>')
+call submode#map('bufmove', 'n', '', 'H', '<C-w><')
+call submode#map('bufmove', 'n', '', 'L', '<C-w>+')
+call submode#map('bufmove', 'n', '', 'K', '<C-w>-')
 
 
 " Tab swith
-call submode#enter_with('changetab', 'n', '', 'tl', 'gt')
-call submode#enter_with('changetab', 'n', '', 'th', 'gT')
-call submode#map('changetab', 'n', '', 'l', 'gt')
-call submode#map('changetab', 'n', '', 'h', 'gT')
+call submode#enter_with('changetab', 'n', '', 'sp', 'gt')
+call submode#enter_with('changetab', 'n', '', 'sn', 'gT')
+call submode#map('changetab', 'n', '', 'p', 'gt')
+call submode#map('changetab', 'n', '', 'n', 'gT')

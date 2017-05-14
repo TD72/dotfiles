@@ -6,6 +6,10 @@ nnoremap : ;
 inoremap jj <Esc>
 inoremap j<Space> j
 
+nnoremap > >>
+nnoremap < <<
+xnoremap > >gv
+xnoremap < <gv
 
 " operator 
 noremap <S-h> ^
@@ -35,12 +39,12 @@ nnoremap s <Nop>
 " split
 nnoremap ss :split<CR>
 nnoremap sv :vsplit<CR>
-nnoremap tt :tabnew<CR>
-nnoremap tl :tabnext<CR>
-nnoremap <C-l> :tabnext<CR>
-nnoremap th :tabprevious<CR>
-nnoremap <C-h> :tabprevious<CR>
-nnoremap tw :tabclose<CR>
+nnoremap st :tabnew<CR>
+nnoremap sp :tabnext<CR>
+" nnoremap <C-l> :tabnext<CR>
+nnoremap sn :tabprevious<CR>
+" nnoremap <C-h> :tabprevious<CR>
+nnoremap sw :tabclose<CR>
 
 nmap sj <SID>(split-to-j)
 nmap sk <SID>(split-to-k)
@@ -109,8 +113,8 @@ vnoremap <expr> cN "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgN"
 
 
 " ESC fcitx OFF
-function! ImInActivate()
-    call system('fcitx-remote -c')
-endfunction
-inoremap <silent> <ESC> <ESC>:call ImInActivate()<CR>
+" function! ImInActivate()
+"     call system('fcitx-remote -c')
+" endfunction
+" inoremap <silent> <ESC> <ESC>:call ImInActivate()<CR>
 
