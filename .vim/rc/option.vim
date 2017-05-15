@@ -71,6 +71,8 @@ else
   set nowrap
 endif
 
+set hidden
+
 " Octal notation -> Demical Number
 set nrformats=alpha,hex
 
