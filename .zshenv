@@ -13,15 +13,28 @@ path=( \
 
 typeset -gx -U fpath
 fpath=( \
-    ~/.zsh/Completion(N-/) \
-    ~/.zsh/functions(N-/) \
+    $HOME/.zsh/Completion(N-/) \
+    $HOME/.zsh/functions(N-/) \
     $fpath \
     )
+
+# XDG Base Directory
+export XDG_CONFIG_HOME=$HOME/.config
+[[ ! -d $XDG_CONFIG_HOME ]] && mkdir $XDG_CONFIG_HOME
+
+export XDG_CACHE_HOME=$HOME/.cache
+[[ ! -d $XDG_CACHE_HOME ]] && mkdir $XDG_CACHE_HOME
+
+export XDG_DATA_HOME=$HOME/.local/share
+[[ ! -d $XDG_DATA_HOME ]] && mkdir $XDG_DATA_HOME
+
+export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
+[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
 
 # autoload
 autoload -Uz edit-command-line
 autoload -Uz colors && colors
-autoload -Uz compinit && compinit -u
+autoload -Uz compinit && compinit -d $ZSH_CACHE_DIR
 autoload -Uz add-zsh-hook
 autoload -Uz terminfo
 autoload -Uz cdr
@@ -55,17 +68,15 @@ if uname | grep -q Linux; then
 fi
 
 # GO path
+export GOROOT=/usr/local/opt/go/libexec
 export GOPATH="$HOME"
 export GOBIN="$GOPATH/bin"
 export PATH=/usr/local/go/bin:$GOBIN:$PATH
 export GO15VENDOREXPERIMENT=1
 
-# XDG config home
-[[ ! -d ~/.config ]] && mkdir ~/.config
-export XDG_CONFIG_HOME=~/.config
 
 # History
-export HISTFILE=~/.zsh_history
+export HISTFILE=$ZSH_CACHE_DIR/zsh_history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 export LISTMAX=50
@@ -115,6 +126,11 @@ export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
 # for Rust
 export PATH=$HOME/.cargo/bin:$PATH
+
+# node
+[[ -s $HOME/.nvm/nvm.sh ]] && . $HOME/.nvm/nvm.sh
+npm_dir=${NVM_PATH}_modeuls
+export NODE_PATH=$npm_dir
 
 
 # secrets

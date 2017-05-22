@@ -1,7 +1,7 @@
 #! /bin/zsh
 
-if [[ -f ~/.path ]]; then
-    source ~/.path
+if [[ -f $HOME/.path ]]; then
+    source $HOME/.path
 else
     export DOTPATH="${0:A:t}"
 fi
@@ -11,15 +11,15 @@ $DOTPATH/.bin/tmuxx
 #======================================
 # Setup zplug && Modules
 #======================================
-
-if [[ ! -d ~/.zplug ]] then
-  git clone https://github.com/zplug/zplug $HOME/.zplug
-  source $HOME/.zplug/init.zsh && zplug update --self
+export ZPLUG_HOME=$XDG_CACHE_HOME/zplug
+if [[ ! -d $ZPLUG_HOME ]] then
+  git clone https://github.com/zplug/zplug $ZPLUG_HOME
+  source $ZPLUG_HOME/init.zsh && zplug update
 fi
 
-if [[ -f $HOME/.zplug/init.zsh ]]; then
+if [[ -f $ZPLUG_HOME/init.zsh ]]; then
   export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
-  source ~/.zplug/init.zsh
+  source $ZPLUG_HOME/init.zsh
 
   if ! zplug check --verbose; then
       printf "Install? [y/N]: "
