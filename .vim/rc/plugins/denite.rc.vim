@@ -37,6 +37,7 @@ call denite#custom#map(
 call denite#custom#map('insert', '<C-a>', '<Home>')
 call denite#custom#map('insert', '<C-e>', '<End>')
 call denite#custom#map('insert', '<C-f>', '<Right>')
+
 call denite#custom#map('insert', '<C-b>', '<Left>')
 call denite#custom#map('insert', "'", '<denite:enter_mode:normal>')
 call denite#custom#map('normal', 'n', '<denite:move_to_next_line')
@@ -48,7 +49,7 @@ call denite#custom#var('file_rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
 call denite#custom#option('default', {
-      \ 'prompt: '>', 'short_source_names': v:true
+      \ 'prompt: '>', 'short_source_names': 1
       \ })
 
 let s:menus = {}
@@ -64,6 +65,7 @@ call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
       \ [
       \ '.git/', '.ropeproject/', '__pycache__/',
       \ 'venv/',
+      \ 'vender/',
       \ '.direnv/*',
       \ 'images/',
       \ '*.min.*',
