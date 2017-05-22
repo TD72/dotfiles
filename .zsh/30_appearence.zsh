@@ -4,7 +4,7 @@
 #---------------------------------------------
 function powerline_precmd() {
   export PROMPT="
-  $(python ~/.zplug/repos/TD72/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)
+  $($HOME/.virtualenvs/default/bin/python $ZPLUG_HOME/repos/TD72/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)
                   $ "
 }
 
