@@ -20,4 +20,5 @@
     root = ~/src
 
 [alias]
+    lg = ! git log --graph --decorate --color | emojify | less -r
     exec = !sh -c 'exec "$@"' $(which sh)
