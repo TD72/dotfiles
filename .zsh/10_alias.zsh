@@ -20,6 +20,11 @@ alias tmux='tmux -2'
 alias vi='nvim'
 alias vim='nvim'
 
+if [ -n "$NVIM_LISTEN_ADDRESS" ]; then
+  alias vi='nvr'
+  alias vim='nvr'
+fi
+
 # peco
 # alias -g P='| peco'
 alias peco='peco-tmux'
