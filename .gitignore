@@ -1,17 +1,10 @@
 *DS_Store
 
-bin/git-harmo
-bin/ghq
-bin/peco
-
 .vim/.*
 .vim/rc/.*
 
 .tmux/*
-!.tmux/*.conf
 
 .xmonad/*
 !.xmonad/xmonad.hs
 
-.etc/git-cfg/*
-!.tmux/.gitkeep
