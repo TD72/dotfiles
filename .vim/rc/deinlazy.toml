@@ -558,3 +558,6 @@ repo = 'rbtnn/mario.vim'
 on_cmd = 'Mario'
 depends = 'game_engine.vim'
 
+[[plugins]]
+repo = 'itchyny/vim-highlighturl'
+on_ft = ['html', 'html5', 'php', 'xml', 'css', 'htmldjango', 'md']
