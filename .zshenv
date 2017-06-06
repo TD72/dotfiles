@@ -58,7 +58,7 @@ export GIT_EDITOR=$EDITOR
 if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
   export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-  alias ls='ls --color=auto -F'
+  alias ls='ls -G -F'
 fi
 if [ -d /Library/Tex/texbin ]; then
   export PATH=/Library/Tex/texbin:$PATH

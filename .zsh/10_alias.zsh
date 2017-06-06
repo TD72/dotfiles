@@ -70,7 +70,7 @@ ls_abbrev() {
     local cmd_ls='ls'
 
     local -a opt_ls
-    opt_ls=('-CF' '--color=always')
+    opt_ls=('-CGF')
 
     local ls_result
     ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/&^\e\[[0-9;]*m$/d')
