@@ -4,6 +4,7 @@
 .vim/rc/.*
 
 .tmux/*
+!.tmux/*.conf
 
 .xmonad/*
 !.xmonad/xmonad.hs
