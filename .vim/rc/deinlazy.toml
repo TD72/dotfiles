@@ -14,6 +14,12 @@ repo = 'Jagua/vim-denite-ghq'
 on_if = 1
 on_source = 'denite.nvim'
 
+
+[[plugins]]
+repo = 'chemzqm/denite-git'
+on_if = 1
+depends = 'vim-easygit'
+
 [[plugins]]
 repo = 'Shougo/Denite.nvim'
 on_cmd = 'Denite'
@@ -46,6 +52,11 @@ hook_add = '''
   nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol<CR>
   nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
   nnoremap <silent> [denite]; :<C-u>Denite command command_history<CR>
+
+  nnoremap <silent> [denite]gl :<C-u>Denite -mode=normal gitlog<CR>
+  nnoremap <silent> [denite]gla :<C-u>Denite -mode=normal gitlog:all<CR>
+  nnoremap <silent> [denite]gs :<C-u>Denite -mode=normal gitstatus<CR>
+  nnoremap <silent> [denite]gd :<C-u>Denite -mode=normal gitchanged<CR>
 
   " nnoremap [denite]m :<C-u>Denite unite:output<CR>
 '''

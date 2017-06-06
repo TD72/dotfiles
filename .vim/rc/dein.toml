@@ -142,3 +142,5 @@ repo = 'zplug/vim-zplug'
 repo = 'kana/vim-submode'
 hook_add = 'source ~/.vim/rc/plugins/submode.rc.vim'
 
+[[plugins]]
+repo = 'chemzqm/vim-easygit'
