@@ -70,10 +70,11 @@ ls_abbrev() {
     local cmd_ls='ls'
 
     local -a opt_ls
-    opt_ls=('-CGF')
+    opt_ls=('-GFC' '--color=always')
 
     local ls_result
-    ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS command $cmd_ls ${opt_ls[@]} | sed $'/&^\e\[[0-9;]*m$/d')
+    ls_result=$(CLICOLOR_FORCE=1 COLUMNS=$COLUMNS \
+      command $cmd_ls ${opt_ls[@]} | sed $'/&^\e\[[0-9;]*m$/d')
 
     local ls_lines=$(echo "$ls_result" | wc -l | tr -d ' ')
     if [ $ls_lines -gt 10 ]; then
