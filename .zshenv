@@ -58,13 +58,13 @@ export GIT_EDITOR=$EDITOR
 if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
   export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-  alias ls='ls -G -F'
+  alias ls='ls -G -F --color=auto'
 fi
 if [ -d /Library/Tex/texbin ]; then
   export PATH=/Library/Tex/texbin:$PATH
 fi
 if uname | grep -q Linux; then
-  alias ls='ls --color=auto -F'
+  alias ls='ls --color=auto -F -G'
 fi
 
 # GO path
