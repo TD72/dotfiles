@@ -1,0 +1,2 @@
+[[plugins]]
+repo = 'equalsraf/nvim-gui-shim'

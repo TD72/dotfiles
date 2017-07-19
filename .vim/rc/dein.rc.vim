@@ -21,6 +21,10 @@ if has('nvim')
     call dein#load_toml('~/.config/nvim/rc/deineo.toml', {})
 endif
 call dein#load_toml('~/.config/nvim/rc/deinft.toml')
+" if g:gonvim_running
+"     call dein#load_toml('~/.config/nvim/rc/deingon.toml', {})
+" endif
+"
 call dein#end()
 
 call dein#save_state()
