@@ -1,8 +1,8 @@
 " dein configurations.
 
 let g:dein#install_progress_type = 'title'
-let g:dein#install_message_type = 'none'
-let g:dein#enable_notification = 0
+" let g:dein#install_message_type = 'none'
+let g:dein#enable_notification = 1
 let g:dein#notification_icon = '~/.config/nvim/rc/signs/warn.png'
 
 
@@ -20,7 +20,7 @@ call dein#load_toml('~/.config/nvim/rc/deinlazy.toml', {'lazy': 1})
 if has('nvim')
     call dein#load_toml('~/.config/nvim/rc/deineo.toml', {})
 endif
-
+call dein#load_toml('~/.config/nvim/rc/deinft.toml')
 call dein#end()
 
 call dein#save_state()
