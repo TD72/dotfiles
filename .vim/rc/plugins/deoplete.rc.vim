@@ -22,9 +22,11 @@ inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr><C-h> deoplete#mappings#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> deoplete#mappings#smart_close_popup()."\<C-h>"
 
-inoremap <expr><C-g> deoplete#mappings#undo_completion()
+" inoremap <expr><C-g> deoplete#mappings#undo_completion()
 " <C-l>: redraw candidates
-inoremap <expr><C-l>       deoplete#mappings#refresh()
+" inoremap <expr><C-l>       deoplete#mappings#refresh()
+inoremap <expr><C-g> deoplete#refresh()
+inoremap <silent><expr><C-l> deoplete#complete_common_string()
 
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
@@ -34,6 +36,7 @@ endfunction
 
 inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
 
+call deoplete#custom#set('ghc', 'sorters', ['sorter_word'])
 " call deoplete#custom#set('_', 'matchers', ['matcher_head'])
 " call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
 " call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
@@ -66,7 +69,7 @@ let g:deoplete#omni#functions = {}
 
 " inoremap <silent><expr> <C-t> deoplete#mappings#manual_complete('file')
 
-" let g:deoplete#enable_refresh_always = 1
+let g:deoplete#enable_refresh_always = 0
 let g:deoplete#enable_camel_case = 1
 " let g:deoplete#auto_complete_start_length = 3
 "

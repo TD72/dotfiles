@@ -20,8 +20,9 @@ repo = 'chemzqm/denite-git'
 on_if = 1
 depends = 'vim-easygit'
 
+
 [[plugins]]
-repo = 'Shougo/Denite.nvim'
+repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_add = '''
   nnoremap [denite] <Nop>
@@ -36,8 +37,8 @@ hook_add = '''
   nnoremap [denite]b :<C-u>Denite buffer<CR>
 
   " search
-  nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search line -mode=normal<CR>
-  nnoremap <silent> / :<C-u>Denite -buffer-name=search line<CR>
+  nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight line -mode=normal<CR>
+  nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight line<CR>
   nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<CR>
 
   " grep
@@ -58,6 +59,14 @@ hook_add = '''
   nnoremap <silent> [denite]gs :<C-u>Denite -mode=normal gitstatus<CR>
   nnoremap <silent> [denite]gd :<C-u>Denite -mode=normal gitchanged<CR>
 
+  nnoremap <silent><expr> tt  &filetype == 'help' ?  "g\<C-]>" :
+        \ ":\<C-u>DeniteCursorWord -buffer-name=tag -immediately
+        \  tag:include\<CR>"
+  
+  nnoremap <silent><expr> tp  &filetype == 'help' ?
+        \ ":\<C-u>pop\<CR>" : ":\<C-u>Denite -mode=normal jump\<CR>"
+  
+
   " nnoremap [denite]m :<C-u>Denite unite:output<CR>
 '''
 hook_source = '''
@@ -67,7 +76,6 @@ hook_source = '''
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
-on_source = 'denite.nvim'
 
 [[plugins]]
 repo = 'Shougo/vimfiler'
@@ -76,6 +84,14 @@ on_map = [['n', '<Plug>']]
 on_if = "isdirectory(bufname('%'))"
 hook_add = 'nnoremap <silent> <Leader>e :VimFiler -simple -split -winwidth=30 -no-quit<CR>'
 hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
+
+[[plugins]]
+repo = 'Shougo/junkfile.vim'
+on_source = 'denite.nvim'
+hook_add = '''
+  let g:junkfile#directory = '~/.memo'
+  nnoremap <silent> <Leader>j :<C-u>Denite junkfile:new junkfile<CR>
+'''
 
 [[plugins]]
 repo = 'thinca/vim-quickrun'
@@ -176,12 +192,15 @@ on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
-on_path = '.*'
+on_if = 1
 
 [[plugins]]
 repo = 'Shougo/echodoc'
 on_event = 'CompleteDone'
-hook_source = 'call echodoc#enable()'
+hook_source = '''
+  let g:echodoc#type = 'signature'
+  call echodoc#enable()
+'''
 
 [[plugins]]
 repo = 'kana/vim-niceblock'
@@ -561,3 +580,12 @@ depends = 'game_engine.vim'
 [[plugins]]
 repo = 'itchyny/vim-highlighturl'
 on_ft = ['html', 'html5', 'php', 'xml', 'css', 'htmldjango', 'md']
+
+[[plugins]]
+repo = 'lambdalisue/vim-findent'
+
+[[plugins]]
+repo = 'tweekmonster/impsort.vim'
+on_cmd = 'ImpSort'
+hook_source = 'let g:impsort_highlight_imported = 1'
+
