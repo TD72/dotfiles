@@ -35,7 +35,7 @@ alias t='cd `git exec pwd`'
 
 # latexmk
 alias lmk='latexmk -pvc'
-alias lmkc='latexmk -c'
+alias lmkc='latexmk -C'
 
 if ! is_osx ; then
   alias docker='sudo docker'

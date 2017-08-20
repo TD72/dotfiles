@@ -29,7 +29,7 @@ bindkey '^xk' anyframe-widget-kill
 
 function under-cd-dir {
   find . -type d -not -iwholename "*/.git/*" \
-    | peco \
+    | fzy \
     | cd
 }
 zle -N under-cd-dir
