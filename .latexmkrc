@@ -1,11 +1,11 @@
 #!/usr/bin/perl
 
-# $latex    = 'platex -guess-input-enc -synctex=1 %O %S';
+$latex    = 'platex -synctex=1 %O %S';
 # $pdflatex    = 'pdflatex';
-$pdftex = 'pdftex --output-format=pdf';
+# $pdftex = 'pdftex --output-format=pdf';
 $bibtex   = 'pbibtex %O %S';
 # $dvipdf   = 'dvips %O %S';
-# $dvipdf   = 'dvipdfmx %O %S';
+$dvipdf   = 'dvipdfmx %O %S';
 # $dvipdf   = 'dvipdfmx -f ~/.fontsmap/ipa.map %O %S';
 #
 $pvc_view_file_via_temporary = 0;
