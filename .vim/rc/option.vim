@@ -61,15 +61,11 @@ set fillchars=vert:\|
 set commentstring=%s
 
 " wrap
+set wrap
 set linebreak
-set showbreak=\
+set showbreak=+\ 
 set breakat=\ \ ;:,!?
-if exists('breakindent')
-  set breakindent
-  set wrap
-else
-  set nowrap
-endif
+set breakindent
 
 set hidden
 
