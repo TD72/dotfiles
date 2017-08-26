@@ -29,10 +29,6 @@ call dein#end()
 
 call dein#save_state()
 
-if has('vim_starting') && dein#check_install(['vimproc'])
-    call dein#install(['vimproc'])
-endif
-
 if has('vim_starting') && dein#check_install()
     call dein#install()
 endif
