@@ -45,9 +45,10 @@ call denite#custom#map('normal', 'n', '<denite:move_to_next_line')
 call denite#custom#map('normal', 'p', '<denite:move_to_previous_line')
 call denite#custom#map('normal', 'r', '<denite:do_action:quickfix', 'noremap')
 
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command',
-      \ ['git', 'ls-files', '-co', '--exclude-standard'])
+call denite#custom#map('insert', '<C-r>',
+      \ '<denite:toggle_matchers:matcher_substring>', 'noremap')
+call denite#custom#map('insert', '<C-s>',
+      \ '<denite:toggle_sorters:sorter_reverse>', 'noremap')
 
 " Denite git
 call denite#custom#map(
@@ -71,8 +72,15 @@ call denite#custom#map(
       \ 'noremap'
       \)
 
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
+
+
 call denite#custom#option('default', {
-      \ 'prompt: ': '>', 'short_source_names': 1
+      \ 'auto_accel': 1,
+      \ 'prompt: ': '>',
+      \ 'short_source_names': 1
       \ })
 
 let s:menus = {}
