@@ -223,7 +223,6 @@ depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = '''
-  
   imap <silent><C-s> <Plug>(neosnippet_jump_or_expand)
   smap <silent><C-s> <Plug>(neosnippet_jump_or_expand)
   xmap <silent><C-s> <Plug>(neosnippet_expand_target)

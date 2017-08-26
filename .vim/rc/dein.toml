@@ -160,3 +160,9 @@ repo = 'osyo-manga/vim-brightest'
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
+
+[[plugins]]
+repo = 'rizzatti/dash.vim'
+hook_add = '''
+  nmap <silent> <leader>d <Plug>DashSearch
+'''
