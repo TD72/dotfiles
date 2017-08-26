@@ -24,33 +24,54 @@ depends = 'vim-easygit'
 [[plugins]]
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
+hook_source = '''
+  source ~/.vim/rc/plugins/denite.rc.vim
+'''
 hook_add = '''
   nnoremap [denite] <Nop>
   nmap <Leader> [denite]
 
   " open file
   nnoremap [denite]a :<C-u>Denite buffer file_point file_old
-  \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+        \ -sorters=sorter_rank
+        \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+
   nnoremap [denite]f :<C-u>Denite file_mru<CR>
   nnoremap <silent> [denite]] :<C-u>Denite ghq<CR>
 
   nnoremap [denite]b :<C-u>Denite buffer<CR>
 
   " search
-  nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search -auto-highlight line -mode=normal<CR>
-  nnoremap <silent> / :<C-u>Denite -buffer-name=search -auto-highlight line<CR>
-  nnoremap <silent> n :<C-u>Denite -buffer-name=search -resume -mode=normal -refresh<CR>
+  nnoremap <silent> * :<C-u>DeniteCursorWord -buffer-name=search
+        \ -auto-highlight line -mode=normal<CR>
+
+  nnoremap <silent> / :<C-u>Denite -buffer-name=search
+        \ -auto-highlight line<CR>
+
+  nnoremap <silent> n :<C-u>Denite -buffer-name=search
+        \ -resume -mode=normal -refresh<CR>
 
   " grep
-  nnoremap [denite]r :<C-u>Denite -buffer-name=search -resume grep<CR>
-  nnoremap [denite]n :<C-u>Denite -buffer-name=search -resume -select=+1 -immediately<CR>
-  nnoremap [denite]N :<C-u>Denite -buffer-name=search -resume -select=-1 -immediately<CR>
+  nnoremap [denite]r 
+        \ :<C-u>Denite -buffer-name=search -resume grep<CR>
+
+  nnoremap [denite]n 
+        \ :<C-u>Denite -buffer-name=search -resume
+        \ -select=+1 -immediately<CR>
+
+  nnoremap [denite]N 
+        \ :<C-u>Denite -buffer-name=search -resume
+        \ -select=-1 -immediately<CR>
 
   " paste
-  nnoremap <silent> [denite][ :<C-u>Denite -buffer-name=register register neoyank<CR>
-  xnoremap <silent> [denite][ :<C-u>Denite -default-action=replace -buffer-name=register register neoyank<CR>
+  nnoremap <silent> [denite][ 
+        \ :<C-u>Denite -buffer-name=register register neoyank<CR>
+  xnoremap <silent> [denite][ 
+        \ :<C-u>Denite -default-action=replace
+        \ -buffer-name=register register neoyank<CR>
 
-  nnoremap <silent> <C-t> :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol<CR>
+  nnoremap <silent> <C-t> 
+        \ :<C-u>Denite -select=`tabpagenr()-1` -mode=normal deol<CR>
   nnoremap <silent> <C-k> :<C-u>Denite -mode=normal change jump<CR>
   nnoremap <silent> [denite]; :<C-u>Denite command command_history<CR>
 
@@ -69,14 +90,51 @@ hook_add = '''
 
   " nnoremap [denite]m :<C-u>Denite unite:output<CR>
 '''
-hook_source = '''
-  source ~/.vim/rc/plugins/denite.rc.vim
-'''
 
 [[plugins]]
 repo = 'Shougo/unite.vim'
 depends = 'neomru.vim'
 
+[[plugins]]
+repo = 'Shougo/deol.nvim'
+on_cmd = 'Deol'
+on_source = 'denite.nvim'
+hook_add = '''
+  nnoremap <silent> N :<C-u>call deol#new({'command': 'zsh'})<CR>
+  nnoremap <silent> [Space]s :<C-u>Deol zsh<CR>
+  nnoremap <silent> [Space]D  :<C-u>call deol#kill_editor()<CR>
+'''
+hook_source = '''
+  let g:deol#prompt_pattern = '% \|%$'
+  set shell=zsh
+  " Set to $PATH.
+  function! s:split_envpath(path) abort "{{{
+    let delimiter = has('win32') ? ';' : ':'
+    if stridx(a:path, '\' . delimiter) < 0
+      return split(a:path, delimiter)
+    endif
+    let split = split(a:path, '\\\@<!\%(\\\\\)*\zs' . delimiter)
+    return map(split,'substitute(v:val, ''\\\([\\'
+          \ . delimiter . ']\)'', "\\1", "g")')
+  endfunction"}}}
+  function! s:join_envpath(list, orig_path, add_path) abort "{{{
+    let delimiter = has('win32') ? ';' : ':'
+    return (stridx(a:orig_path, '\' . delimiter) < 0
+          \ && stridx(a:add_path, delimiter) < 0) ?
+          \   join(a:list, delimiter) :
+          \   join(map(copy(a:list),
+          \        "substitute(v:path, ',\\|\\\\,\\@=', '\\\\\\0', 'g')"),
+          \        delimiter)
+  endfunction"}}}
+  autocmd FileType deol call s:on_deol()
+  function! s:on_deol() abort
+    " tnoremap <buffer><silent> <C-p> <Plug>(deol_previous_prompt)
+    " tnoremap <buffer><silent> <C-n> <Plug>(deol_next_prompt)
+    nnoremap <buffer><silent> [Space]gc :<C-u>call deol#send('git commit')<CR>
+    nnoremap <buffer><silent> [Space]gs :<C-u>call deol#send('git status')<CR>
+    nnoremap <buffer><silent> [Space]gA :<C-u>call deol#send('git commit --amend')<CR>
+  endfunction
+'''
 [[plugins]]
 repo = 'Shougo/vimfiler'
 depends = 'unite.vim'
