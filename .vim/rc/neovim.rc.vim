@@ -10,3 +10,5 @@ let g:python3_host_prog = expand('$HOME') . '/.virtualenvs/default/bin/python'
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
+autocmd MyAutoCmd CursorHold *
+      \if exists(':rshada') | rshada | wshada | endif

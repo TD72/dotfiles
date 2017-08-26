@@ -31,22 +31,22 @@ inoremap <silent><expr><C-l> deoplete#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function() abort
-  return deoplete#mappings#close_popup() . "\<CR>"
+  return deoplete#cancel_popup() . "\<CR>"
 endfunction
 
 inoremap <expr> '  pumvisible() ? deoplete#mappings#close_popup() : "'"
 
-call deoplete#custom#set('ghc', 'sorters', ['sorter_word'])
-" call deoplete#custom#set('_', 'matchers', ['matcher_head'])
-" call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
-" call deoplete#custom#set('_', 'disabled_syntaxes', ['Comment', 'String'])
-" call deoplete#custom#set('buffer', 'mark', '*')
+call deoplete#custom#source('ghc', 'sorters', ['sorter_word'])
+" call deoplete#custom#source('_', 'matchers', ['matcher_head'])
+" call deoplete#custom#source('_', 'matchers', ['matcher_full_fuzzy'])
+" call deoplete#custom#source('_', 'disabled_syntaxes', ['Comment', 'String'])
+" call deoplete#custom#source('buffer', 'mark', '*')
 
 " Use auto delimiter
-" call deoplete#custom#set('_', 'converters',
+" call deoplete#custom#source('_', 'converters',
 "       \ ['converter_auto_paren',
 "       \  'converter_auto_delimiter', 'remove_overlap'])
-call deoplete#custom#set('_', 'converters', [
+call deoplete#custom#source('_', 'converters', [
       \ 'converter_remove_paren',
       \ 'converter_remove_overlap',
       \ 'converter_truncate_abbr',
@@ -55,8 +55,8 @@ call deoplete#custom#set('_', 'converters', [
       \ ])
 
 " call deoplete#custom#set('buffer', 'min_pattern_length', 9999)
-call deoplete#custom#set('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
-call deoplete#custom#set('clang', 'max_pattern_length', -1)
+call deoplete#custom#source('clang', 'input_pattern', '\.\w*|\.->\w*|\w+::\w*')
+call deoplete#custom#source('clang', 'max_pattern_length', -1)
 
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns._ = '[a-zA-Z_]\k*\(?'
