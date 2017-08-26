@@ -67,7 +67,7 @@ ls_abbrev() {
     if [[ ! -r $PWD ]]; then
         return
     fi
-    local cmd_ls='ls'
+    local cmd_ls='gls'
 
     local -a opt_ls
     opt_ls=('-GFC' '--color=always')
