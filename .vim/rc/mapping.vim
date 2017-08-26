@@ -13,8 +13,8 @@ xnoremap < <gv
 
 " operator 
 noremap <S-h> ^
-noremap <S-j> }
-noremap <S-k> {
+" noremap <S-j> }
+" noremap <S-k> {
 noremap <S-l> $
 
 " emacs bind on insert mode
