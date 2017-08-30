@@ -3,19 +3,22 @@
 # Powerline
 #---------------------------------------------
 function powerline_precmd() {
-  export PROMPT="
-  $($HOME/.virtualenvs/default/bin/python $ZPLUG_HOME/repos/TD72/powerline-shell/powerline-shell.py $? --shell zsh 2> /dev/null)
-                  $ "
+    PS1="$(powerline-go -error -$? -shell zsh -newline)"
 }
 
 function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}" ; do
-    if [ "$s" = "powerline_precmd" ] ; then
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
       return
     fi
   done
   precmd_functions+=(powerline_precmd)
 }
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi
+
 
 
 function vi_prompt() {
@@ -44,6 +47,6 @@ function vi_prompt() {
     zle -N edit-command-line
 }
 
-vi_prompt
-install_powerline_precmd
+# vi_prompt
+# install_powerline_precmd
 
