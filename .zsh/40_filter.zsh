@@ -6,7 +6,7 @@ zstyle ":anyframe:selector:peco:" command "peco-tmux"
 bindkey '^xj' anyframe-widget-cdr
 
 function cd-ghq {
-  cd -g
+  cd -G
 }
 zle -N cd-ghq
 bindkey '^]' cd-ghq
