@@ -20,16 +20,16 @@ fpath=( \
 
 # XDG Base Directory
 export XDG_CONFIG_HOME=$HOME/.config
-[[ ! -d $XDG_CONFIG_HOME ]] && mkdir $XDG_CONFIG_HOME
+[[ ! -d $XDG_CONFIG_HOME ]] && mkdir -p $XDG_CONFIG_HOME
 
 export XDG_CACHE_HOME=$HOME/.cache
-[[ ! -d $XDG_CACHE_HOME ]] && mkdir $XDG_CACHE_HOME
+[[ ! -d $XDG_CACHE_HOME ]] && mkdir -p $XDG_CACHE_HOME
 
 export XDG_DATA_HOME=$HOME/.local/share
-[[ ! -d $XDG_DATA_HOME ]] && mkdir $XDG_DATA_HOME
+[[ ! -d $XDG_DATA_HOME ]] && mkdir -p $XDG_DATA_HOME
 
 export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
-[[ ! -d $ZSH_CACHE_DIR ]] && mkdir $ZSH_CACHE_DIR
+[[ ! -d $ZSH_CACHE_DIR ]] && mkdir -p $ZSH_CACHE_DIR
 
 # autoload
 autoload -Uz edit-command-line
