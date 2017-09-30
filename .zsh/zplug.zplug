@@ -11,6 +11,10 @@ has_plugin() {
 # local loading
 zplug "zplug/zplug", hook-build: 'zplug --self-manage'
 
+zplug 'justjanne/powerline-go', \
+  as:command, \
+  hook-build: "go get -d && go build" \
+
 # local plugins
 zplug "~/.zsh", \
     from:local, \
@@ -76,10 +80,6 @@ zplug "Valodim/zsh-curl-completion"
 zplug 'Fakerr/git-recall', \
   as:command, \
   use:'git-recall'
-
-zplug 'justjanne/powerline-go', \
-  as:command, \
-  hook-build: "go get -d && go build"
 
 ## uploads golang cross compiled binary
 #zplug "tcnksm/ghr", \
