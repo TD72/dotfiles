@@ -12,6 +12,7 @@ $DOTPATH/.bin/tmuxx
 # Setup zplug && Modules
 #======================================
 export ZPLUG_HOME=$XDG_CACHE_HOME/zplug
+export PATH=$ZPLUG_HOME/bin:$PATH
 if [[ ! -d $ZPLUG_HOME ]] then
   git clone https://github.com/zplug/zplug $ZPLUG_HOME
   source $ZPLUG_HOME/init.zsh && zplug update
