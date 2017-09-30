@@ -166,3 +166,17 @@ repo = 'rizzatti/dash.vim'
 hook_add = '''
   nmap <silent> <leader>d <Plug>DashSearch
 '''
+
+[[plugins]]
+repo = 'edkolev/tmuxline.vim'
+hook_source = '''
+let g:tmuxline_preset = {
+      \'a'    : '#S',
+      \'c'    : ['#(whoami)'],
+      \'win'  : ['#I', '#W'],
+      \'cwin' : ['#I', '#W', '#F'],
+      \'x'    : ['#{battery_percentage} #{battery_icon}', '#{cpu_percentage} #{cpu_icon}'],
+      \'y'    : ['#(date)', '#(ansiweather -l sapporo -w false -h false -p false -a false -s true | cut -d " " -f6,7,8)'],
+      \'z'    : '#H'}
+let g:tmuxline_theme = 'lightline'
+'''
