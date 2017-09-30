@@ -1,1 +1,1 @@
-../common/zsh.sh
+$DOTPATH/lib/init/common/zsh.sh

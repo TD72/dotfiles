@@ -1,1 +1,1 @@
-../common/go.sh
+$DOTPATH/lib/init/common/go.sh

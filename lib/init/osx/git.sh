@@ -1,1 +1,1 @@
-../common/git.sh
+$DOTPATH/lib/init/common/git.sh
