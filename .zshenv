@@ -58,6 +58,8 @@ export GIT_EDITOR=$EDITOR
 if [ -d /usr/local/opt/coreutils/libexec/gnubin ] ; then
   export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
   export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+  export CPPFLAGS="-I/usr/local/opt/openssl/include"
+  export LDFLAGS="-L/usr/local/opt/openssl/lib"
   alias ls='gls -F --color=auto'
 fi
 if [ -d /Library/Tex/texbin ]; then
