@@ -6,14 +6,12 @@ has_plugin() {
     return $status
 }
 
-
-
 # local loading
 zplug "zplug/zplug", hook-build: 'zplug --self-manage'
 
 zplug 'justjanne/powerline-go', \
   as:command, \
-  hook-build: "go get -d && go build" \
+  hook-build: "go get -d && go build"
 
 # local plugins
 zplug "~/.zsh", \
@@ -30,6 +28,11 @@ zplug "so-fancy/diff-so-fancy", \
     as:command, \
     use:diff-so-fancy
 
+zplug "peco/peco", \
+  as:command, \
+  from:gh-r, \
+  use:"*amd64*"
+
 zplug "b4b4r07/peco-tmux.sh", \
     as:command, \
     use:'peco-tmux.sh', \
@@ -40,6 +43,10 @@ zplug "b4b4r07/peco-tmux.sh", \
 #    use:bin/richpager
 
 zplug "b4b4r07/emoji-cli"
+if zplug check 'b4b4r07/emoji-cli'; then
+  export EMOJI_CLI_FILTER="fzy:peco:fzf"
+  export EMOJI_CLI_KEYBIND="^_"
+fi
 
 zplug "mrowa44/emojify", \
     as:command
@@ -62,7 +69,7 @@ zplug "b4b4r07/zsh-vimode-visual", \
 
 zplug "zsh-users/zsh-completions"
 
-zplug "zsh-users/zsh-history-substring-search"
+#zplug "zsh-users/zsh-history-substring-search"
 
 zplug "zsh-users/zsh-syntax-highlighting", \
     defer:1
@@ -70,10 +77,17 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 zplug "plugins/git", \
     from:oh-my-zsh
 
-zplug "mollifier/anyframe"
-
 zplug "b4b4r07/enhancd", \
     use:init.sh
+if zplug check 'b4b4r07/enhancd'; then
+  export ENHANCD_FILTER="fzy:peco-tmux:fzf-tmux:peco"
+  export ENHANCD_COMMAND=cd
+  export ENHANCD_DOT_SHOW_FULLPATH=1
+  export ENHANCD_DISABLE_DOT=0
+  export ENHANCD_DISABLE_HYPHEN=0
+  export ENHANCD_DISABLE_HOME=1
+  export ENHANCD_HOOK_AFTER_CD="ls"
+fi
 
 zplug "Valodim/zsh-curl-completion"
 
@@ -81,7 +95,34 @@ zplug 'Fakerr/git-recall', \
   as:command, \
   use:'git-recall'
 
-## uploads golang cross compiled binary
-#zplug "tcnksm/ghr", \
-    #as:command, \
-    #from:gh-r
+zplug 'mattn/memo', \
+  as:command, \
+  hook-build: "go get -d && go build"
+
+# Install zsh-gomi with fzf
+zplug "junegunn/fzf-bin", \
+    as:command, \
+    from:gh-r, \
+    rename-to:"fzf"
+
+zplug "b4b4r07/zsh-gomi", \
+    as:command, \
+    use:bin/gomi, \
+    on:junegunn/fzf-bin
+
+zplug 'b4b4r07/zsh-history', defer:3, use:init.zsh
+if zplug check 'b4b4r07/zsh-history'; then
+    export ZSH_HISTORY_FILE="$XDG_CACHE_HOME/zsh_history.db"
+    ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r"
+    ZSH_HISTORY_KEYBIND_GET_ALL="^r^a"
+    ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
+    ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
+    ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
+fi
+
+zplug 'marzocchi/zsh-notify'
+if zplug check 'marzocchi/zsh-notify'; then
+  zstyle ':notify:*' error-title
+  zstyle ':notify:*' success-title
+  zstyle ':notify:*' command-complete-timeout 15
+fi

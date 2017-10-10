@@ -3,7 +3,7 @@
 # Vim-like keybind as default
 bindkey -v
 # Vim-like escaping jj keybind{{{
-bindkey -M viins 'jj' vi-cmd-mode
+#bindkey -M viins 'jj' vi-cmd-mode
 
 # Add emacs-like keybind to viins mode
 bindkey -M viins '^F'    forward-char
@@ -13,7 +13,7 @@ bindkey -M viins '^N'    down-line-or-history
 bindkey -M viins '^A'    beginning-of-line
 bindkey -M viins '^E'    end-of-line
 bindkey -M viins '^K'    kill-line
-bindkey -M viins '^R'    history-incremental-pattern-search-backward
+#bindkey -M viins '^R'    history-incremental-pattern-search-backward
 bindkey -M viins '\er'   history-incremental-pattern-search-forward
 bindkey -M viins '^Y'    yank
 bindkey -M viins '^W'    backward-kill-word
@@ -38,13 +38,6 @@ bindkey -M vicmd '?'     vi-history-search-backward
 #
 bindkey -M vicmd 'gg' beginning-of-line
 bindkey -M vicmd 'G'  end-of-line
-
-
-# bind P and N keys
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-bindkey '^P' history-substring-search-up
-bindkey '^N' history-substring-search-down
 
 # Surround a forward word by single quote
 quote-previous-word-in-single() {

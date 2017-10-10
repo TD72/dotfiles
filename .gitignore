@@ -10,3 +10,4 @@
 .xmonad/*
 !.xmonad/xmonad.hs
 
+.zsh/history/*
