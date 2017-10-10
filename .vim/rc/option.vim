@@ -90,6 +90,7 @@ set previewheight=8
 set helpheight=12
 set conceallevel=2 concealcursor=niv
 set colorcolumn=79
+set synmaxcol=200
 
 autocmd MyAutoCmd BufNewFile,BufRead .tmux.conf setf tmux
 autocmd MyAutoCmd BufNewFile,BufRead .envrc setf sh
