@@ -74,6 +74,21 @@ let g:deoplete#enable_camel_case = 1
 " let g:deoplete#auto_complete_start_length = 3
 "
 let g:deoplete#skip_chars = ['(', ')']
+let g:deoplete#auto_complete_delay = 0
+let g:deoplete#file#enable_buffer_path = 1
+let g:deoplete#auto_refresh_delay = 100
+let g:deoplete#max_list = 10
+
+let g:deoplete#ignore_sources.python = 
+      \ ['buffer', 'dictionary', 'member', 'omni', 'tag', 'sylntax', 'around']
+
+let g:deoplete#sources#jedi#statement_length = 0
+let g:deoplete#sources#jedi#short_types = 0
+let g:deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#sources#jedi#worker_threads = 2
+let g:deoplete#sources#jedi#python_path = g:python3_host_prog
+
+
 
 
 " deoplete-go "{{{
