@@ -23,7 +23,9 @@ set guifontwide=Ricty\ for\ Powerline\ Regular\ 12
 
 " Row Number display & highlight
 " set number
-set cursorline
+" set cursorline
+
+set synmaxcol=200
 
 " Matchpairs highlight and flashing per a second.
 set matchpairs& matchpairs+=<:>
