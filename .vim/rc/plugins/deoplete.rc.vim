@@ -79,6 +79,7 @@ let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#auto_refresh_delay = 100
 let g:deoplete#max_list = 10
 
+let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources.python = 
       \ ['buffer', 'dictionary', 'member', 'omni', 'tag', 'sylntax', 'around']
 
