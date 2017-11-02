@@ -42,7 +42,6 @@ export EDITOR=`which nvim`
 export GIT_EDITOR=$EDITOR
 
 # GO path
-export GOROOT=/usr/local/opt/go/libexec
 export GOPATH="$HOME"
 export GOBIN="$GOPATH/bin"
 export PATH=/usr/local/go/bin:$GOBIN:$PATH
