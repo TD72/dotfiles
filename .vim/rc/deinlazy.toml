@@ -37,7 +37,8 @@ hook_add = '''
         \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
 
   nnoremap [denite]f :<C-u>Denite file_mru<CR>
-  nnoremap <silent> [denite]] :<C-u>Denite ghq<CR>
+
+  nnoremap <silent> [denite]] :<C-u>Denite ghq -default-action=cd<CR>
 
   nnoremap [denite]b :<C-u>Denite buffer<CR>
 

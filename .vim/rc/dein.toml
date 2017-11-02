@@ -123,12 +123,18 @@ repo = 'Shougo/context_filetype.vim'
 repo = 'osyo-manga/vim-precious'
 depends = 'Shougo/context_filetype.vim'
 hook_add = '''
+
   autocmd MyAutoCmd User PreciousFileType IndentLinesReset
   let g:precious_enable_switchers = {
   \   "*" : {
   \       "outer_region" : 0
   \   }
   \}
+" NORMALモードのカーソル移動中に頻繁に切り替わるとうざいのでデフォは無効化しておく(helpは例外)
+let g:precious_enable_switch_CursorMoved = { '*': 0, 'help': 1 }
+" INSERTモードのON／OFFに合わせてトグル
+autocmd MyAutoCmd InsertEnter * :PreciousSwitch
+autocmd MyAutoCmd InsertLeave * :PreciousReset
 '''
 
 [[plugins]]
@@ -166,6 +172,10 @@ repo = 'tsukkee/unite-tag'
 
 [[plugins]]
 repo = 'osyo-manga/vim-brightest'
+hook_add = '''
+let g:brightest#enable_on_CursorHold = 1
+'''
+
 
 [[plugins]]
 repo = 'Shougo/unite-outline'

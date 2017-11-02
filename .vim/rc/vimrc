@@ -49,6 +49,11 @@ if has('vim_starting')
   call s:source_rc('init.rc.vim')
 endif
 
+if has('nvim')
+  call s:source_rc('neovim.rc.vim')
+endif
+
+
 call s:source_rc('dein.rc.vim')
 
 if !has('vim_starting')
@@ -61,10 +66,6 @@ endif
 call s:source_rc('option.vim')
 call s:source_rc('mapping.vim')
 call s:source_rc('appearance.vim')
-
-if has('nvim')
-  call s:source_rc('neovim.rc.vim')
-endif
 
 set secure
 
