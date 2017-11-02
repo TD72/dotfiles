@@ -38,6 +38,9 @@ hook_source = '''
 '''
 
 [[plugins]]
+repo = 'fszymanski/deoplete-emoji'
+
+[[plugins]]
 repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_i = 1
