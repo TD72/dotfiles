@@ -561,15 +561,6 @@ endfunction
 '''
 
 [[plugins]]
-repo = 'haya14busa/vim-gtrans'
-on_map = '<Plug>'
-hook_add = '''
-  " imap <Plug>(operator-gtrans-buffer)
-  " omap sg <Plug>(operator-gtrans-echom)
-  " vmap sg <Plug>(operator-gtrans-echom)
-'''
-
-[[plugins]]
 repo = 'rust-lang/rust.vim'
 on_ft = 'rust'
 hook_source = '''
