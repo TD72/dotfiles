@@ -159,20 +159,6 @@ hook_add = 'nmap <Leader>q <Plug>(quickrun)'
 hook_source = 'source ~/.vim/rc/plugins/vim-quickrun.rc.vim'
 
 [[plugins]]
-repo = 'osyo-manga/vim-watchdogs'
-on_source = 'vim-quickrun'
-hook_post_source = '''
-    call watchdogs#setup(g:quickrun_config)
-    let g:watchdogs_check_BufWritePost_enable = 1
-    let g:watchdogs_check_CursorHold_enable = 1
-'''
-
-[[plugins]]
-repo = 'jceb/vim-hier'
-on_source = 'osyo-manga/vim-wathchdogs'
-
-
-[[plugins]]
 repo = 'majutsushi/tagbar'
 on_cmd = 'TagbarToggle'
 hook_add = '''
