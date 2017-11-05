@@ -197,14 +197,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/neocomplete.vim'
-depends = 'context_filetype.vim'
-if = 'has("lua")'
-on_i = 1
-hook_add = 'let g:neocomplete#enable_at_startup = 1'
-hook_source = 'source ~/.vim/rc/plugins/neocomplete.rc.vim'
-
-[[plugins]]
 repo = 'Shougo/neosnippet'
 depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
@@ -231,13 +223,13 @@ on_i = 1
 
 [[plugins]]
 repo = 'Shougo/neoinclude.vim'
-on_if = 1
+on_i = 1
 
 [[plugins]]
 repo = 'Shougo/echodoc'
 on_event = 'CompleteDone'
 hook_source = '''
-  let g:echodoc#type = 'signature'
+"let g:echodoc#type = 'signature'
   call echodoc#enable()
 '''
 
@@ -311,8 +303,6 @@ hook_add = '''
 #depends = 'open-browser.vim'
 
 
-
-
 [[plugins]]
 repo = 'rhysd/accelerated-jk'
 on_map = [['n', '<Plug>']]
@@ -320,7 +310,6 @@ hook_add = '''
     nmap <silent>j <Plug>(accelerated_jk_gj)
     nmap <silent>k <Plug>(accelerated_jk_gk)
 '''
-
 
 # [[plugins]]
 # repo = 'lambdalisue/vim-gita'
@@ -338,12 +327,6 @@ hook_add = '''
 #
 #     let git#features#commit#enable_default_mappings = 0
 # '''
-#
-[[plugins]]
-repo = 'davidhalter/jedi-vim'
-if = "!has('nvim')"
-on_ft = 'python'
-hook_source = 'source ~/.vim/rc/plugins/jedi.rc.vim'
 
 # [[plugins]]
 # repo = 'neomake/neomake'
@@ -392,7 +375,6 @@ hook_add = '''
                 \	'indentation': '    '
                 \}
 '''
-
 
 [[plugins]]
 repo = 'koron/codic-vim'
@@ -518,32 +500,36 @@ hook_add = '''
     vmap <silent>iy <Plug>(textobj-syntax-i)
 '''
 
+# [[plugins]]
+# repo = 'fatih/vim-go'
+# on_ft = 'go'
+# hook_source = '''
+#     let g:go#use_vimproc = 1
+#     let g:go_autodetect_gopath = 1
+#     let g:go_highlight_functions = 1
+#     let g:go_highlight_methods = 1
+#     let g:go_highlight_fields = 1
+#     let g:go_highlight_types = 1
+#     let g:go_highlight_operators = 1
+#     let g:go_highlight_build_constraints = 1
+#
+#     let g:go_fmt_command = "goimports"
+#
+#     let g:go_def_mapping_enabled = 1
+#
+#     " let g:go_bin_path = $GOPATH."/bin"
+#
+#    
+#     nnoremap [go] <Nop>
+#     nmap <Leader>o [go]
+#     nnoremap [go]d <Plug>(go-doc)
+#     nnoremap [go]db <Plug>(go-doc-browser)
+#    
+# '''
+
 [[plugins]]
-repo = 'fatih/vim-go'
-on_ft = 'go'
-hook_source = '''
-    let g:go#use_vimproc = 1
-    let g:go_autodetect_gopath = 1
-    let g:go_highlight_functions = 1
-    let g:go_highlight_methods = 1
-    let g:go_highlight_fields = 1
-    let g:go_highlight_types = 1
-    let g:go_highlight_operators = 1
-    let g:go_highlight_build_constraints = 1
-
-    let g:go_fmt_command = "goimports"
-
-    let g:go_def_mapping_enabled = 1
-
-    " let g:go_bin_path = $GOPATH."/bin"
-
-    
-    nnoremap [go] <Nop>
-    nmap <Leader>o [go]
-    nnoremap [go]d <Plug>(go-doc)
-    nnoremap [go]db <Plug>(go-doc-browser)
-    
-'''
+repo = 'zchee/nvim-go'
+build = 'make'
 
 [[plugins]]
 repo = 'lervag/vimtex'
