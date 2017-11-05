@@ -101,7 +101,7 @@ let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const
 let g:deoplete#sources#go#use_cache = 1
 if has('mac')
   let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/darwin_amd64')
-  let g:deoplete#sources#go#cgo#libclang_path = '/usr/local/Cellar/llvm/4.0.0_1/lib/libclang.dylib'
+  let g:deoplete#sources#go#cgo#libclang_path = '/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib'
 else
   let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/linux_amd64')
   let g:deoplete#sources#go#cgo#libclang_path = '/usr/lib/libclang.so'
