@@ -44,7 +44,7 @@ zplug "b4b4r07/peco-tmux.sh", \
 
 zplug "b4b4r07/emoji-cli"
 if zplug check 'b4b4r07/emoji-cli'; then
-  export EMOJI_CLI_FILTER="fzy:peco:fzf"
+  export EMOJI_CLI_FILTER=$INTERACTIVE_FILTER
   export EMOJI_CLI_KEYBIND="^_"
 fi
 
@@ -77,7 +77,7 @@ zplug "zsh-users/zsh-syntax-highlighting", \
 zplug "b4b4r07/enhancd", \
     use:init.sh
 if zplug check 'b4b4r07/enhancd'; then
-  export ENHANCD_FILTER="fzy:peco-tmux:fzf-tmux:peco"
+  export ENHANCD_FILTER=$INTERACTIVE_FILTER
   export ENHANCD_COMMAND=cd
   export ENHANCD_DOT_SHOW_FULLPATH=1
   export ENHANCD_DISABLE_DOT=0
