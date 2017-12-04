@@ -213,6 +213,12 @@ let g:ale_linters = {
 \   'python': ['flake8', 'mypy'],
 \   'go': ['gofmt'],
 \}
+let g:ale_python_mypy_options = join([
+      \ "--fast-parser",
+      \ "--strict-optional",
+      \ "--disallow-untyped-defs",
+      \ "--disallow-untyped-calls",
+      \ "--ignore-missing-imports"], " ")
 
 " ALE用プレフィックス
 " エラー行にジャンプ
