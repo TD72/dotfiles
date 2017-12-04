@@ -227,6 +227,22 @@ nmap <silent> <Leader><C-N> <Plug>(ale_next)
 '''
 
 [[plugins]]
+repo = 'maximbaz/lightline-ale'
+depends = ['itchyny/lightline.vim', 'w0rp/ale']
+hook_add = '''
+  let g:lightline.component_expand= {
+        \ 'linter_warning': 'lightline#ale#warnings',
+        \ 'linter_errors': 'lightline#ale#errors',
+        \ 'linter_ok': 'lightline#ale#ok',
+        \ }
+  let g:lightline.component_type = {
+        \ 'linter_warnings': 'warning',
+        \ 'linter_errors': 'error',
+        \ }
+'''
+
+
+[[plugins]]
 repo = 'airblade/vim-gitgutter'
 hook_add = '''
 let g:gitgutter_map_keys = 0

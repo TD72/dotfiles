@@ -4,7 +4,10 @@ let g:lightline = {
 	\ 'mode_map': {'c': 'NORMAL'},
 	\ 'active': {
 	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ], [ 'filepath'] ],
-	\   'right': [ [''], [ 'filetype', 'fileencoding', 'fileformat', 'lineinfo', 'percent'] ],
+	\   'right': [
+        \     [ 'filetype', 'fileencoding', 'fileformat', 'lineinfo', 'percent'], 
+        \     ['linter_errors', 'linterwarnings', 'linter_ok'],
+        \   ],
 	\ },
 	\ 'component': {
 	\   'lineinfo': ' %3l:%-2v',
