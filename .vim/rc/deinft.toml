@@ -17,6 +17,8 @@ _ = '''
 python = '''
   highlight pythonSelf ctermfg=61 guifg=#5f5faf
   match pythonSelf /\<self\>/
+  highlight pythonLogger ctermfg=125 guifg=#af005f
+  match pythonLogger /\<logger\>/
 '''
 
 go = '''
