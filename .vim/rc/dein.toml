@@ -225,7 +225,7 @@ repo = 'airblade/vim-gitgutter'
 hook_add = '''
 let g:gitgutter_map_keys = 0
 let g:gitgutter_grep_command = 'rg'
-set updatetime=250
+set updatetime=5000
 '''
 
 
