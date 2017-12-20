@@ -355,14 +355,6 @@ hook_add = '''
 #
 
 [[plugins]]
-repo = 'osyo-manga/vim-over'
-hook_add = '''
-    nnoremap <silent> <Leader>/ :OverCommandLine<CR>
-    nnoremap <silent> <Leader>? :OverCommandLine<CR>%s/<C-r><C-w>//g<Left><Left>
-'''
-
-
-[[plugins]]
 repo = 'mattn/emmet-vim'
 on_map = [['n', '<Plug>']]
 on_ft = ['html', 'html5', 'php', 'xml', 'css']
