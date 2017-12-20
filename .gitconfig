@@ -26,6 +26,7 @@
     a = add
     ap = add -p
     d = diff
+    dc = diff --cached
     dh = diff HEAD
     dhh = diff HEAD^
     am = commit --amend
