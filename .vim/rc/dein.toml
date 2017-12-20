@@ -248,6 +248,9 @@ let g:gitgutter_grep_command = 'rg'
 set updatetime=5000
 '''
 
+[[plugins]]
+repo = 'machakann/vim-highlightedyank'
+
 
 # [[plugins]]
 # repo = 'edkolev/tmuxline.vim'
