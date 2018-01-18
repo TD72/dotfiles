@@ -55,6 +55,7 @@ autoload -Uz terminfo
 autoload -Uz cdr
 autoload -Uz chpwd_recent_dirs
 add-zsh-hook chpwd chpwd_recent_dirs
+autoload penv && penv
 
 zmodload zsh/zpty
 

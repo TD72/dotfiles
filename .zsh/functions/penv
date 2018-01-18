@@ -1,0 +1,84 @@
+#!/bin/sh
+
+_penv_help()
+{
+    echo "'penv' is interactive virtualenv and pythonz wrapper"
+    echo
+    echo "Usage:"
+    echo "      install: install python interpreter using pythonz"
+    echo
+    echo "      new: create new venv"
+    echo
+    echo "      del: delete venv"
+    echo
+    echo "      activate: activate venv"
+}
+
+_penv_install()
+{
+    FILTER="$(echo ${INTERACTIVE_FILTER} | cut -d ':' -f 1)"
+    PENV_PYTHON_VERSION="$(pythonz list -a | $FILTER | tr -d " ")"
+    echo "install python ${PENV_PYTHON_VERSION} ......"
+    pythonz install "${PENV_PYTHON_VERSION}" &
+    tail -f "${HOME}/.pythonz/log/build.log"
+}
+
+_penv_new()
+{
+    FILTER="$(echo ${INTERACTIVE_FILTER} | cut -d ':' -f 1)"
+    PENV_PYTHON_VERSION="$(pythonz list | $FILTER | cut -d '-' -f 2)"
+    if [ -n "$PENV_PYTHON_VERSION" ]; then
+        cd $HOME/.virtualenvs
+        echo -n "virtualenv name: "
+        read PENV_VENV_NAME
+        if [ -n "$PENV_VENV_NAME" ]; then
+            virtualenv -p `pythonz locate ${PENV_PYTHON_VERSION}` $PENV_VENV_NAME
+        fi
+    fi
+}
+
+
+_penv_del()
+{
+    cd $HOME/.virtualenvs/
+    FILTER="$(echo ${INTERACTIVE_FILTER} | cut -d ':' -f 1)"
+    PENV_VENV_NAME="$(ls -1 $HOME/.virtualenvs/ | $FILTER)"
+    if [ -n "$PENV_VENV_NAME" ]; then
+        rm -r "$PENV_VENV_NAME"
+    fi
+}
+
+
+_penv_activate()
+{
+    cd $HOME/.virtualenvs/
+    FILTER="$(echo ${INTERACTIVE_FILTER} | cut -d ':' -f 1)"
+    PENV_VENV_NAME="$(ls -1 $HOME/.virtualenvs/ | $FILTER)"
+    if [ -n "$PENV_VENV_NAME" ]; then
+        . "$PENV_VENV_NAME/bin/activate"
+    fi
+}
+
+
+penv()
+{
+    case "$1" in
+        "install")
+            _penv_install
+            ;;
+        "new")
+            _penv_new
+            ;;
+        "del")
+            _penv_del
+            ;;
+        "activate")
+            _penv_activate
+            ;;
+        *)
+            _penv_help
+            ;;
+    esac
+}
+
+# vim:set fenc=utf-8 ff=unix expandtab sw=4 ts=4:
