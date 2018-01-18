@@ -28,11 +28,10 @@ _penv_new()
     FILTER="$(echo ${INTERACTIVE_FILTER} | cut -d ':' -f 1)"
     PENV_PYTHON_VERSION="$(pythonz list | $FILTER | cut -d '-' -f 2)"
     if [ -n "$PENV_PYTHON_VERSION" ]; then
-        cd $HOME/.virtualenvs
         echo -n "virtualenv name: "
         read PENV_VENV_NAME
         if [ -n "$PENV_VENV_NAME" ]; then
-            virtualenv -p `pythonz locate ${PENV_PYTHON_VERSION}` $PENV_VENV_NAME
+            virtualenv -p `pythonz locate ${PENV_PYTHON_VERSION}` $HOME/.virtualenvs/$PENV_VENV_NAME
         fi
     fi
 }
@@ -40,7 +39,6 @@ _penv_new()
 
 _penv_del()
 {
-    cd $HOME/.virtualenvs/
     FILTER="$(echo ${INTERACTIVE_FILTER} | cut -d ':' -f 1)"
     PENV_VENV_NAME="$(ls -1 $HOME/.virtualenvs/ | $FILTER)"
     if [ -n "$PENV_VENV_NAME" ]; then
@@ -51,11 +49,10 @@ _penv_del()
 
 _penv_activate()
 {
-    cd $HOME/.virtualenvs/
     FILTER="$(echo ${INTERACTIVE_FILTER} | cut -d ':' -f 1)"
-    PENV_VENV_NAME="$(ls -1 $HOME/.virtualenvs/ | $FILTER)"
+    PENV_VENV_NAME="$(ls -1 $HOME/.virtualenvs | $FILTER)"
     if [ -n "$PENV_VENV_NAME" ]; then
-        . "$PENV_VENV_NAME/bin/activate"
+        . "$HOME/.virtualenvs/$PENV_VENV_NAME/bin/activate"
     fi
 }
 
