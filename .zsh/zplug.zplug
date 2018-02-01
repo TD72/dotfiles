@@ -9,7 +9,7 @@ has_plugin() {
 # local loading
 zplug "zplug/zplug", hook-build: 'zplug --self-manage'
 
-zplug 'justjanne/powerline-go', \
+zplug 'td72/powerline-go', \
   as:command, \
   hook-build: "go get -d && go build"
 

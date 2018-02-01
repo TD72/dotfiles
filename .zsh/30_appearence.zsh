@@ -3,7 +3,7 @@
 # Powerline
 #---------------------------------------------
 function powerline_precmd() {
-    PS1="$(powerline-go -error -$? -shell zsh -newline)"
+    PS1="$(powerline-go -error -$? -shell zsh -newline -east-asian-width -modules venv,host,ssh,cwd,perms,git,hg,jobs,exit,root)"
 }
 
 function install_powerline_precmd() {
