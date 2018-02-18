@@ -79,6 +79,8 @@ if [ -d /usr/local/opt/coreutils/libexec/gnubin ]; then
   export PKG_CONFIG_PATH=/usr/local/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH
   # for cuda
   export DYLD_LIBRARY_PATH=$CUDA_HOME/lib:$DYLD_LIBRARY_PATH
+  # for llvm
+  export PATH=/usr/local/opt/llvm/bin:$PATH
 
   alias ls='gls -F --color=auto'
 fi
