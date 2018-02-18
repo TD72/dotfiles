@@ -594,3 +594,7 @@ on_cmd = 'ImpSort'
 hook_add = 'autocmd BufWritePre *.py ImpSort!'
 hook_source = 'let g:impsort_highlight_imported = 1'
 
+
+[[plugins]]
+repo = 'lambdalisue/suda.vim'
+on_path = 'suda://'

@@ -90,6 +90,17 @@ repo = 'vim-jp/vim-cpp'
 on_ft = 'cpp'
 
 [[plugins]]
+repo = 'octol/vim-cpp-enhanced-highlight'
+on_ft = 'cpp'
+hook_add = '''
+  let g:cpp_class_decl_highlight = 1
+  let g:cpp_class_scope_highlight = 1
+  let g:cpp_experimental_template_highlight = 1
+  let g:cpp_concepts_highlight = 1
+
+'''
+
+[[plugins]]
 repo = 'cespare/vim-toml'
 on_ft = 'toml'
 
@@ -217,6 +228,9 @@ let g:ale_python_mypy_options = join([
       \ "--disallow-untyped-defs",
       \ "--disallow-untyped-calls",
       \ "--ignore-missing-imports"], " ")
+
+let g:ale_cpp_clang_options = '-std=c++11 -Wall -I./include'
+" let g:ale_cpp_clangtidy_options = '-I./include'
 
 " ALE用プレフィックス
 " エラー行にジャンプ
