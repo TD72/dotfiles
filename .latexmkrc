@@ -4,6 +4,8 @@ $latex    = 'platex -synctex=1 %O %S';
 # $pdflatex    = 'pdflatex';
 # $pdftex = 'pdftex --output-format=pdf';
 $bibtex   = 'pbibtex %O %S';
+$biber = "biber --bblencoding=utf8 -u -U --output_safechars";
+# $bibtex   = 'biber -l zh__pinyin %O %S';
 # $dvipdf   = 'dvips %O %S';
 $dvipdf   = 'dvipdfmx %O %S';
 # $dvipdf   = 'dvipdfmx -f ~/.fontsmap/ipa.map %O %S';
