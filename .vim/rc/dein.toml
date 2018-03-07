@@ -265,6 +265,8 @@ set updatetime=5000
 [[plugins]]
 repo = 'machakann/vim-highlightedyank'
 
+[[plugins]]
+repo = 'dearrrfish/vim-applescript'
 
 # [[plugins]]
 # repo = 'edkolev/tmuxline.vim'
@@ -279,3 +281,4 @@ repo = 'machakann/vim-highlightedyank'
 #       \'z'    : '#H'}
 # let g:tmuxline_theme = 'lightline'
 # '''
+
