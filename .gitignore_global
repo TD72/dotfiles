@@ -3,3 +3,11 @@
 __pycache__
 .direnv
 .envrc
+
+*.aux
+*.dvi
+*.fdb_latexmk
+*.fls
+*.log
+*.pdf
+*.synctex.gz
