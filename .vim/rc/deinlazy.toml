@@ -598,3 +598,7 @@ hook_source = 'let g:impsort_highlight_imported = 1'
 [[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_path = 'suda://'
+
+[[plugins]]
+repo = 'aliva/vim-fish'
+on_ft = ['fish']
