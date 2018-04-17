@@ -1,0 +1,79 @@
+{
+  "title": "AquaSKK workaround",
+  "rules": [
+    {
+      "description": "Change control+j to 英数 & かな in Microsoft PowerPoint.",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ],
+              "optional": [
+                "caps_lock",
+                "shift",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "japanese_eisuu"
+            },
+            {
+              "key_code": "japanese_kana"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.Powerpoint$"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "Change control+j to 英数 & かな in Microsoft Excel.",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "j",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ],
+              "optional": [
+                "caps_lock",
+                "shift",
+                "option"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "japanese_eisuu"
+            },
+            {
+              "key_code": "japanese_kana"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com\\.microsoft\\.Excel$"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

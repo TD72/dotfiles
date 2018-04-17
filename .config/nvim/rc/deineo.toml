@@ -46,6 +46,6 @@ depends = 'context_filetype.vim'
 on_i = 1
 hook_source = '''
   let g:deoplete#enable_at_startup = 1
-  source ~/.vim/rc/plugins/deoplete.rc.vim
+  source ~/.config/nvim/rc/plugins/deoplete.rc.vim
 '''
 

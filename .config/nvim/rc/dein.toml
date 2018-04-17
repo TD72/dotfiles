@@ -7,7 +7,7 @@ build = 'make'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
-hook_add = 'source ~/.vim/rc/plugins/lightline.rc.vim'
+hook_add = 'source ~/.config/nvim/rc/plugins/lightline.rc.vim'
 
 [[plugins]]
 repo = 'Yggdroot/indentLine'
@@ -168,7 +168,7 @@ repo = 'zplug/vim-zplug'
 
 [[plugins]]
 repo = 'kana/vim-submode'
-hook_add = 'source ~/.vim/rc/plugins/submode.rc.vim'
+hook_add = 'source ~/.config/nvim/rc/plugins/submode.rc.vim'
 
 [[plugins]]
 repo = 'chemzqm/vim-easygit'

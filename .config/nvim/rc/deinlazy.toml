@@ -25,7 +25,7 @@ depends = 'vim-easygit'
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = '''
-  source ~/.vim/rc/plugins/denite.rc.vim
+  source ~/.config/nvim/rc/plugins/denite.rc.vim
 '''
 hook_add = '''
   nnoremap [denite] <Nop>
@@ -142,7 +142,7 @@ depends = 'unite.vim'
 on_map = [['n', '<Plug>']]
 on_if = "isdirectory(bufname('%'))"
 hook_add = 'nnoremap <silent> <Leader>e :VimFiler -simple -split -winwidth=30 -no-quit<CR>'
-hook_source = 'source ~/.vim/rc/plugins/vimfiler.rc.vim'
+hook_source = 'source ~/.config/nvim/rc/plugins/vimfiler.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
@@ -156,7 +156,7 @@ hook_add = '''
 repo = 'thinca/vim-quickrun'
 on_map = '<Plug>'
 hook_add = 'nmap <Leader>q <Plug>(quickrun)'
-hook_source = 'source ~/.vim/rc/plugins/vim-quickrun.rc.vim'
+hook_source = 'source ~/.config/nvim/rc/plugins/vim-quickrun.rc.vim'
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
@@ -174,7 +174,7 @@ hook_add = '''
     nmap <Leader>, [srce]
     nnoremap [srce] :SrcExplToggle<CR>
 '''
-hook_source = 'source ~/.vim/rc/plugins/SrcExpl.rc.vim'
+hook_source = 'source ~/.config/nvim/rc/plugins/SrcExpl.rc.vim'
 
 [[plugins]]
 repo = 'tyru/caw.vim'
@@ -261,7 +261,7 @@ hook_add = '''
     nnoremap ,j :<C-u>Ref webdict je<Space>
     nnoremap ,e :<C-u>Ref webdict ej<Space>
 '''
-hook_source = 'source ~/.vim/rc/plugins/ref.rc.vim'
+hook_source = 'source ~/.config/nvim/rc/plugins/ref.rc.vim'
 
 
 
