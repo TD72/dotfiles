@@ -230,7 +230,9 @@ let g:ale_python_mypy_options = join([
       \ "--ignore-missing-imports"], " ")
 
 let g:ale_cpp_clang_options = '-std=c++11 -Wall -I./include'
-" let g:ale_cpp_clangtidy_options = '-I./include'
+let g:ale_cpp_clangtidy_options = '-I./include'
+let g:ale_c_clang_options = '-std=c11 -Wall -I./include'
+let g:ale_c_clangtidy_options = '-I./include'
 
 " ALE用プレフィックス
 " エラー行にジャンプ

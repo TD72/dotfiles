@@ -95,6 +95,7 @@ set synmaxcol=200
 autocmd MyAutoCmd BufNewFile,BufRead .tmux.conf setf tmux
 autocmd MyAutoCmd BufNewFile,BufRead .envrc setf sh
 autocmd MyAutoCmd BufNewFile,BufRead *.fish setf fish
+autocmd MyAutoCmd BufNewFile,BufRead *.h setf c
 
 
 " Restore Position:
