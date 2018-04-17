@@ -297,10 +297,13 @@ hook_add = '''
     nnoremap <Leader>W :<C-u>W3m<Space><C-r>+
 '''
 
-#[[plugins]]
-#repo = 'kannokanno/previm'
-#on_cmd = 'PrevimOpen'
-#depends = 'open-browser.vim'
+[[plugins]]
+repo = 'kannokanno/previm'
+on_cmd = 'PrevimOpen'
+depends = 'open-browser.vim'
+hook_add = '''
+  let g:previm_open_cmd = 'open'
+'''
 
 
 [[plugins]]
