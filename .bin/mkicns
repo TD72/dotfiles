@@ -1,0 +1,23 @@
+#!/bin/bash
+
+TARGET_IMAGE=$1
+ICON_NAME=${TARGET_IMAGE%.*}
+
+SIZES=("1024" "512" "256" "128" "32" "16")
+DENSITIES=("144" "72")
+
+OUTPUT_DIR=./${ICON_NAME}.iconset
+mkdir -p $OUTPUT_DIR
+
+for SIZE in ${SIZES[@]}; do
+    for DENSITY in ${DENSITIES[@]}; do
+        [ $DENSITY == "144" ] && DENSITY_STR="@2x" || DENSITY_STR=""
+        convert ${TARGET_IMAGE} \
+            -resize ${SIZE}x${SIZE}! \
+            -density $DENSITY \
+            -units PixelsPerInch \
+            $OUTPUT_DIR/icon_${SIZE}x${SIZE}${DENSITY_STR}.png;
+    done
+done
+
+iconutil -c icns $OUTPUT_DIR
