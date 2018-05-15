@@ -117,11 +117,7 @@ eval "$(rbenv init - --no-rehash)"
 export GITCFG=$XDG_CONFIG_HOME/git-cfg
 
 # node
-if [[ -s $HOME/.nvm/nvm.sh ]]; then
-  . $HOME/.nvm/nvm.sh
-  npm_dir=${NVM_PATH}_modeuls
-  export NODE_PATH=$npm_dir
-fi
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # secrets
 [[ -f ~/.secrets/secret.zsh ]] && source ~/.secrets/secret.zsh
