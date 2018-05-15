@@ -605,3 +605,7 @@ on_path = 'suda://'
 [[plugins]]
 repo = 'aliva/vim-fish'
 on_ft = ['fish']
+
+[[plugins]]
+repo = 'posva/vim-vue'
+on_ft = ['vue']
