@@ -1,3 +1,15 @@
+#[[plugins]]
+#repo = 'lifepillar/vim-solarized8'
+#hook_add = '''
+#  let g:solarized_visibility="low"
+#  let g:solarized_diffmode = "bold"
+#  let g:solarized_termtrans=1
+#  let g:solarized_statusline = "normal"
+#  let g:solarized_term_italic=1
+#  let g:solarized_extra_hi_groups = 1
+#  let g:solarized_use16 = 0
+#'''
+
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
@@ -14,6 +26,13 @@ repo = 'Yggdroot/indentLine'
 hook_add = '''
   let g:indentLine_faster = 1
   let g:indentLine_enabled = 1
+'''
+[[plugins]]
+repo = 'KeitaNakamura/neodark.vim'
+depends = 'itchyny/lightline.vim'
+hook_add = '''
+  let g:neodark#use_256color = 0
+  let g:lightline.colorscheme = 'neodark'
 '''
 
 [[plugins]]

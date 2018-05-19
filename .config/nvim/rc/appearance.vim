@@ -1,28 +1,16 @@
 set t_Co=256
-syntax enable
 
-set termguicolors
+if exists('+termguicolors')
+  set termguicolors
+endif
 let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-let g:solarized_visibility="low"
-let g:solarized_diffmode = "bold"
-let g:solarized_termtrans=1
-let g:solarized_statusline = "normal"
-let g:solarized_term_italic=1
-let g:solarized_extra_hi_groups = 1
-let g:solarized_use16 = 0
+
 set background=dark
-colorscheme solarized8_flat
+colorscheme neodark
 
-" if exists('g:nyaovim_version')
-    " colorscheme molokai
-" endif
-
-
-" colorscheme molokai
-
-set guifont=Ricty\ for\ Powerline\ Regular\ 12
-set guifontwide=Ricty\ for\ Powerline\ Regular\ 12
+set guifont=Cica\ 12
+set guifontwide=Cica\ 12
 
 " Row Number display & highlight
 " set number
