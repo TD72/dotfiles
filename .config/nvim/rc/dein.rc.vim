@@ -17,9 +17,6 @@ call dein#begin(s:path, [expand('<sfile>')]
 
 call dein#load_toml('~/.config/nvim/rc/dein.toml', {'lazy': 0})
 call dein#load_toml('~/.config/nvim/rc/deinlazy.toml', {'lazy': 1})
-if has('nvim')
-    call dein#load_toml('~/.config/nvim/rc/deineo.toml', {})
-endif
 call dein#load_toml('~/.config/nvim/rc/deinft.toml')
 " if g:gonvim_running
 "     call dein#load_toml('~/.config/nvim/rc/deingon.toml', {})

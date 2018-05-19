@@ -79,36 +79,3 @@ let g:deoplete#file#enable_buffer_path = 1
 let g:deoplete#auto_refresh_delay = 100
 let g:deoplete#max_list = 10
 
-let g:deoplete#ignore_sources = {}
-let g:deoplete#ignore_sources.python = 
-      \ ['buffer', 'dictionary', 'member', 'omni', 'tag', 'sylntax', 'around']
-
-let g:deoplete#sources#jedi#statement_length = 0
-let g:deoplete#sources#jedi#short_types = 0
-let g:deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#sources#jedi#worker_threads = 2
-let g:deoplete#sources#jedi#python_path = g:python3_host_prog
-
-
-
-
-" deoplete-go "{{{
-" Path to python interpreter for neovim
-" Skip the check of neovim module
-let g:python3_host_skip_check = 1
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#use_cache = 1
-if has('mac')
-  let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/darwin_amd64')
-  let g:deoplete#sources#go#cgo#libclang_path = '/usr/local/Cellar/llvm/5.0.0/lib/libclang.dylib'
-else
-  let g:deoplete#sources#go#json_directory = expand('~/.cache/deoplete/go/linux_amd64')
-  let g:deoplete#sources#go#cgo#libclang_path = '/usr/lib/libclang.so'
-endif
-
-let g:deoplete#sources#go#cgo = 1
-"}}}
-
-
-" call deoplete#enable_logging('DEBUG', 'deoplete.log')
