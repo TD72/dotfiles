@@ -42,6 +42,8 @@ endfunction
 " release autogroup in Myautocmd
 augroup MyAutoCmd
     autocmd!
+    autocmd FileType,Syntax,BufNewFile,BufNew,BufRead *?
+          \ call vimrc#on_filetype()
 augroup END
 
 " Vim Package Manager
@@ -56,11 +58,16 @@ endif
 
 call s:source_rc('dein.rc.vim')
 
+if has('vim_starting') && !empty(argv())
+  call vimrc#on_filetype()
+endif
+
 if !has('vim_starting')
   call dein#call_hook('source')
   call dein#call_hook('post_source')
 
   syntax enable
+  filetype plugin indent on
 endif 
 
 call s:source_rc('option.vim')
@@ -69,4 +76,3 @@ call s:source_rc('appearance.vim')
 
 set secure
 
-filetype plugin indent on
