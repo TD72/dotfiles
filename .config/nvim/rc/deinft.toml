@@ -1,8 +1,4 @@
 hook_add = '''
-" Python
-let g:python_highlight_all = 1
-let python_highlight_all = 1
-
 " Tex
 let g:tex_flavor = 'latex'
 let g:tex_fold_enabled = 1
@@ -13,82 +9,84 @@ let g:tex_fold_enabled = 1
 [ftplugin]
 
 _ = '''
-  " Disable automatically insert comment.
-  setl formatoptions-=ro
-  setl formatoptions+=mMBl
+" Disable automatically insert comment.
+setl formatoptions-=ro
+setl formatoptions+=mMBl
 
-  if &filetype !=# 'help'
-    setl foldtext=FoldCCtext()
-  endif
-  if !&l:modifiable
-    setl nofoldenable
-    setl nofoldenable
-    setl foldcolumn = 0
-    setl colorcolumn =
-  endif
+if &filetype !=# 'help'
+  setl foldtext=FoldCCtext()
+endif
+if !&l:modifiable
+  setl nofoldenable
+  setl nofoldenable
+  setl foldcolumn = 0
+  setl colorcolumn =
+endif
 '''
 
 c_cpp = '''
-    setl expandtab
-    setl tabstop=2
-    setl shiftwidth=2
-    setl softtabstop=2
-    setl commentstring=//%s
+setl expandtab
+setl tabstop=4
+setl shiftwidth=2
+setl softtabstop=2
+setl commentstring=//%s
 '''
-python = '''
-    setl expandtab
-    setl tabstop=4
-    setl shiftwidth=4
-    setl softtabstop=4
-    highlight pythonSelf ctermfg=61 guifg=#5f5faf
-    syn keyword pythonSelf self
-    highlight pythonLogger ctermfg=125 guifg=#af005f
-    match pythonLogger /\<logger\>/
-'''
-go = '''
-    setl noexpandtab
-    setl tabstop=4
-    setl shiftwidth=4
-    setl softtabstop=4
-    setl commentstring=//%s
 
-    highlight default link goErr WarningMsg
-    match goErr /\<err\>/
+python = '''
+setl expandtab
+setl tabstop=4
+setl shiftwidth=4
+setl softtabstop=4
+let g:__python_read_test__ = "b"
+"syn match pythonOperator "\(+\|=\|-\|\^\|\*\|<\|>\|\)"
+"hi link pythonOperator Special
+
+'''
+
+go = '''
+setl noexpandtab
+setl tabstop=4
+setl shiftwidth=4
+setl softtabstop=4
+setl commentstring=//%s
+
+highlight default link goErr WarningMsg
+match goErr /\<err\>/
 '''
 javascript = '''
-    setl expandtab
-    setl tabstop=2
-    setl shiftwidth=2
-    setl softtabstop=2
+setl expandtab
+setl tabstop=2
+setl shiftwidth=2
+setl softtabstop=2
 '''
 
 make = '''
-    setl expandtab
-    setl noexpandtab
-    setl tabstop=8
-    setl shiftwidth=8
-    setl softtabstop=8
+setl expandtab
+setl noexpandtab
+setl tabstop=8
+setl shiftwidth=8
+setl softtabstop=8
 '''
 
 vim = '''
-    setl expandtab
-    setl tabstop=2
-    setl shiftwidth=2
-    setl softtabstop=2
+setl expandtab
+setl tabstop=2
+setl shiftwidth=2
+setl softtabstop=2
 '''
 
 vue = '''
-    setl expandtab
-    setl tabstop=2
-    setl shiftwidth=2
-    setl softtabstop=2
-    setl commentstring=//%s
+setl expandtab
+setl tabstop=2
+setl shiftwidth=2
+setl softtabstop=2
+setl commentstring=//%s
 '''
 
 zsh = '''
-    setl expandtab
-    setl tabstop=2
-    setl softtabstop=2
-    setl shiftwidth=2
+setl expandtab
+setl tabstop=2
+setl softtabstop=2
+setl shiftwidth=2
 '''
 

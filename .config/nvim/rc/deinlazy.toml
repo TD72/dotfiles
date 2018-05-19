@@ -642,3 +642,10 @@ hook_source = '''
   source ~/.config/nvim/rc/plugins/deoplete.rc.vim
 '''
 
+[[plugins]]
+repo = 'tweekmonster/impsort.vim'
+on_ft = 'python'
+hook_add = '''
+let g:impsort_highlight_imported = 1
+'''
+

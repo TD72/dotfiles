@@ -33,6 +33,7 @@ depends = 'itchyny/lightline.vim'
 hook_add = '''
   let g:neodark#use_256color = 0
   let g:lightline.colorscheme = 'neodark'
+  let g:neodark#use_custom_terminal_theme = 1
 '''
 
 [[plugins]]
@@ -78,12 +79,11 @@ repo = 'jmcantrell/vim-virtualenv'
 on_ft = 'python'
 
 [[plugins]]
-repo = 'hdima/python-syntax'
+repo = 'vim-python/python-syntax'
 on_ft = 'python'
 hook_add = '''
-    let python_highlight_all = 1
+let g:python_highlight_all = 1
 '''
-
 
 [[plugins]]
 repo = 'zaiste/tmux.vim'
