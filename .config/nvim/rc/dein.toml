@@ -180,9 +180,6 @@ let g:brightest#enable_on_CursorHold = 1
 '''
 
 [[plugins]]
-repo = 'Shougo/unite-outline'
-
-[[plugins]]
 repo = 'rizzatti/dash.vim'
 hook_add = '''
   nmap <silent> <leader>d <Plug>DashSearch
@@ -252,7 +249,7 @@ hook_add = '''
         \ }
 '''
 
-[[plugins]]
+[[plugins]]  # for denite-git
 repo = 'chemzqm/vim-easygit'
 hook_add = '''
   let g:easygit_enable_command = 0

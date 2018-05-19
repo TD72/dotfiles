@@ -1,13 +1,8 @@
 [[plugins]]
-repo = 'Shougo/neomru.vim'
-on_if = 1
-on_source = ['unite.vim', 'denite.nvim']
-
-[[plugins]]
 repo = 'Shougo/neoyank.vim'
 on_if = 1
 on_event = 'TextYankPost'
-on_source = ['unite.vim', 'denite.nvim']
+on_source = ['denite.nvim']
 
 [[plugins]]
 repo = 'Jagua/vim-denite-ghq'
@@ -32,11 +27,10 @@ hook_add = '''
   nmap <Leader> [denite]
 
   " open file
-  nnoremap [denite]a :<C-u>Denite buffer file_point file_old
-        \ -sorters=sorter_rank
-        \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
-
-  nnoremap [denite]m :<C-u>Denite file_mru<CR>
+  nnoremap [denite]a :<C-u>Denite buffer file/point file/old
+        \ -sorters=sorter/rank
+        \ `finddir('.git', ';') != '' ? 'file/rec/git' : 'file/rec'`
+        \ file file:new<CR>
 
   nnoremap <silent> [denite]] :<C-u>Denite ghq -default-action=cd<CR>
 
@@ -97,10 +91,6 @@ hook_add = '''
 '''
 
 [[plugins]]
-repo = 'Shougo/unite.vim'
-depends = 'neomru.vim'
-
-[[plugins]]
 repo = 'Shougo/deol.nvim'
 on_cmd = 'Deol'
 on_source = 'denite.nvim'
@@ -138,6 +128,9 @@ hook_source = '''
     nnoremap <buffer><silent> <Leader>gA :<C-u>call deol#send('git commit --amend')<CR>
   endfunction
 '''
+
+[[plugins]]
+repo = 'Shougo/unite.vim'
 [[plugins]]
 repo = 'Shougo/vimfiler'
 depends = 'unite.vim'
@@ -154,11 +147,11 @@ hook_add = '''
   nnoremap <silent> <Leader>j :<C-u>Denite junkfile:new junkfile<CR>
 '''
 
-[[plugins]]
-repo = 'thinca/vim-quickrun'
-on_map = '<Plug>'
-hook_add = 'nmap <Leader>q <Plug>(quickrun)'
-hook_source = 'source ~/.config/nvim/rc/plugins/vim-quickrun.rc.vim'
+#[[plugins]]
+#repo = 'thinca/vim-quickrun'
+#on_map = '<Plug>'
+#hook_add = 'nmap <Leader>q <Plug>(quickrun)'
+#hook_source = 'source ~/.config/nvim/rc/plugins/vim-quickrun.rc.vim'
 
 [[plugins]]
 repo = 'majutsushi/tagbar'
@@ -204,9 +197,9 @@ depends = ['neosnippet-snippets', 'context_filetype.vim']
 on_event = 'InsertCharPre'
 on_ft = 'snippet'
 hook_source = '''
-  imap <silent><C-s> <Plug>(neosnippet_jump_or_expand)
-  smap <silent><C-s> <Plug>(neosnippet_jump_or_expand)
-  xmap <silent><C-s> <Plug>(neosnippet_expand_target)
+  imap <silent>L <Plug>(neosnippet_jump_or_expand)
+  smap <silent>L <Plug>(neosnippet_jump_or_expand)
+  xmap <silent>L <Plug>(neosnippet_expand_target)
 
   let g:neosnippet#enable_snipmate_compatibility = 1
   let g:neosnippet#enable_complete_done = 1
@@ -266,19 +259,6 @@ hook_add = '''
 hook_source = 'source ~/.config/nvim/rc/plugins/ref.rc.vim'
 
 
-
-[[plugins]]
-repo = 'Leafcage/yankround.vim'
-on_map = '<Plug>'
-hook_add = '''
-    nmap p <Plug>(yankround-p)
-    nmap P <Plug>(yankround-P)
-    nmap gp <Plug>(yankround-gp)
-    nmap gP <Plug>(yankround-gP)
-    nmap <C-p> <Plug>(yankround-prev)
-    nmap <C-P> <Plug>(yankround-next)
-'''
-
 [[plugins]]
 repo = 'saihoooooooo/glowshi-ft.vim'
 on_map = [['nx', '<Plug>']]
@@ -332,32 +312,6 @@ hook_add = '''
 #
 #     let git#features#commit#enable_default_mappings = 0
 # '''
-
-# [[plugins]]
-# repo = 'neomake/neomake'
-# if = "has('nvim')"
-# hook_add = '''
-# autocmd! BufEnter,BufWritePost * Neomake
-# au MyAutoCmd ColorScheme * hi NeomakeErrorSign cterm=bold ctermfg=7 ctermbg=9
-# au MyAutoCmd ColorScheme * hi NeomakeWarningSign cterm=bold ctermfg=8 ctermbg=216
-# au MyAutoCmd ColorScheme * hi NeomakeMessageSign cterm=bold ctermfg=8 ctermbg=150
-# au MyAutoCmd ColorScheme * hi NeomakeInfoSign cterm=bold ctermfg=8 ctermbg=110
-# " text
-# let g:neomake_error_sign = {'text': 'E✖', 'texthl': 'NeomakeErrorSign'}
-# let g:neomake_warning_sign = {
-#     \   'text': 'W➤',
-#     \   'texthl': 'NeomakeWarningSign',
-#     \ }
-# let g:neomake_message_sign = {
-#      \   'text': 'M➤',
-#      \   'texthl': 'NeomakeMessageSign',
-#      \ }
-# let g:neomake_info_sign = {'text': 'ℹ➤', 'texthl': 'NeomakeInfoSign'}
-#
-# " python
-# let g:neomake_python_enabled_makers = ['python', 'flake8', 'mypy']
-# '''
-#
 
 [[plugins]]
 repo = 'mattn/emmet-vim'
@@ -594,13 +548,6 @@ on_ft = ['html', 'html5', 'php', 'xml', 'css', 'htmldjango', 'md']
 repo = 'lambdalisue/vim-findent'
 
 [[plugins]]
-repo = 'tweekmonster/impsort.vim'
-on_cmd = 'ImpSort'
-hook_add = 'autocmd BufWritePre *.py ImpSort!'
-hook_source = 'let g:impsort_highlight_imported = 1'
-
-
-[[plugins]]
 repo = 'lambdalisue/suda.vim'
 on_path = 'suda://'
 
@@ -629,6 +576,7 @@ on_ft = ['vue']
 [[plugins]]
 repo = 'Shougo/deoplete-clangx'
 on_ft = ['c', 'cpp']
+
 [[plugins]]
 repo = 'zchee/deoplete-jedi'
 on_ft = 'python'
@@ -650,7 +598,7 @@ hook_source = '''
   " Skip the check of neovim module
   let g:python3_host_skip_check = 1
   let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-  let g:deoplete#sources#go#sort_class = \
+  let g:deoplete#sources#go#sort_class =
         \ ['package', 'func', 'type', 'var', 'const']
   let g:deoplete#sources#go#use_cache = 1
   if has('mac')

@@ -11,12 +11,6 @@ nnoremap < <<
 xnoremap > >gv
 xnoremap < <gv
 
-" operator 
-noremap <S-h> ^
-" noremap <S-j> }
-" noremap <S-k> {
-noremap <S-l> $
-
 " emacs bind on insert mode
 inoremap <C-h> <BS>
 inoremap <C-b> <LEFT>
@@ -32,7 +26,6 @@ vnoremap v $h
 " Jumping to matchpair.
 nnoremap <Tab> %
 vnoremap <Tab> %
-
 
 " Window:
 nnoremap s <Nop>

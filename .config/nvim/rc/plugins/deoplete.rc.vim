@@ -50,5 +50,5 @@ call deoplete#custom#option('keyword_patterns', {
       \ 'tex': '[^\w|\s][a-zA-Z_]\w*',
       \ })
 
-call dein#deoplete#custom#option('camel_case',  v:true)
+call deoplete#custom#option('camel_case',  v:true)
 "

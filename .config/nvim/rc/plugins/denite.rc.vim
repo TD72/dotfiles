@@ -1,5 +1,5 @@
 if executable('rg')
-  call denite#custom#var('file_rec', 'command',
+  call denite#custom#var('file/rec', 'command',
         \ ['rg', '--files', '--glob', '!.git'])
   call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
   call denite#custom#var('grep', 'recursive_opts', [])
@@ -8,19 +8,19 @@ if executable('rg')
   call denite#custom#var('grep', 'default_opts',
         \ ['--vimgrep', '--no-heading'])
 else
-  call denite#custom#var('file_rec', 'command',
+  call denite#custom#var('file/rec', 'command',
         \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 endif
 
-call denite#custom#source('file_old', 'matchers',
-      \ ['matcher_fuzzy', 'matcher_project_files'])
-call denite#custom#source('tag', 'matchers', ['matcher_substring'])
+call denite#custom#source('file/old', 'matchers',
+      \ ['matcher/fuzzy', 'matcher/project_files'])
+call denite#custom#source('tag', 'matchers', ['matcher/substring'])
 if has('nvim')
-  call denite#custom#source('file_rec,grep', 'matchers',
-        \ ['matcher_cpsm'])
+  call denite#custom#source('file/rec,grep', 'matchers',
+        \ ['matcher/cpsm'])
 endif
-call denite#custom#source('file_old', 'converters',
-      \ ['converter_relative_word'])
+call denite#custom#source('file/old', 'converters',
+      \ ['converter/relative_word'])
 
 
 call denite#custom#map(
@@ -72,8 +72,8 @@ call denite#custom#map(
       \ 'noremap'
       \)
 
-call denite#custom#alias('source', 'file_rec/git', 'file_rec')
-call denite#custom#var('file_rec/git', 'command',
+call denite#custom#alias('source', 'file/rec/git', 'file/rec')
+call denite#custom#var('file/rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 
 
@@ -92,7 +92,7 @@ let s:menus.vim.file_candidates = [
     \ ]
 call denite#custom#var('menu', 'menus', s:menus)
 
-call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
       \ [
       \ '.git/', '.ropeproject/', '__pycache__/',
       \ 'venv/',

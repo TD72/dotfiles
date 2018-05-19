@@ -16,8 +16,8 @@ _ = '''
   setl formatoptions-=ro
   setl formatoptions+=mMBl
 
-  if &filetype != # 'help'
-    setl foldtext = FoldCCtext()
+  if &filetype !=# 'help'
+    setl foldtext=FoldCCtext()
   endif
   if !&l:modifiable
     setl nofoldenable
