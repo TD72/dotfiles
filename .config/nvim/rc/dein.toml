@@ -76,7 +76,7 @@ on_ft = '*.conkyrc'
 
 [[plugins]]
 repo = 'lilydjwg/colorizer'
-on_ft = ['css', 'vim']
+on_ft = ['html', 'css', 'vim']
 on_path = ['*.tmux.conf', '*.zshrc', '*.xmonad.hs', '*.xmobarrc', '*.Xdefault']
 
 
@@ -171,9 +171,6 @@ repo = 'kana/vim-submode'
 hook_add = 'source ~/.config/nvim/rc/plugins/submode.rc.vim'
 
 [[plugins]]
-repo = 'chemzqm/vim-easygit'
-
-[[plugins]]
 repo = 'tsukkee/unite-tag'
 
 [[plugins]]
@@ -181,7 +178,6 @@ repo = 'osyo-manga/vim-brightest'
 hook_add = '''
 let g:brightest#enable_on_CursorHold = 1
 '''
-
 
 [[plugins]]
 repo = 'Shougo/unite-outline'
@@ -256,6 +252,11 @@ hook_add = '''
         \ }
 '''
 
+[[plugins]]
+repo = 'chemzqm/vim-easygit'
+hook_add = '''
+  let g:easygit_enable_command = 0
+'''
 
 [[plugins]]
 repo = 'airblade/vim-gitgutter'

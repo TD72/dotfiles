@@ -11,8 +11,7 @@ function! IsMac() abort
         \     || (!executeable('xdg-optn') && system('uname') =~? '^darwin'))
 endfunction
 
-
-let mapleader = "\<Space>"
+let g:mapleader = "\<Space>"
 
 " Release keymappings for plug-in.
 nnoremap ;  <Nop>
@@ -21,7 +20,6 @@ nnoremap m  <Nop>
 xnoremap m  <Nop>
 nnoremap ,  <Nop>
 xnoremap ,  <Nop>
-
 
 if IsWindows()
   set shellslash
