@@ -11,6 +11,7 @@ let g:tex_fold_enabled = 1
 
 
 [ftplugin]
+
 _ = '''
   " Disable automatically insert comment.
   setl formatoptions-=ro
@@ -26,6 +27,7 @@ _ = '''
     setl colorcolumn =
   endif
 '''
+
 c_cpp = '''
     setl expandtab
     setl tabstop=2
@@ -67,12 +69,14 @@ make = '''
     setl shiftwidth=8
     setl softtabstop=8
 '''
+
 vim = '''
     setl expandtab
     setl tabstop=2
     setl shiftwidth=2
     setl softtabstop=2
 '''
+
 vue = '''
     setl expandtab
     setl tabstop=2
@@ -80,9 +84,11 @@ vue = '''
     setl softtabstop=2
     setl commentstring=//%s
 '''
+
 zsh = '''
     setl expandtab
     setl tabstop=2
     setl softtabstop=2
     setl shiftwidth=2
 '''
+

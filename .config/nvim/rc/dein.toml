@@ -185,9 +185,9 @@ repo = 'mattn/emoji-vim'
 [[plugins]]
 repo = 'zplug/vim-zplug'
 
-[[plugins]]
-repo = 'kana/vim-submode'
-hook_add = 'source ~/.config/nvim/rc/plugins/submode.rc.vim'
+#[[plugins]]
+#repo = 'kana/vim-submode'
+#hook_add = 'source ~/.config/nvim/rc/plugins/submode.rc.vim'
 
 [[plugins]]
 repo = 'tsukkee/unite-tag'

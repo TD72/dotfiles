@@ -12,16 +12,12 @@ if !dein#load_state(s:path)
 endif
 
 
-call dein#begin(s:path, [expand('<sfile>')]
-        \ + split(glob('~/.config/nvim/rc/*.toml'), '\n'))
+call dein#begin('~/.cache/dein')
 
 call dein#load_toml('~/.config/nvim/rc/dein.toml', {'lazy': 0})
 call dein#load_toml('~/.config/nvim/rc/deinlazy.toml', {'lazy': 1})
 call dein#load_toml('~/.config/nvim/rc/deinft.toml')
-" if g:gonvim_running
-"     call dein#load_toml('~/.config/nvim/rc/deingon.toml', {})
-" endif
-"
+
 call dein#end()
 
 call dein#save_state()
