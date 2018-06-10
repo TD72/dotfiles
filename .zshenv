@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+# zmodload zsh/zprof && zprof
+
 # XDG Base Directory
 export XDG_CONFIG_HOME=$HOME/.config
 [[ ! -d $XDG_CONFIG_HOME ]] && mkdir -p $XDG_CONFIG_HOME
@@ -43,8 +45,8 @@ path=( \
 typeset -gx -U fpath
 fpath=( \
   $XDG_CACHE_HOME/pac/zsh/Completion/*(N-/) \
-  $HOME/.zsh/Completion/*(N-/) \
-  $HOME/.zsh/functions/*(N-/) \
+  $HOME/.zsh/Completion/(N-/) \
+  $HOME/.zsh/functions/(N-/) \
   $fpath \
   )
 
