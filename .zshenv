@@ -25,6 +25,7 @@ typeset -gx -U path
 path=( \
   $HOME/.bin \
   $HOME/bin \
+  $XDG_CACHE_HOME/gpmw/bin \
   $HOME/.virtualenvs/default/bin \
   /usr/local/go/bin:$GOBIN \
   # For osx
@@ -41,10 +42,11 @@ path=( \
 
 typeset -gx -U fpath
 fpath=( \
-    $HOME/.zsh/Completion(N-/) \
-    $HOME/.zsh/functions(N-/) \
-    $fpath \
-    )
+  $XDG_CACHE_HOME/gpmw/zsh/Completion/*(N-/) \
+  $HOME/.zsh/Completion/*(N-/) \
+  $HOME/.zsh/functions/*(N-/) \
+  $fpath \
+  )
 
 # autoload
 autoload -Uz edit-command-line
@@ -101,9 +103,6 @@ export LISTMAX=50
 
 # filter
 export INTERACTIVE_FILTER="fzy:peco-tmux:fzf-tmux:peco"
-
-# pythonz
-[[ -s $HOME/.pythonz/etc/bashrc ]] && source $HOME/.pythonz/etc/bashrc
 
 # rbenv
 export PATH=$HOME/.rbenv/bin:$PATH

@@ -8,30 +8,13 @@ fi
 
 $DOTPATH/.bin/tmuxx
 
-#======================================
-# Setup zplug && Modules
-#======================================
-export ZPLUG_HOME=$XDG_CACHE_HOME/zplug
-export PATH=$ZPLUG_HOME/bin:$PATH
-if [[ ! -d $ZPLUG_HOME ]] then
-  git clone https://github.com/zplug/zplug $ZPLUG_HOME
-  source $ZPLUG_HOME/init.zsh && zplug update
-fi
+for f in $HOME/.zsh/*.zsh; do
+  source $f
+done
 
-if [[ -f $ZPLUG_HOME/init.zsh ]]; then
-  export ZPLUG_LOADFILE="$HOME/.zsh/zplug.zplug"
-  source $ZPLUG_HOME/init.zsh
-
-  if ! zplug check --verbose; then
-      printf "Install? [y/N]: "
-      if read -q; then
-          echo; zplug install
-      else
-          echo
-      fi
-  fi
-  zplug load
-fi
+for f in $XDG_CACHE_HOME/gpmw/etc/zsh/src/*.zsh; do
+  source $f
+done
 
 if (which zprof > /dev/null 2>&1); then
   zprof
