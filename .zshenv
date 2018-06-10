@@ -25,7 +25,7 @@ typeset -gx -U path
 path=( \
   $HOME/.bin \
   $HOME/bin \
-  $XDG_CACHE_HOME/gpmw/bin \
+  $XDG_CACHE_HOME/pac/bin \
   $HOME/.virtualenvs/default/bin \
   /usr/local/go/bin:$GOBIN \
   # For osx
@@ -42,7 +42,7 @@ path=( \
 
 typeset -gx -U fpath
 fpath=( \
-  $XDG_CACHE_HOME/gpmw/zsh/Completion/*(N-/) \
+  $XDG_CACHE_HOME/pac/zsh/Completion/*(N-/) \
   $HOME/.zsh/Completion/*(N-/) \
   $HOME/.zsh/functions/*(N-/) \
   $fpath \

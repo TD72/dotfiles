@@ -12,7 +12,7 @@ for f in $HOME/.zsh/*.zsh; do
   source $f
 done
 
-for f in $XDG_CACHE_HOME/gpmw/etc/zsh/src/*.zsh; do
+for f in $XDG_CACHE_HOME/pac/etc/zsh/src/*.zsh; do
   source $f
 done
 

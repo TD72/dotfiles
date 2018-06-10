@@ -1,0 +1,141 @@
+[brew]
+tap = ["homebrew/bundle", "homebrew/cask", "homebrew/services"]
+cask = ["appcleaner", "mactex", "the-unarchiver", "xquartz"]
+pkgs = [
+    "autoconf",
+    "bazel",
+    "cmake", "coreutils", "ctags",
+    "direnv", "diff-so-fancy",
+    "ffmpeg", "fish", "fontconfig", "fontforge",
+    "gawk", "git", "glib","graphviz",
+    "hub",
+    "imagemagick",
+    "jq",
+    "lame",
+    "mariadb", "mecab", "mecab-ipadic",
+    "neovim", "nkf", "nmap", "node", "nodebrew",
+    "opencv3", "open-jtalk", "openssl",
+    "pkg-config", "protobuf", "python",
+    "qt",
+    "rbenv", "readline", "reattach-to-user-namespace", "ripgrep",
+    "ruby-build", "rust",
+    "shelcheck", "sqlite", "swig",
+    "terminal-notifier", "tmux", "tree",
+    "w3m", "wget","zsh-completions",
+]
+[[brew.optionalPkgs]]
+    pkg = "go"
+    args = ["--cross-compile-common"]
+
+[[brew.optionalPkgs]]
+    pkg = "htop"
+    args = ["--with-ncurses"]
+
+[[brew.optionalPkgs]]
+    pkg = "llvm"
+    args = ["--with-clang"]
+
+[[brew.optionalPkgs]]
+    pkg = "zsh"
+    args = ["--disable-etcdir"]
+
+[[brew.optionalPkgs]]
+    pkg = "cema-sp/tap/alacritty"
+    args = ["--HEAD"]
+
+[go]
+repos = [
+    "k-hosokawa/powerline-go",
+    "motemen/ghq",
+    "peco/peco",
+    "mattn/memo",
+]
+
+[src]
+[[src.pkg]]
+repo = "b4b4r07/zsh-vimode-visual"
+onZshSource = "zsh-vimode-visual.zsh"
+
+[[src.pkg]]
+repo = "zsh-users/zsh-completions"
+onZshComp = "src"
+
+[[src.pkg]]
+repo = "zsh-users/zsh-syntax-highlighting"
+onZshSource = "zsh-syntax-highlighting.zsh"
+
+[[src.pkg]]
+repo = "b4b4r07/enhancd"
+onZshSource = "init.sh"
+
+[[src.pkg]]
+repo = "Valodim/zsh-curl-completion"
+onZshComp = "."
+
+[[src.pkg]]
+repo = "b4b4r07/zsh-gomi"
+onCmd = "bin/gomi"
+onZshComp = "src"
+
+[[src.pkg]]
+repo = "b4b4r07/zsh-history"
+build = ["make"]
+onZshSource = "init.zsh"
+onCmd = "zhist"
+
+# [[src.pkg]]
+# repo = "marzocchi/zsh-notify"
+
+[[src.pkg]]
+repo = "b4b4r07/emoji-cli"
+onZshSource = "emoji-cli.zsh"
+
+[[src.pkg]]
+repo = "mrowa44/emojify"
+onCmd = "emojify"
+
+[[src.pkg]]
+repo = "simonwhitaker/gibo"
+onCmd = "gibo"
+
+[[src.pkg]]
+repo = "Fakerr/git-recall"
+onCmd = "git-recall"
+
+[[src.pkg]]
+repo = "jhawthorn/fzy"
+build = ["make"]
+onCmd = "fzy"
+
+[[src.pkg]]
+repo = "saghul/pythonz"
+doClone = false
+freeze = true
+build = [
+    "curl -kLO https://raw.github.com/saghul/pythonz/master/pythonz-install",
+    "chmod +x pythonz-install",
+    "./pythonz-install",
+]
+buildEnv = ["PYTHONZ_ROOT=__PACKAGE_HOME__"]
+onCmd = "bin/pythonz"
+onZshSource = "etc/bashrc"
+
+[[src.pkg]]
+repo = "jwilm/alacritty"
+onOs = "darwin"
+build = [
+    "make app",
+]
+onApp = "target/release/osx/Alacritty.app"
+
+[[src.pkg]]
+repo = "b4b4r07/peco-tmux.sh"
+onCmd = "peco-tmux.sh"
+renameTo = "peco-tmux"
+
+[[src.pkg]]
+repo = "hokaccha/nodebrew"
+build = [
+    "wget git.io/nodebrew",
+    "perl nodebrew setup",
+]
