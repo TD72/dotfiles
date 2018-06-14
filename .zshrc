@@ -1,17 +1,28 @@
 #! /bin/zsh
 
-if [[ -f $HOME/.path ]]; then
-    source $HOME/.path
-else
-    export DOTPATH="${0:A:t}"
+# autocompile
+if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
+  zcompile $HOME/.zshrc
 fi
 
-$DOTPATH/.bin/tmuxx
+# set DOTPATH
+if [[ -f $HOME/.path ]]; then
+    source $HOME/.path
+fi
 
+# $DOTPATH/.bin/tmuxx
+
+
+# autoload
+autoload -Uz colors && colors
+autoload -Uz compinit && compinit -c -d $ZSH_CACHE_DIR
+autoload -Uz terminfo
+
+zmodload zsh/zpty
 
 # Vim-like keybind as default
 bindkey -v
-# Vim-like escaping jj keybind{{{
+# Vim-like escaping jj keybind {{{
 #bindkey -M viins 'jj' vi-cmd-mode
 
 # Add emacs-like keybind to viins mode
@@ -70,37 +81,19 @@ bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 #=================================
 # functions
 #=================================
-do-enter() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return
-    fi
+autoload -Uz penv && penv
 
-    echo
-    if is_git_repo; then
-        git status
-    else
-        ls
-    fi
+autoload -Uz is_git_repo do-enter && zle -N do-enter && \
+  bindkey '^m' do-enter
 
-    zle reset-prompt
-}
-zle -N do-enter
-bindkey '^m' do-enter
-# commandline edit using vim
-zle -N edit-command-line
-bindkey '^x^x' edit-command-line
+autoload -Uz replace_multiple_dots && zle -N replace_multiple_dots && \
+  bindkey "." replace_multiple_dots
 
-function replace_multiple_dots() {
-  local dots=$LBUFFER[-2,-1]
-  if [[ $dots == ".." ]]; then
-    LBUFFER=$LBUFFER[1,-3]'../.'
-  fi
-  zle self-insert
-}
+autoload -Uz dotpath && alias dot="dotpath"
 
-zle -N replace_multiple_dots
-bindkey "." replace_multiple_dots
+# commandline edit using $EDITOR
+autoload -Uz edit-command-line && zle -N edit-command-line && \
+  bindkey '^x^x' edit-command-line
 
 #---------------------------------------------
 # Powerline
@@ -125,33 +118,16 @@ fi
 #---------------------------------------------
 # Filter
 #---------------------------------------------
-zstyle ':chpwd:*' recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
-function cdr-fzy {
-  local path=$(cdr -l | awk '{ print $2 }' | fzy)
-  if [ -n "$path" ]; then
-        BUFFER="eval cd ${(q)path}"
-        zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N cdr-fzy
-bindkey '^xj' cdr-fzy
+disable r
+autoload -Uz add-zsh-hook cdr chpwd_recent_dirs && \
+  add-zsh-hook chpwd chpwd_recent_dirs && \
+  zstyle ":chpwd:*" recent-dirs-max 100 && \
+  zstyle ":chpwd:*" recent-dirs-default true && \
+  zstyle ":chpwd:*" recent-dirs-pushd true && \
+  zstyle ":chpwd:*" recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
 
-
-function kill-peco {
-  ps ax | peco | awk '{ print $1 }' | xargs kill -9
-}
-zle -N kill-peco
-bindkey '^xk' kill-peco
-
-function under-cd-dir {
-  find . -type d -not -iwholename "*/.git/*" \
-    | fzy \
-    | cd
-}
-zle -N under-cd-dir
-alias cdd=under-cd-dir
-# bindkey '^\.' under-cd-dir
+autoload -Uz kill-peco && zle -N kill-peco && \
+  bindkey '^xk' kill-peco
 
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | fzy | xargs gibo'
 
@@ -159,27 +135,25 @@ alias -g P='`docker ps | tail -n +2 | peco | cut -d" " -f1`'
 alias -g I='`docker images --format "table {{.ID}}\t{{.Repository}}\t{{.CreatedSince}}\t{{.Size}}" | peco | cut -d" " -f1`'
 
 
-function rg-edit {
-    local path=$(rg --line-number $* | peco | awk -F: '{printf  $1 " +" $2}'| sed -e 's/\+$//')
-    if [ -n "$path" ]; then
-        echo "$EDITOR $path"
-        eval $EDITOR $path
-    fi
-}
-zle -N rg-edit
-alias rge='rg-edit'
+autoload -Uz rg-edit && alias rge='rg-edit'
 
+case ${OSTYPE} in
+  linux*)
+    alias ls='ls -F--color=auto'
+    ;;
+  darwin*)
+    alias ls='gls -F --color=auto'
+    ;;
+esac
+
+alias vi='nvim'
+alias vim='nvim'
 
 #---------------------------------------------
 # Completion
 #---------------------------------------------
 setopt no_beep
-# ディレクトリ名のみの入力で移動
-# setopt auto_cd
-# cdpath=(.. ~ ~/src)
-# ディレクトリの移動履歴を記録
 setopt auto_pushd
-# スペルの訂正
 setopt correct
 setopt magic_equal_subst
 
@@ -217,14 +191,7 @@ zstyle ':completion:*:descriptions' \
 zstyle ':completion:*:corrections' \
   format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
-# グループ名に空文字を指定すると，マッチ対象のタグ名がグループ名に使われる。
-# したがって，すべての マッチ種別を別々に表示させたいなら以下のようにする
-# zstyle ':completion:*' group-name ''
 
-# カレントディレクトリに候補がない場合のみ cdpath 上のディレクトリを候補に出す
-# zstyle ':completion:*:cd:*' tag-order local-directories path-directories
-
-#ファイル補完候補に色を付ける
 if [ -n "%LS_COLORS" ]; then
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
@@ -232,20 +199,6 @@ fi
 zstyle ':completion:*' use-cache true
 
 zstyle ':completion:*' list-separator '-->'
-
-# pip zsh completion start
-function _pip_completion {
-  local words cword
-  read -Ac words
-  read -cn cword
-  reply=( $( COMP_WORDS="$words[*]" \
-             COMP_CWORD=$(( cword-1 )) \
-             PIP_AUTO_COMPLETE=1 $words[1] ) )
-}
-compctl -K _pip_completion pip
-compctl -K _pip_completion pip3
-# pip zsh completion end
-
 
 #=================================
 # misc source
@@ -259,7 +212,7 @@ if (( $+commands[direnv] )); then
 fi
 
 export NVIM_SOCKETS_DIR=$XDG_CACHE_HOME/nvimsockets
-mkdir -p $NVIM_SOCKETS_DIR
+[[ ! -d $NVIM_SOCKETS_DIR ]] && mkdir -p $NVIM_SOCKETS_DIR
 
 vimr() {
     NVIM_LISTEN_ADDRESS=$NVIM_SOCKETS_DIR/$1 vim ${@:2}
@@ -269,31 +222,6 @@ nvcd() {
     nvr -c "cd `pwd`"
 }
 
-
-#=================================
-# Plugins
-#=================================
-# b4b4r07/emoji-cli
-export EMOJI_CLI_FILTER=$INTERACTIVE_FILTER
-export EMOJI_CLI_KEYBIND="^_"
-
-
-# b4b4r07/enhancd
-export ENHANCD_FILTER=$INTERACTIVE_FILTER
-export ENHANCD_COMMAND=cd
-export ENHANCD_DOT_SHOW_FULLPATH=1
-export ENHANCD_DISABLE_DOT=0
-export ENHANCD_DISABLE_HYPHEN=0
-export ENHANCD_DISABLE_HOME=1
-export ENHANCD_HOOK_AFTER_CD="ls"
-
-# b4b4r07/zsh-history
-export ZSH_HISTORY_FILE="$XDG_CACHE_HOME/zsh_history.db"
-export ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r"
-export ZSH_HISTORY_KEYBIND_GET_ALL="^r^a"
-export ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
-export ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
-export ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"
 
 # marzocchi/zsh-notify
 zstyle ':notify:*' error-title

@@ -1,0 +1,13 @@
+if [ -n "$BUFFER" ]; then
+  zle accept-line
+  return
+fi
+
+echo
+if is_git_repo; then
+  git status
+else
+  ls -F --color=auto
+fi
+
+zle reset-prompt

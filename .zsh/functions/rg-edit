@@ -1,0 +1,5 @@
+local p=$(rg --line-number $* | peco | awk -F: '{printf  $1 " +" $2}'| sed -e 's/\+$//')
+if [ -n "$p" ]; then
+    echo "$EDITOR $p"
+    eval $EDITOR $p
+fi
