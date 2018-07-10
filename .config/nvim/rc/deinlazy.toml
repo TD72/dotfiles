@@ -558,6 +558,27 @@ on_ft = ['fish']
 [[plugins]]
 repo = 'posva/vim-vue'
 on_ft = ['vue']
+hook_add = '''
+setlocal iskeyword+=$
+setlocal iskeyword+=-
+autocmd MyAutoCmd FileType vue syntax sync fromstart
+let g:ft = ''
+'''
+
+[[plugins]]
+repo = 'mhartington/nvim-typescript'
+depends = 'deoplete.nvim'
+build = './install.sh'
+on_ft = ['javascript', 'typescript']
+hook_add = '''
+let g:nvim_typescript#javascript_support = 1
+let g:nvim_typescript#vue_support =  1
+'''
+
+[[plugins]]
+repo = "HerringtonDarkholme/yats.vim"
+on_ft = ['typescript']
+
 
 #[[plugins]]
 #repo = 'kana/vim-smartchr'

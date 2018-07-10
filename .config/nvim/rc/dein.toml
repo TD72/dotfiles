@@ -289,6 +289,21 @@ repo = 'machakann/vim-highlightedyank'
 [[plugins]]
 repo = 'dearrrfish/vim-applescript'
 
+[[plugins]]
+repo = 'autozimu/LanguageClient-neovim'
+build = 'bash install.sh'
+rev = 'next'
+hook_add = '''
+set hidden
+let g:LanguageClient_serverCommand = {
+      \ 'vue': ['vls'],
+      \ }
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+" nnoremap <silent> <F3> :call LanguageClient#textDocument_formatting()<CR>
+'''
+
 # [[plugins]]
 # repo = 'edkolev/tmuxline.vim'
 # hook_source = '''

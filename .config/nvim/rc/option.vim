@@ -96,7 +96,9 @@ autocmd MyAutoCmd BufNewFile,BufRead .tmux.conf setf tmux
 autocmd MyAutoCmd BufNewFile,BufRead .envrc setf sh
 autocmd MyAutoCmd BufNewFile,BufRead *.fish setf fish
 autocmd MyAutoCmd BufNewFile,BufRead *.h setf c
+autocmd MyAutoCmd BufNewFile,BufRead *.hpp setf cpp
 autocmd MyAutoCmd BufNewFile,BufRead *.vue setf vue
+autocmd MyAutoCmd BufNewFile,BufRead *.ts setf typescript
 
 
 " Restore Position:
