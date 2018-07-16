@@ -88,7 +88,7 @@ set ttyfast
 set display=lastline
 set previewheight=8
 set helpheight=12
-set conceallevel=2 concealcursor=niv
+set conceallevel=2 concealcursor=n
 set colorcolumn=79
 set synmaxcol=200
 

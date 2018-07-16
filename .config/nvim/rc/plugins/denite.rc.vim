@@ -23,27 +23,19 @@ call denite#custom#source('file/old', 'converters',
       \ ['converter/relative_word'])
 
 
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-n>',
-      \ '<denite:move_to_next_line>',
-      \ 'noremap')
-
-call denite#custom#map(
-      \ 'insert',
-      \ '<C-p>',
-      \ '<denite:move_to_previous_line>',
-      \ 'noremap')
-
 call denite#custom#map('insert', '<C-a>', '<Home>')
 call denite#custom#map('insert', '<C-e>', '<End>')
 call denite#custom#map('insert', '<C-f>', '<Right>')
 
 call denite#custom#map('insert', '<C-b>', '<Left>')
 call denite#custom#map('insert', "'", '<denite:enter_mode:normal>')
-call denite#custom#map('normal', 'n', '<denite:move_to_next_line')
-call denite#custom#map('normal', 'p', '<denite:move_to_previous_line')
 call denite#custom#map('normal', 'r', '<denite:do_action:quickfix', 'noremap')
+
+call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>')
+call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>')
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
+
 
 call denite#custom#map('insert', '<C-r>',
       \ '<denite:toggle_matchers:matcher_substring>', 'noremap')
