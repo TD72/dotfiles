@@ -108,17 +108,9 @@ build = ["make"]
 onCmd = "fzy"
 
 [[src.pkg]]
-repo = "saghul/pythonz"
-doClone = false
-freeze = true
-build = [
-    "curl -kLO https://raw.github.com/saghul/pythonz/master/pythonz-install",
-    "chmod +x pythonz-install",
-    "./pythonz-install",
-]
-buildEnv = ["PYTHONZ_ROOT=__PACKAGE_HOME__"]
-onCmd = "bin/pythonz"
-onZshSource = "etc/bashrc"
+repo = "k-hosokawa/pyv"
+build = ["make"]
+buildEnv = ["PREFIX=__PAC_HOME__"]
 
 [[src.pkg]]
 repo = "jwilm/alacritty"
