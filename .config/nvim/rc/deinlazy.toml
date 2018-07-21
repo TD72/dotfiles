@@ -623,10 +623,6 @@ hook_source = '''
 '''
 
 [[plugins]]
-repo = 'zchee/deoplete-zsh'
-on_ft = 'zsh'
-
-[[plugins]]
 repo = 'Shougo/neco-vim'
 on_ft = 'vim'
 
@@ -682,7 +678,7 @@ autocmd MyAutoCmd InsertLeave * :PreciousReset
 repo = 'autozimu/LanguageClient-neovim'
 build = 'bash install.sh'
 rev = 'next'
-on_ft = ['python', 'vue', 'javascript', 'typescript']
+on_ft = ['python', 'vue', 'javascript', 'typescript', 'bash', 'zsh']
 hook_add = '''
 set hidden
 let g:LanguageClient_serverCommands = {
@@ -692,6 +688,8 @@ let g:LanguageClient_serverCommands = {
       \ 'javasript': ['javascript-typescript-stdio'],
       \ 'typescript': ['javascript-typescript-stdio'],
       \ 'python': ['pyls'],
+      \ 'bash': ['bash-language-server', 'start'],
+      \ 'zsh': ['bash-language-server', 'start'],
       \ }
 
 nnoremap [lc] <Nop>

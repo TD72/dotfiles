@@ -175,6 +175,7 @@ let g:ale_linters = {
 \   'python': ['flake8', 'mypy'],
 \   'go': ['gofmt'],
 \   'cpp': ['clang', 'clangtidy'],
+\   'sh': ['shellcheck'],
 \}
 
 let g:ale_python_mypy_options = join([
