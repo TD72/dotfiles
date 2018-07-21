@@ -1,0 +1,31 @@
+layout_pyv()
+{
+  local python_root=$PYV_ROOT/$1
+  local python_bin=$python_root/bin/python
+  if [[ -x "$python_bin" ]]; then
+    local python_version
+    python_version=$("$python_bin" -c "import platform as p; print(p.python_version())")
+
+    VIRTUAL_ENV="$(direnv_layout_dir)"/python-"$python_version"
+    export VIRTUAL_ENV
+    $python_bin -m venv "$VIRTUAL_ENV"
+    PATH_add "$VIRTUAL_ENV/bin"
+  else
+    echo "Error: $python_root can not be executed."
+    exit
+  fi
+}
+
+use_node()
+{
+  layout node
+  local node_version=$1
+  if [ -x "$NODEBREW_ROOT/$node_version/bin/node"]; then
+    PATH_add "$NODEBREW_ROOT/$node_version/bin/node"
+  elif [ -x "$NODEBREW_ROOT/v$node_version/bin/node"]; then
+    PATH_add "$NODEBREW_ROOT/v$node_version/bin/node"
+  else
+    echo "!!! Node.js version $node_version is not installed"
+  fi
+  export NODE_PATH=./node_modules
+}
