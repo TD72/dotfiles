@@ -82,6 +82,7 @@ bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 # functions
 #=================================
 autoload -Uz penv && penv
+autoload -Uz nv && nv
 
 autoload -Uz is_git_repo do-enter && zle -N do-enter && \
   bindkey '^m' do-enter

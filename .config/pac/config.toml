@@ -127,6 +127,7 @@ renameTo = "peco-tmux"
 
 [[src.pkg]]
 repo = "hokaccha/nodebrew"
+onCmd = "nodebrew"
 build = [
     "wget git.io/nodebrew",
     "perl nodebrew setup",

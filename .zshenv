@@ -32,9 +32,12 @@ if [ -z $TMUX ]; then
   export GOBIN="$GOPATH/bin"
   export GO15VENDOREXPERIMENT=1
 
+  # node
+  export NODEBREW_ROOT=$XDG_CACHE_HOME/nodebrew
+
   path=( \
     $HOME/.rbenv/bin(N-/) \
-    $HOME/.nodebrew/current/bin(N-/) \
+    $NODEBREW_ROOT/current/bin(N-/) \
     $HOME/.bin(N-/) \
     $HOME/bin(N-/) \
     $XDG_CACHE_HOME/pac/bin(N-/) \
@@ -83,7 +86,7 @@ if [ -z $TMUX ]; then
   export LISTMAX=50
 
   # filter
-  export INTERACTIVE_FILTER="fzy:peco-tmux:peco:fzf"
+  export INTERACTIVE_FILTER="fzy"
 
   # rbenv
   eval "$(rbenv init - --no-rehash)"
@@ -123,6 +126,7 @@ if [ -z $TMUX ]; then
 
 fi
 
+export PYV_ROOT=$XDG_CACHE_HOME/pyv
 # secrets
 [[ -f ~/.secrets/secret.zsh ]] && source ~/.secrets/secret.zsh
 
