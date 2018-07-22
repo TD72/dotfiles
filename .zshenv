@@ -35,14 +35,19 @@ if [ -z $TMUX ]; then
   # node
   export NODEBREW_ROOT=$XDG_CACHE_HOME/nodebrew
 
+  export PYV_ROOT=$XDG_CACHE_HOME/pyv
+  export GOV_ROOT=$XDG_CACHE_HOME/gov
+  export GOROOT=$GOV_ROOT/versions/current
+  export PATH=$GOROOT/bin:$PATH
+
   path=( \
-    $HOME/.rbenv/bin(N-/) \
-    $NODEBREW_ROOT/current/bin(N-/) \
     $HOME/.bin(N-/) \
-    $HOME/bin(N-/) \
+    $GOBIN(N-/) \
     $XDG_CACHE_HOME/pac/bin(N-/) \
+    $NODEBREW_ROOT/current/bin(N-/) \
+    $GOV_ROOT/current/bin(N-/) \
+    $HOME/.rbenv/bin(N-/) \
     $HOME/.virtualenvs/default/bin(N-/) \
-    /usr/local/go/bin:$GOBIN(N-/) \
     $CUDA_HOME/bin(N-/) \
     $HOME/.cargo/bin(N-/) \
     /usr/local/opt/llvm/bin(N-/) \
@@ -126,7 +131,6 @@ if [ -z $TMUX ]; then
 
 fi
 
-export PYV_ROOT=$XDG_CACHE_HOME/pyv
 # secrets
 [[ -f ~/.secrets/secret.zsh ]] && source ~/.secrets/secret.zsh
 

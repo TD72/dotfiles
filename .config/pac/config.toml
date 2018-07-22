@@ -49,6 +49,7 @@ repos = [
     "motemen/ghq",
     "peco/peco",
     "mattn/memo",
+    "k-hosokawa/gov",
 ]
 
 [src]
@@ -108,11 +109,6 @@ build = ["make"]
 onCmd = "fzy"
 
 [[src.pkg]]
-repo = "k-hosokawa/pyv"
-build = ["make"]
-buildEnv = ["PREFIX=__PAC_HOME__"]
-
-[[src.pkg]]
 repo = "jwilm/alacritty"
 onOs = "darwin"
 build = [
@@ -124,6 +120,12 @@ onApp = "target/release/osx/Alacritty.app"
 repo = "b4b4r07/peco-tmux.sh"
 onCmd = "peco-tmux.sh"
 renameTo = "peco-tmux"
+
+
+[[src.pkg]]
+repo = "k-hosokawa/pyv"
+build = ["make"]
+buildEnv = ["PREFIX=__PAC_HOME__"]
 
 [[src.pkg]]
 repo = "hokaccha/nodebrew"
