@@ -1,0 +1,82 @@
+#!/bin/zsh
+
+_nv_help()
+{
+  echo "'nv' command is interactive nodebrew wrapper"
+  echo
+  echo "Usage:"
+  echo
+  echo "\tlist (ls, l): list installed node versions"
+  echo
+  echo "\tlist-remote (lr): list available node versions"
+  echo
+  echo "\tinstall (i): install node"
+  echo
+  echo "\tuninstall (un): uninstall node"
+  echo
+  echo "\tuse (u): change current node"
+}
+
+_nv_list()
+{
+  nodebrew ls | sed -e '/^$/d' -e '/current/d'
+}
+
+_nv_list_remote()
+{
+  nodebrew ls-remote | tr ' ' '\n' | sed '/^$/d'
+}
+
+_nv_install()
+{
+  local version
+  version="$(_nv_list_remote | $INTERACTIVE_FILTER)"
+  if [ -n $version ]; then
+    nodebrew install $version
+  fi
+}
+
+_nv_uninstall()
+{
+  local version
+  version="$(_nv_list | $INTERACTIVE_FILTER)"
+  if [ -n $version ]; then
+    nodebrew uninstall $version
+  fi
+}
+
+_nv_use()
+{
+  local version
+  version="$(_nv_list | $INTERACTIVE_FILTER)"
+  if [ -n $version ]; then
+    nodebrew use $version
+  fi
+}
+
+nv()
+{
+  case "$1" in
+    "help" | "h" )
+      _nv_help
+      ;;
+    "list" | "ls" | "l" )
+      _nv_list
+      ;;
+    "list-remote" | "lr" )
+      _nv_list_remote
+      ;;
+    "install" | "i" )
+      _nv_install
+      ;;
+    "uninstall" | "un" )
+      _nv_uninstall
+      ;;
+    "use" | "u" )
+      _nv_use
+      ;;
+    * )
+      _nv_help
+      ;;
+  esac
+}

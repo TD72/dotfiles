@@ -85,6 +85,8 @@ cnoremap <C-d> <DELETE>
 cnoremap <C-a> <HOME>
 cnoremap <C-e> <END>
 
+nnoremap <C-b> :b #<CR>
+
 " Search:
 
 " Stop highlight.

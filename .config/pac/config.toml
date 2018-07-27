@@ -49,6 +49,7 @@ repos = [
     "motemen/ghq",
     "peco/peco",
     "mattn/memo",
+    "k-hosokawa/gov",
 ]
 
 [src]
@@ -108,19 +109,6 @@ build = ["make"]
 onCmd = "fzy"
 
 [[src.pkg]]
-repo = "saghul/pythonz"
-doClone = false
-freeze = true
-build = [
-    "curl -kLO https://raw.github.com/saghul/pythonz/master/pythonz-install",
-    "chmod +x pythonz-install",
-    "./pythonz-install",
-]
-buildEnv = ["PYTHONZ_ROOT=__PACKAGE_HOME__"]
-onCmd = "bin/pythonz"
-onZshSource = "etc/bashrc"
-
-[[src.pkg]]
 repo = "jwilm/alacritty"
 onOs = "darwin"
 build = [
@@ -133,8 +121,15 @@ repo = "b4b4r07/peco-tmux.sh"
 onCmd = "peco-tmux.sh"
 renameTo = "peco-tmux"
 
+
+[[src.pkg]]
+repo = "k-hosokawa/pyv"
+build = ["make"]
+buildEnv = ["PREFIX=__PAC_HOME__"]
+
 [[src.pkg]]
 repo = "hokaccha/nodebrew"
+onCmd = "nodebrew"
 build = [
     "wget git.io/nodebrew",
     "perl nodebrew setup",
