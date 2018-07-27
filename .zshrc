@@ -139,7 +139,7 @@ autoload -Uz rg-edit && alias rge='rg-edit'
 
 case ${OSTYPE} in
   linux*)
-    alias ls='ls -F--color=auto'
+    alias ls='ls -F --color=auto'
     ;;
   darwin*)
     alias ls='gls -F --color=auto'
