@@ -83,6 +83,7 @@ bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 #=================================
 autoload -Uz penv && penv
 autoload -Uz nv && nv
+autoload -Uz tmux-battery-percentage
 
 autoload -Uz is_git_repo do-enter && zle -N do-enter && \
   bindkey '^m' do-enter
@@ -100,7 +101,7 @@ autoload -Uz edit-command-line && zle -N edit-command-line && \
 # Powerline
 #---------------------------------------------
 function powerline_precmd() {
-    PS1="$(powerline-go -error -$? -shell zsh -newline -east-asian-width -modules venv,host,ssh,cwd,perms,git,hg,jobs,exit,root)"
+  PROMPT="$(powerline-go -error -$? -shell zsh -newline -east-asian-width -modules venv,host,ssh,cwd,perms,git,hg,jobs,exit,root)"
 }
 
 function install_powerline_precmd() {
@@ -112,7 +113,22 @@ function install_powerline_precmd() {
   precmd_functions+=(powerline_precmd)
 }
 
-if [ "$TERM" != "linux" ]; then
+function simple_prompt() {
+  local sep=""
+  if [ $UID = "0" ]; then
+    p="%K{023}${sep} %F{015}%K{023}# %F{023}%k${sep}"
+  else
+    p="%K{004}${sep} %F{008}%K{004}$ %F{004}%k${sep}"
+  fi
+
+  PROMPT="%F{008}%K{011} %D %* %F{011}${p}
+  "
+}
+
+if [ -n $TMUX ] || [ $UID = "0" ]; then
+  export VIRTUAL_ENV_DISABLE_PROMPT=1
+  simple_prompt
+else
   install_powerline_precmd
 fi
 
@@ -149,6 +165,7 @@ esac
 
 alias vi='nvim'
 alias vim='nvim'
+alias tmux="tmux -2 -u"
 
 #---------------------------------------------
 # Completion

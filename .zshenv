@@ -38,14 +38,13 @@ if [ -z $TMUX ]; then
   export PYV_ROOT=$XDG_CACHE_HOME/pyv
   export GOV_ROOT=$XDG_CACHE_HOME/gov
   export GOROOT=$GOV_ROOT/versions/current
-  export PATH=$GOROOT/bin:$PATH
 
   path=( \
     $HOME/.bin(N-/) \
     $GOBIN(N-/) \
     $XDG_CACHE_HOME/pac/bin(N-/) \
     $NODEBREW_ROOT/current/bin(N-/) \
-    $GOV_ROOT/current/bin(N-/) \
+    $GOROOT/bin(N-/) \
     $HOME/.rbenv/bin(N-/) \
     $HOME/.virtualenvs/default/bin(N-/) \
     $CUDA_HOME/bin(N-/) \
