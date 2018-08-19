@@ -1,17 +1,15 @@
 #! /bin/zsh
 
 # autocompile
-if [ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]; then
-  zcompile $HOME/.zshrc
-fi
+[[ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]] && zcompile $HOME/.zshrc
+
+autoload -Uz tmux-filter && \
+  alias t="tmux-filter"
+
+[[ -z $TMUX ]] && tmux-filter
 
 # set DOTPATH
-if [[ -f $HOME/.path ]]; then
-    source $HOME/.path
-fi
-
-# $DOTPATH/.bin/tmuxx
-
+[[ -f $HOME/.path ]] && source $HOME/.path
 
 # autoload
 autoload -Uz colors && colors
@@ -81,60 +79,36 @@ bindkey -M viins "$terminfo[kcbt]" reverse-menu-complete
 #=================================
 # functions
 #=================================
-autoload -Uz penv && penv
-autoload -Uz nv && nv
-autoload -Uz tmux-battery-percentage
+autoload -Uz nv
+autoload -Uz pyg
 
-autoload -Uz is_git_repo do-enter && zle -N do-enter && \
+autoload -z do-enter && \
+  zle -N do-enter && \
   bindkey '^m' do-enter
 
-autoload -Uz replace_multiple_dots && zle -N replace_multiple_dots && \
+autoload -Uz replace_multiple_dots && \
+  zle -N replace_multiple_dots && \
   bindkey "." replace_multiple_dots
 
-autoload -Uz dotpath && alias dot="dotpath"
+autoload -Uz dotpath && \
+  alias dot="dotpath"
 
 # commandline edit using $EDITOR
-autoload -Uz edit-command-line && zle -N edit-command-line && \
+autoload -Uz edit-command-line && \
+  zle -N edit-command-line && \
   bindkey '^x^x' edit-command-line
 
-#---------------------------------------------
-# Powerline
-#---------------------------------------------
-function powerline_precmd() {
-  PROMPT="$(powerline-go -error -$? -shell zsh -newline -east-asian-width -modules venv,host,ssh,cwd,perms,git,hg,jobs,exit,root)"
-}
+#=============================================
+# Prompt
+#=============================================
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+sep=""
+PROMPT="%F{008}%K{011} %D  %* %F{011}%k${sep}
+%F{008}%K{004}$ %F{004}%k${sep} "
 
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-function simple_prompt() {
-  local sep=""
-  if [ $UID = "0" ]; then
-    p="%K{023}${sep} %F{015}%K{023}# %F{023}%k${sep}"
-  else
-    p="%K{004}${sep} %F{008}%K{004}$ %F{004}%k${sep}"
-  fi
-
-  PROMPT="%F{008}%K{011} %D %* %F{011}${p}
-  "
-}
-
-if [ -n $TMUX ] || [ $UID = "0" ]; then
-  export VIRTUAL_ENV_DISABLE_PROMPT=1
-  simple_prompt
-else
-  install_powerline_precmd
-fi
-
-#---------------------------------------------
+#=============================================
 # Filter
-#---------------------------------------------
+#=============================================
 disable r
 autoload -Uz add-zsh-hook cdr chpwd_recent_dirs && \
   add-zsh-hook chpwd chpwd_recent_dirs && \
@@ -143,16 +117,17 @@ autoload -Uz add-zsh-hook cdr chpwd_recent_dirs && \
   zstyle ":chpwd:*" recent-dirs-pushd true && \
   zstyle ":chpwd:*" recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
 
-autoload -Uz kill-peco && zle -N kill-peco && \
+autoload -Uz kill-peco && \
+  zle -N kill-peco && \
   bindkey '^xk' kill-peco
 
-alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | fzy | xargs gibo'
+alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | ${INTERACTIVE_FILTER} | xargs gibo'
 
-alias -g P='`docker ps | tail -n +2 | peco | cut -d" " -f1`'
-alias -g I='`docker images --format "table {{.ID}}\t{{.Repository}}\t{{.CreatedSince}}\t{{.Size}}" | peco | cut -d" " -f1`'
+alias -g P='`docker ps | tail -n +2 | ${INTERACTIVE_FILTER} | cut -d" " -f1`'
+alias -g I='`docker images --format "table {{.ID}}\t{{.Repository}}\t{{.CreatedSince}}\t{{.Size}}" | ${INTERACTIVE_FILTER} | cut -d" " -f1`'
 
-
-autoload -Uz rg-edit && alias rge='rg-edit'
+autoload -Uz rg-edit && \
+  alias rge='rg-edit'
 
 case ${OSTYPE} in
   linux*)
@@ -166,10 +141,11 @@ esac
 alias vi='nvim'
 alias vim='nvim'
 alias tmux="tmux -2 -u"
+alias b="cd ${OLDPWD}"
 
-#---------------------------------------------
+#=============================================
 # Completion
-#---------------------------------------------
+#=============================================
 setopt no_beep
 setopt auto_pushd
 setopt correct
@@ -210,9 +186,7 @@ zstyle ':completion:*:corrections' \
   format $YELLOW'%B%d '$RED'(errors: %e)%b'$DEFAULT
 zstyle ':completion:*:options' description 'yes'
 
-if [ -n "%LS_COLORS" ]; then
-    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-fi
+[[ -n "%LS_COLORS" ]] && zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 zstyle ':completion:*' use-cache true
 
@@ -222,14 +196,12 @@ zstyle ':completion:*' list-separator '-->'
 # misc source
 #=================================
 # Default Python Interpretor
-. $HOME/.virtualenvs/default/bin/activate
+[[ -d $PYTHON_ROOT ]] && source $PYTHON_ROOT/bin/activate
 
 # direnv
-if (( $+commands[direnv] )); then
-    eval "$(direnv hook zsh)"
-fi
+type direnv > /dev/null 2>&1 && eval "$(direnv hook zsh)"
 
-export NVIM_SOCKETS_DIR=$XDG_CACHE_HOME/nvimsockets
+export NVIM_SOCKETS_DIR=$XDG_CACHE_HOME/nvim/sockets
 [[ ! -d $NVIM_SOCKETS_DIR ]] && mkdir -p $NVIM_SOCKETS_DIR
 
 vimr() {
@@ -254,7 +226,5 @@ for f in $XDG_CACHE_HOME/pac/etc/zsh/src/*.zsh; do
   source $f
 done
 
-if (which zprof > /dev/null 2>&1); then
-  zprof
-fi
+type zprof > /dev/null 2>&1
 

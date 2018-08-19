@@ -35,7 +35,11 @@ if [ -z $TMUX ]; then
   # node
   export NODEBREW_ROOT=$XDG_CACHE_HOME/nodebrew
 
-  export PYV_ROOT=$XDG_CACHE_HOME/pyv
+  PYTHON_HOME=$XDG_CACHE_HOME/python
+  export PYV_ROOT=$PYTHON_HOME/pythons
+  export PYG_ROOT=$PYTHON_HOME/venvs
+  export PYTHON_ROOT=$PYG_ROOT/default
+
   export GOV_ROOT=$XDG_CACHE_HOME/gov
   export GOROOT=$GOV_ROOT/versions/current
 
@@ -90,7 +94,8 @@ if [ -z $TMUX ]; then
   export LISTMAX=50
 
   # filter
-  export INTERACTIVE_FILTER="fzy"
+  export INTERACTIVE_FILTER="fzf"
+  export FZF_DEFAULT_OPTS="--ansi --reverse --height 20"
 
   # rbenv
   eval "$(rbenv init - --no-rehash)"
