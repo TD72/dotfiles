@@ -54,6 +54,7 @@ set viminfo+=n~/.cache/vim/viminfo
 
 " Folding
 set foldenable
+set foldtext=FoldCCtext()
 set foldmethod=marker
 set foldlevel=0
 set foldcolumn=1

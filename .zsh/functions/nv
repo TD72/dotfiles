@@ -54,29 +54,26 @@ _nv_use()
   fi
 }
 
-nv()
-{
-  case "$1" in
-    "help" | "h" )
-      _nv_help
-      ;;
-    "list" | "ls" | "l" )
-      _nv_list
-      ;;
-    "list-remote" | "lr" )
-      _nv_list_remote
-      ;;
-    "install" | "i" )
-      _nv_install
-      ;;
-    "uninstall" | "un" )
-      _nv_uninstall
-      ;;
-    "use" | "u" )
-      _nv_use
-      ;;
-    * )
-      _nv_help
-      ;;
-  esac
-}
+case "$1" in
+  "help" | "h" )
+    _nv_help
+    ;;
+  "list" | "ls" | "l" )
+    _nv_list
+    ;;
+  "list-remote" | "lr" )
+    _nv_list_remote
+    ;;
+  "install" | "i" )
+    _nv_install
+    ;;
+  "uninstall" | "un" )
+    _nv_uninstall
+    ;;
+  "use" | "u" )
+    _nv_use
+    ;;
+  * )
+    _nv_help
+    ;;
+esac

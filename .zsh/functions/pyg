@@ -1,0 +1,10 @@
+#!/bin/zsh
+# python global settings
+
+local p="$(pyv which)"
+[[ ! -f $p ]] && return 0
+
+local venv_dir="${PYG_ROOT}/$(basename $(dirname $(dirname ${p})))"
+[[ ! -d $venv_dir ]] && $p -m venv $venv_dir
+
+ln -fs $venv_dir $PYG_ROOT/default

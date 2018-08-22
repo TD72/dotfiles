@@ -4,10 +4,6 @@ if [ -n "$BUFFER" ]; then
 fi
 
 echo
-if is_git_repo; then
-  git status
-else
-  ls -F --color=auto
-fi
+git rev-parse --is-inside-work-tree &>/dev/null && git status || ls
 
 zle reset-prompt

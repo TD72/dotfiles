@@ -1,0 +1,5 @@
+pip
+neovim
+python-language-server
+numpy
+matplotlib

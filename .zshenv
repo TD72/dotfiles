@@ -35,17 +35,20 @@ if [ -z $TMUX ]; then
   # node
   export NODEBREW_ROOT=$XDG_CACHE_HOME/nodebrew
 
-  export PYV_ROOT=$XDG_CACHE_HOME/pyv
+  PYTHON_HOME=$XDG_CACHE_HOME/python
+  export PYV_ROOT=$PYTHON_HOME/pythons
+  export PYG_ROOT=$PYTHON_HOME/venvs
+  export PYTHON_ROOT=$PYG_ROOT/default
+
   export GOV_ROOT=$XDG_CACHE_HOME/gov
   export GOROOT=$GOV_ROOT/versions/current
-  export PATH=$GOROOT/bin:$PATH
 
   path=( \
     $HOME/.bin(N-/) \
     $GOBIN(N-/) \
     $XDG_CACHE_HOME/pac/bin(N-/) \
     $NODEBREW_ROOT/current/bin(N-/) \
-    $GOV_ROOT/current/bin(N-/) \
+    $GOROOT/bin(N-/) \
     $HOME/.rbenv/bin(N-/) \
     $HOME/.virtualenvs/default/bin(N-/) \
     $CUDA_HOME/bin(N-/) \
@@ -91,7 +94,8 @@ if [ -z $TMUX ]; then
   export LISTMAX=50
 
   # filter
-  export INTERACTIVE_FILTER="fzy"
+  export INTERACTIVE_FILTER="fzf"
+  export FZF_DEFAULT_OPTS="--ansi --reverse --height 20"
 
   # rbenv
   eval "$(rbenv init - --no-rehash)"
