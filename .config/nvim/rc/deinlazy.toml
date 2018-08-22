@@ -142,15 +142,6 @@ hook_source = '''
   endfunction
 '''
 
-[[plugins]]
-repo = 'Shougo/unite.vim'
-[[plugins]]
-repo = 'Shougo/vimfiler'
-depends = 'unite.vim'
-on_map = [['n', '<Plug>']]
-on_if = "isdirectory(bufname('%'))"
-hook_add = 'nnoremap <silent> <Leader>e :VimFiler -simple -split -winwidth=30 -no-quit<CR>'
-hook_source = 'source ~/.config/nvim/rc/plugins/vimfiler.rc.vim'
 
 [[plugins]]
 repo = 'Shougo/junkfile.vim'
@@ -644,8 +635,8 @@ repo = 'Shougo/deoplete.nvim'
 depends = 'context_filetype.vim'
 on_i = 1
 hook_source = '''
- call deoplete#enable() 
-  source ~/.config/nvim/rc/plugins/deoplete.rc.vim
+source ~/.config/nvim/rc/plugins/deoplete.rc.vim
+call deoplete#enable() 
 '''
 
 [[plugins]]
@@ -739,5 +730,45 @@ repo = 'elzr/vim-json'
 on_ft = 'json'
 hook_add = '''
 let g:vim_json_syntax_conceal = 0
+'''
+
+[[plugins]]
+repo = 'Shougo/defx.nvim'
+on_cmd = "Defx"
+hook_add = '''
+nnoremap <silent> <Leader>e :Defx<CR>
+autocmd FileType defx call s:defx_my_settings()
+function! s:defx_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+        \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> l
+        \ defx#do_action('open')
+  nnoremap <silent><buffer><expr> e
+        \ defx#do_action('open', 'split')
+  nnoremap <silent><buffer><expr> E
+        \ defx#do_action('open', 'vsplit')
+  nnoremap <silent><buffer><expr> N
+        \ defx#do_action('new_file')
+  nnoremap <silent><buffer><expr> d
+        \ defx#do_action('remove')
+  nnoremap <silent><buffer><expr> r
+        \ defx#do_action('rename')
+  nnoremap <silent><buffer><expr> h
+        \ defx#do_action('cd', ['..'])
+  nnoremap <silent><buffer><expr> ~
+        \ defx#do_action('cd')
+  nnoremap <silent><buffer><expr> q
+        \ defx#do_action('quit')
+  nnoremap <silent><buffer><expr> <Space>
+        \ defx#do_action('toggle_select') . 'j'
+  nnoremap <silent><buffer><expr> j
+        \ line('.') == line('$') ? 'gg' : 'j'
+  nnoremap <silent><buffer><expr> k
+        \ line('.') == 1 ? 'G' : 'k'
+  nnoremap <silent><buffer><expr> <C-l>
+        \ defx#do_action('redraw')
+  nnoremap <silent><buffer><expr> <C-g>
+        \ defx#do_action('print')
+endfunction
 '''
 
