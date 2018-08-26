@@ -50,6 +50,7 @@ repos = [
     "peco/peco",
     "mattn/memo",
     "k-hosokawa/gov",
+    "junegunn/fzf"
 ]
 
 [src]
@@ -104,11 +105,6 @@ repo = "Fakerr/git-recall"
 onCmd = "git-recall"
 
 [[src.pkg]]
-repo = "jhawthorn/fzy"
-build = ["make"]
-onCmd = "fzy"
-
-[[src.pkg]]
 repo = "jwilm/alacritty"
 onOs = "darwin"
 build = [
@@ -120,7 +116,6 @@ onApp = "target/release/osx/Alacritty.app"
 repo = "b4b4r07/peco-tmux.sh"
 onCmd = "peco-tmux.sh"
 renameTo = "peco-tmux"
-
 
 [[src.pkg]]
 repo = "k-hosokawa/pyv"
