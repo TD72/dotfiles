@@ -1,7 +1,7 @@
 #! /bin/zsh
 
 # autocompile
-[[ $HOME/.zshrc -nt $HOME/.zshrc.zwc ]] && zcompile $HOME/.zshrc
+[[ $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]] && zcompile $ZDOTDIR/.zshrc
 
 autoload -Uz tmux-filter && \
   alias t="tmux-filter"
@@ -129,14 +129,22 @@ alias -g I='`docker images --format "table {{.ID}}\t{{.Repository}}\t{{.CreatedS
 autoload -Uz rg-edit && \
   alias rge='rg-edit'
 
-case ${OSTYPE} in
-  linux*)
-    alias ls='ls -F --color=auto'
-    ;;
-  darwin*)
-    alias ls='gls -F --color=auto'
-    ;;
-esac
+if builtin command -v exa > /dev/null; then
+  alias ls='exa'
+else
+  case ${OSTYPE} in
+    linux*)
+      alias ls='ls -F --color=auto'
+      ;;
+    darwin*)
+      alias ls='gls -F --color=auto'
+      ;;
+  esac
+fi
+
+alias a="ls -a"
+alias l="ls -l"
+alias la="ls -la"
 
 alias vi='nvim'
 alias vim='nvim'
