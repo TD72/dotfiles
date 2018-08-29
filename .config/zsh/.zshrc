@@ -227,6 +227,8 @@ zstyle ':notify:*' error-title
 zstyle ':notify:*' success-title
 zstyle ':notify:*' command-complete-timeout 15
 
+export GIT_CHANGE_ACCOUNT_SETTINGS=$HOME/Dropbox/secret_configs/git-accounts.toml
+
 #=================================
 # pac source
 #=================================

@@ -11,10 +11,6 @@
     interactive = auto
     grep = auto
 
-[user]
-    name = td72
-    email = teledx72@gmail.com
-
 [ghq]
     root = ~/src
 
