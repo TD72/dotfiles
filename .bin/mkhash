@@ -1,4 +1,0 @@
-#!/bin/bash
-read -sp "Input some words: " pass
-echo
-echo -n $pass | openssl sha1

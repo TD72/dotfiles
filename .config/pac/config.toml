@@ -42,8 +42,6 @@ pkgs = [
 [[go.pkgs]]
     repo = "motemen/ghq"
 [[go.pkgs]]
-    repo = "peco/peco"
-[[go.pkgs]]
     repo = "mattn/memo"
 [[go.pkgs]]
     repo = "k-hosokawa/gov"
@@ -85,10 +83,6 @@ repo = "b4b4r07/emoji-cli"
 onZshSource = "emoji-cli.zsh"
 
 [[src.pkg]]
-repo = "mrowa44/emojify"
-onCmd = "emojify"
-
-[[src.pkg]]
 repo = "simonwhitaker/gibo"
 onCmd = "gibo"
 
@@ -103,11 +97,6 @@ build = [
     "make app",
 ]
 onApp = "target/release/osx/Alacritty.app"
-
-[[src.pkg]]
-repo = "b4b4r07/peco-tmux.sh"
-onCmd = "peco-tmux.sh"
-renameTo = "peco-tmux"
 
 [[src.pkg]]
 repo = "k-hosokawa/pyv"

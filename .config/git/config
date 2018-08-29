@@ -19,7 +19,7 @@
     root = ~/src
 
 [alias]
-    lg = ! git log --graph --decorate --color | emojify | less -r
+    lg = ! git log --graph --decorate --color | pyemojify | less -r
     exec = !sh -c 'exec "$@"' $(which sh)
     s = status
     a = add

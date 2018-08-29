@@ -38,17 +38,18 @@ if [ -z $TMUX ]; then
   export GOBIN="$GOPATH/bin"
   export GO15VENDOREXPERIMENT=1
 
+  export GOV_ROOT=$XDG_CACHE_HOME/gov
+  export GOROOT=$GOV_ROOT/versions/current
+
   # node
   export NODEBREW_ROOT=$XDG_CACHE_HOME/nodebrew
   export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
+  # python
   PYTHON_HOME=$XDG_CACHE_HOME/python
   export PYV_ROOT=$PYTHON_HOME/pythons
   export PYG_ROOT=$PYTHON_HOME/venvs
   export PYTHON_ROOT=$PYG_ROOT/default
-
-  export GOV_ROOT=$XDG_CACHE_HOME/gov
-  export GOROOT=$GOV_ROOT/versions/current
 
   # rust
   export CARGO_HOME=$XDG_CACHE_HOME/cargo

@@ -117,11 +117,11 @@ autoload -Uz add-zsh-hook cdr chpwd_recent_dirs && \
   zstyle ":chpwd:*" recent-dirs-max 100 && \
   zstyle ":chpwd:*" recent-dirs-default true && \
   zstyle ":chpwd:*" recent-dirs-pushd true && \
-  zstyle ":chpwd:*" recent-dirs-file "$XDG_CACHE_HOME/zsh/chpwd-recent-dirs"
+  zstyle ":chpwd:*" recent-dirs-file "$ZSH_CACHE_DIR/chpwd-recent-dirs"
 
-autoload -Uz kill-peco && \
-  zle -N kill-peco && \
-  bindkey '^xk' kill-peco
+autoload -Uz kill-filter && \
+  zle -N kill-filter && \
+  bindkey '^xk' kill-filter
 
 alias gibol='gibo -l | sed "/=/d" | tr "\t", "\n" | sed "/^$/d" | sort | ${INTERACTIVE_FILTER} | xargs gibo'
 
