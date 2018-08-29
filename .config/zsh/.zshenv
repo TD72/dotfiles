@@ -23,8 +23,11 @@ if [ -z $TMUX ]; then
   export XDG_DATA_HOME=$HOME/.local/share
   [[ ! -d $XDG_DATA_HOME ]] && mkdir -p $XDG_DATA_HOME
 
+  export XDG_RUNTIME_DIR=/tmp/xdg-runtime-$USER
+
   export ZSH_CACHE_DIR=$XDG_CACHE_HOME/zsh
   [[ ! -d $ZSH_CACHE_DIR ]] && mkdir -p $ZSH_CACHE_DIR
+
 
 
   # CUDA
@@ -37,6 +40,7 @@ if [ -z $TMUX ]; then
 
   # node
   export NODEBREW_ROOT=$XDG_CACHE_HOME/nodebrew
+  export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 
   PYTHON_HOME=$XDG_CACHE_HOME/python
   export PYV_ROOT=$PYTHON_HOME/pythons
@@ -48,6 +52,7 @@ if [ -z $TMUX ]; then
 
   # rust
   export CARGO_HOME=$XDG_CACHE_HOME/cargo
+  export RUSTUP_HOME=$XDG_CACHE_HOME/rustup
 
   typeset -gx -U path
   path=( \
@@ -103,17 +108,24 @@ if [ -z $TMUX ]; then
 
   # filter
   export INTERACTIVE_FILTER="fzf"
+  export FZF_DEFAULT_COMMAND='fd --type file --exclude .git --color=always'
   export FZF_DEFAULT_OPTS="--ansi --reverse --height 20"
 
   # rbenv
   eval "$(rbenv init - --no-rehash)"
 
-  # tmuxinator
-  [[ -s $HOME/.tmuxinator/scripts/tmuxinator ]] && \
-    source $HOME/.tmuxinator/scripts/tmuxinator
-
   # Git config profiles path
   export GITCFG=$XDG_CONFIG_HOME/git-cfg
+
+  # ncurses
+  export TERMINFO="$XDG_DATA_HOME"/terminfo
+  export TERMINFO_DIRS="$XDG_DATA_HOME"/terminfo:/usr/share/terminfo
+
+  # openssl .rnd file
+  export RANDFILE=$XDG_CACHE_HOME/.rnd
+
+  # readline
+  export INPUTRC=$XDG_CONFIG_HOME/readline/inputrc
 
 
   #=================================

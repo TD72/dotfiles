@@ -5,9 +5,9 @@ pkgs = [
     "autoconf",
     "bazel",
     "cmake", "coreutils", "ctags",
-    "direnv", "diff-so-fancy",
+    "diff-so-fancy",
     "ffmpeg", "fish", "fontconfig", "fontforge",
-    "gawk", "git", "glib", "glide", "graphviz",
+    "gawk", "git", "glib", "graphviz",
     "hub",
     "imagemagick",
     "jq",
@@ -53,13 +53,6 @@ pkgs = [
     repo = "b4b4r07/history"
     onZshComp = "misc/zsh/completions"
     onZshSource = "misc/zsh/init.zsh"
-
-[rust]
-repos = [
-    "exa",
-    "fd",
-    "ripgrep",
-]
 
 [src]
 [[src.pkg]]

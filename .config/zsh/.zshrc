@@ -3,7 +3,9 @@
 # autocompile
 [[ $ZDOTDIR/.zshrc -nt $ZDOTDIR/.zshrc.zwc ]] && zcompile $ZDOTDIR/.zshrc
 
-autoload -Uz tmux-filter && \
+alias tmux="tmux -f $XDG_CONFIG_HOME/tmux/tmux.conf"
+
+autoload -z tmux-filter && \
   alias t="tmux-filter"
 
 [[ -z $TMUX ]] && tmux-filter
@@ -148,7 +150,6 @@ alias la="ls -la"
 
 alias vi='nvim'
 alias vim='nvim'
-alias tmux="tmux -2 -u"
 alias b="cd ${OLDPWD}"
 
 #=============================================

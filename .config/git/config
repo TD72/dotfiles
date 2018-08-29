@@ -1,6 +1,5 @@
 [core]
     editor = vim
-    excludesfile = /Users/hosokawa/.gitignore_global
     precomposeunicode = true
     quotepath = true
 
