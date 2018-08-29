@@ -43,8 +43,12 @@ if [ -z $TMUX ]; then
   export GOV_ROOT=$XDG_CACHE_HOME/gov
   export GOROOT=$GOV_ROOT/versions/current
 
+  # rust
+  export CARGO_HOME=$XDG_CACHE_HOME/cargo
+
   path=( \
     $HOME/.bin(N-/) \
+    $CARGO_HOME/bin \
     $GOBIN(N-/) \
     $XDG_CACHE_HOME/pac/bin(N-/) \
     $NODEBREW_ROOT/current/bin(N-/) \
@@ -126,9 +130,10 @@ if [ -z $TMUX ]; then
   export ENHANCD_HOOK_AFTER_CD="ls"
 
   # b4b4r07/zsh-history
-  export ZSH_HISTORY_FILE="$XDG_CACHE_HOME/zsh_history.db"
+  export ZSH_HISTORY_KEYBIND_GET="^r"
   export ZSH_HISTORY_KEYBIND_GET_BY_DIR="^r"
   export ZSH_HISTORY_KEYBIND_GET_ALL="^r^a"
+  export ZSH_HISTORY_FILTER_OPTIONS="--filter-dir"
   export ZSH_HISTORY_KEYBIND_SCREEN="^r^r"
   export ZSH_HISTORY_KEYBIND_ARROW_UP="^p"
   export ZSH_HISTORY_KEYBIND_ARROW_DOWN="^n"

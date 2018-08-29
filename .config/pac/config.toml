@@ -13,19 +13,16 @@ pkgs = [
     "jq",
     "lame",
     "mariadb", "mecab", "mecab-ipadic",
-    "neovim", "nkf", "nmap", "node", "nodebrew",
+    "neovim", "nkf", "nmap",
     "opencv3", "open-jtalk", "openssl",
-    "peco", "pkg-config", "protobuf", "python",
+    "pkg-config", "protobuf",
     "qt",
-    "rbenv", "readline", "reattach-to-user-namespace", "ripgrep",
-    "ruby-build", "rust",
+    "rbenv", "readline", "reattach-to-user-namespace",
+    "ruby-build",
     "shelcheck", "sqlite", "swig",
-    "terminal-notifier", "tmux", "tree",
+    "terminal-notifier", "tmux",
     "w3m", "wget","zsh-completions",
 ]
-[[brew.optionalPkgs]]
-    pkg = "go"
-    args = ["--cross-compile-common"]
 
 [[brew.optionalPkgs]]
     pkg = "htop"
@@ -39,18 +36,29 @@ pkgs = [
     pkg = "zsh"
     args = ["--disable-etcdir"]
 
-[[brew.optionalPkgs]]
-    pkg = "cema-sp/tap/alacritty"
-    args = ["--HEAD"]
-
 [go]
+[[go.pkgs]]
+    repo = "k-hosokawa/powerline-go"
+[[go.pkgs]]
+    repo = "motemen/ghq"
+[[go.pkgs]]
+    repo = "peco/peco"
+[[go.pkgs]]
+    repo = "mattn/memo"
+[[go.pkgs]]
+    repo = "k-hosokawa/gov"
+[[go.pkgs]]
+    repo = "junegunn/fzf"
+[[go.pkgs]]
+    repo = "b4b4r07/history"
+    onZshComp = "misc/zsh/completions"
+    onZshSource = "misc/zsh/init.zsh"
+
+[rust]
 repos = [
-    "k-hosokawa/powerline-go",
-    "motemen/ghq",
-    "peco/peco",
-    "mattn/memo",
-    "k-hosokawa/gov",
-    "junegunn/fzf"
+    "exa",
+    "fd",
+    "ripgrep",
 ]
 
 [src]
@@ -78,15 +86,6 @@ onZshComp = "."
 repo = "b4b4r07/zsh-gomi"
 onCmd = "bin/gomi"
 onZshComp = "src"
-
-[[src.pkg]]
-repo = "b4b4r07/zsh-history"
-build = ["make"]
-onZshSource = "init.zsh"
-onCmd = "zhist"
-
-# [[src.pkg]]
-# repo = "marzocchi/zsh-notify"
 
 [[src.pkg]]
 repo = "b4b4r07/emoji-cli"
@@ -129,3 +128,10 @@ build = [
     "wget git.io/nodebrew",
     "perl nodebrew setup",
 ]
+
+[[src.pkg]]
+repo = "direnv/direnv"
+build = ["make", "make install"]
+buildEnv = ["DESTDIR=__PAC_HOME__"]
+
+

@@ -1,0 +1,22 @@
+[core]
+  editor = "/usr/local/bin/nvim"
+  selectcmd = "fzf"
+  tomlfile = "$HOME/.config/history/config.toml"
+
+[history]
+  ignore_words = []
+  use_color = false
+  path = "$HOME/.cache/history/history.ltsv"
+  backup_path = "$HOME/.cache/history/backup"
+  [history.sync]
+    id = ""
+    token = "$GITHUB_TOKEN"
+    size = 100
+
+[screen]
+  filter_dir = false
+  filter_branch = false
+  filter_hostname = false
+  columns = ["{{.Time}}", "{{.Status}}", "{{.Command}}"]
+  status_ok = " "
+  status_ng = "x"

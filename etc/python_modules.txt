@@ -3,3 +3,4 @@ neovim
 python-language-server
 numpy
 matplotlib
+glances
