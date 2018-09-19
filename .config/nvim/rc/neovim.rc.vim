@@ -3,8 +3,8 @@
 "---------------------------------------------------------------------------
 tnoremap <ESC> <C-\><C-n>
 
-let g:python_host_prog = expand('$PYG_ROOT') . '/default/bin/python'
-let g:python3_host_prog = expand('$PYG_ROOT') . '/default/bin/python'
+let g:python_host_prog = expand('$PYTHON_ROOT') . '/bin/python'
+let g:python3_host_prog = expand('$PYTHON_ROOT') . '/bin/python'
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
